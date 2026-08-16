@@ -1,0 +1,23 @@
+<p class="text-sm uppercase tracking-wide text-capella-400">
+  {{ unit().title }}
+</p>
+<h1 class="m-0 mt-1 text-3xl font-medium">Summary</h1>
+
+<p class="mt-6 text-gray-50">{{ unit().summary }}</p>
+
+@if (unit().resources?.length) {
+  <h2 class="mt-10 text-xl font-medium">Other resources</h2>
+  <ul class="mt-4 flex flex-col gap-2 pl-5 text-gray-50">
+    @for (resource of unit().resources; track resource.url) {
+      <li>
+        <a
+          [href]="resource.url"
+          target="_blank"
+          rel="noopener"
+          class="text-capella-400"
+          >{{ resource.label }}</a
+        >
+      </li>
+    }
+  </ul>
+}

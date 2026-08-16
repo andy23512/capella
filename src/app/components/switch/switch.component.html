@@ -1,0 +1,58 @@
+<svg viewBox="-40 -40 280 280" class="w-full max-w-[280px]">
+  @if (showReference()) {
+    <g class="text-gray-300">
+      @for (line of referenceLines(); track $index) {
+        <line
+          [attr.x1]="line.inner.x"
+          [attr.y1]="line.inner.y"
+          [attr.x2]="line.outer.x"
+          [attr.y2]="line.outer.y"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-dasharray="3 3"
+        />
+      }
+    </g>
+    <text
+      [attr.x]="referenceLines()[0].label.x"
+      [attr.y]="referenceLines()[0].label.y"
+      class="fill-gray-300 text-xs"
+      text-anchor="middle"
+      dominant-baseline="middle"
+    >
+      finger's natural "up"
+    </text>
+  }
+
+  @for (direction of tiltDirections; track direction) {
+    <g
+      appSwitchSector
+      [direction]="direction"
+      [centerAngle]="sectorAngles()[direction]"
+      [highlightKind]="selectedDirection() === direction ? highlightKind() : null"
+      (sectorClick)="directionSelected.emit(direction)"
+    ></g>
+  }
+
+  <circle
+    cx="100"
+    cy="100"
+    r="38"
+    class="cursor-pointer stroke-gray-800 stroke-2 transition-colors hover:fill-capella-700"
+    [class.fill-capella-500]="selectedDirection() === 'c' && highlightKind() === 'press'"
+    [class.fill-blue-400]="selectedDirection() === 'c' && highlightKind() === 'hold'"
+    [class.fill-gray-500]="selectedDirection() !== 'c'"
+    (click)="directionSelected.emit('c')"
+  />
+  <text
+    x="100"
+    y="100"
+    class="pointer-events-none select-none text-xs font-bold"
+    [class.fill-gray-900]="selectedDirection() === 'c'"
+    [class.fill-white]="selectedDirection() !== 'c'"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >
+    PRESS
+  </text>
+</svg>

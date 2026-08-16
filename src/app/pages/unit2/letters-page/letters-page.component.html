@@ -1,0 +1,23 @@
+<div class="mx-auto max-w-4xl p-8">
+  <p class="text-sm uppercase tracking-wide text-capella-400">
+    Unit 2: Standard Keys
+  </p>
+  <h1 class="m-0 mt-1 text-3xl font-medium">Chapter 1: Letters</h1>
+
+  <p class="mt-6 text-gray-50">
+    Letters are the CharaChorder's home base: the base lowercase alphabet
+    sits on the Primary layer, one switch tilt each, no layer-shift needed.
+    Pick an exercise below — the exercise page will prompt each letter in
+    turn and light up exactly where to press on the device diagram.
+  </p>
+
+  <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+    @for (exercise of exercises; track exercise.id) {
+      <app-exercise-card
+        [exercise]="exercise"
+      />
+    }
+  </div>
+
+  <app-chapter-nav chapterId="letters" />
+</div>

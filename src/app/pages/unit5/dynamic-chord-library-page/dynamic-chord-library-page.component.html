@@ -1,0 +1,34 @@
+<div class="mx-auto max-w-4xl p-8">
+  <p class="text-sm uppercase tracking-wide text-capella-400">
+    Unit 5: Advanced Chording
+  </p>
+  <h1 class="m-0 mt-1 text-3xl font-medium">
+    Chapter 2: Dynamic Chord Library
+  </h1>
+
+  <p class="mt-6 text-gray-50">
+    Every chord you train normally lives in one shared library — so the
+    same set of switches can only ever mean one thing. A dynamic chord
+    library lets you have more than one library active at a time, each
+    with its own chords, so the exact same input can produce different
+    output depending on which library is active. That's useful for
+    keeping, say, an email-signature set of chords separate from a coding
+    set, even if they'd otherwise clash.
+  </p>
+  <p class="text-gray-50">
+    A dynamic library is activated by a special action included in a
+    chord's own output — pressing that chord both produces its output and
+    switches your device into that library going forward. Any new chords
+    you train while it's active are nested one level under it, rather than
+    mixed into your base library. A separate action switches you back to
+    your base library, deactivating whichever dynamic library was active.
+  </p>
+  <p class="text-gray-50">
+    Unlike Impulse Chord's switch in the last unit, neither of these two
+    actions is bound to a switch on the default layout — like a chord
+    itself, where you put them (if at all) is entirely up to you, so
+    there's no diagram to show here.
+  </p>
+
+  <app-chapter-nav chapterId="dynamic-chord-library" />
+</div>

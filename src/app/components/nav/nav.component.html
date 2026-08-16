@@ -1,0 +1,61 @@
+<mat-sidenav-container class="h-full" autosize>
+  <mat-sidenav
+    #drawer
+    class="!w-[260px] !bg-gray-450"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    [disableClose]="!(isHandset$ | async)"
+  >
+    <header
+      class="sticky top-0 z-10 flex items-center gap-2 bg-gray-450 px-4 py-3 shadow"
+    >
+      <a
+        routerLink="/"
+        (click)="onNavLinkClick()"
+        class="flex items-center gap-2 text-xl font-medium text-capella-500 no-underline"
+      >
+        <mat-icon class="!text-capella-500">auto_awesome</mat-icon>
+        Capella
+      </a>
+    </header>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        routerLink="/learning-map"
+        routerLinkActive="list-item-active"
+        (click)="onNavLinkClick()"
+      >
+        <mat-icon class="mr-1 align-middle !text-[20px]">map</mat-icon>
+        Learning Map
+      </a>
+      @for (unit of units; track unit.id) {
+        <h4 class="font-bold" matSubheader>{{ unit.title }}</h4>
+        @for (chapter of unit.chapters; track chapter.id) {
+          <a
+            mat-list-item
+            [routerLink]="chapter.path"
+            routerLinkActive="list-item-active"
+            (click)="onNavLinkClick()"
+            >{{ chapter.title }}</a
+          >
+        }
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    @if (!drawer.opened) {
+      <button
+        type="button"
+        class="!fixed left-1 top-1/2 !z-10 -translate-y-1/2 cursor-pointer opacity-80 hover:text-capella-500"
+        aria-label="Open side menu"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon>left_panel_open</mat-icon>
+      </button>
+    }
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

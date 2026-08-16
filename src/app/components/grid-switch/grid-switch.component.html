@@ -1,0 +1,28 @@
+@for (direction of tiltDirections; track direction) {
+  <svg:g
+    appGridSwitchSector
+    [center]="center()"
+    [centerAngle]="baseAngles[direction]"
+    [label]="directionLabel(direction)"
+    [highlightKind]="directionHighlightKind(direction)"
+  ></svg:g>
+}
+<svg:circle
+  [attr.cx]="center().x"
+  [attr.cy]="center().y"
+  [attr.r]="centerRadius"
+  [attr.opacity]="centerHighlightKind() ? 0.5 : 0"
+  [class.fill-capella-500]="centerHighlightKind() === 'press'"
+  [class.fill-blue-400]="centerHighlightKind() === 'hold'"
+/>
+@if (centerLabel(); as label) {
+  <svg:text
+    [attr.x]="center().x"
+    [attr.y]="center().y"
+    [attr.font-size]="centerFontSize()"
+    text-anchor="middle"
+    dominant-baseline="central"
+    class="fill-white"
+    >{{ label }}</svg:text
+  >
+}

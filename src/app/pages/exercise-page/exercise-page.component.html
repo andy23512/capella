@@ -1,0 +1,79 @@
+@if (exercise; as exercise) {
+  <div class="mx-auto max-w-4xl p-8">
+    <a mat-stroked-button [routerLink]="backPath">
+      <mat-icon>arrow_back</mat-icon>
+      Back to chapter
+    </a>
+
+    <h1 class="m-0 mt-4 text-3xl font-medium">{{ exercise.title }}</h1>
+    <p class="mt-2 text-gray-200">{{ exercise.description }}</p>
+
+    @if (!completed()) {
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-1.5">
+        @for (step of resolvedSteps; track $index; let i = $index) {
+          <span
+            class="flex h-8 min-w-8 items-center justify-center rounded px-1.5 text-sm font-medium"
+            [class.bg-capella-500]="i === currentIndex()"
+            [class.text-gray-900]="i === currentIndex()"
+            [class.bg-gray-600]="i < currentIndex()"
+            [class.text-gray-300]="i < currentIndex()"
+            [class.opacity-40]="i > currentIndex()"
+          >
+            {{ step.label }}
+          </span>
+        }
+      </div>
+
+      @if (currentStep(); as step) {
+        <p class="mt-4 text-center text-lg text-gray-50">
+          @if (step.kind === 'mouse') {
+            <strong class="text-capella-400">{{ step.label }}</strong>
+          } @else {
+            Press <strong class="text-capella-400">{{ step.label }}</strong>
+          }
+        </p>
+        @if (step.highlight) {
+          @if (step.highlight.layer !== '1' || step.highlight.shiftKey) {
+            <p class="m-0 text-center text-sm text-gray-200">
+              {{ layerLabel(step.highlight.layer) }}
+              @if (step.highlight.shiftKey) {
+                &nbsp;+ Shift
+              }
+            </p>
+          }
+        } @else {
+          <p class="m-0 text-center text-sm text-gray-300">
+            Not available in the default layout diagram below — press it on
+            your keyboard to continue.
+          </p>
+        }
+
+        <div
+          class="mt-4 rounded-lg bg-gray-700 p-4 ring-red-500 transition-shadow"
+          [class.ring-2]="mismatch()"
+        >
+          <app-layout [highlight]="step.highlight" [labels]="step.labels" />
+        </div>
+      }
+
+      <p class="mt-2 text-center text-xs text-gray-300">
+        Mistakes: {{ mistakes() }}
+      </p>
+    } @else {
+      <div class="py-8 text-center">
+        <p class="m-0 text-2xl font-medium text-capella-400">
+          {{ resolvedSteps.length }}/{{ resolvedSteps.length }} correct
+        </p>
+        <p class="mt-2 text-gray-100">
+          {{ mistakes() }} mistake{{ mistakes() === 1 ? '' : 's' }}
+        </p>
+        <div class="mt-6 flex justify-center gap-3">
+          <button mat-stroked-button (click)="restart()">Redo</button>
+          <a mat-flat-button color="primary" [routerLink]="backPath">
+            Back to chapter
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+}

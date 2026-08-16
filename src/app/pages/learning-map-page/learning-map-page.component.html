@@ -1,0 +1,72 @@
+<div class="mx-auto max-w-4xl p-8">
+  <h1 class="m-0 text-4xl font-medium">Learning Map</h1>
+  <p class="mt-2 text-gray-100">
+    Every chapter you've opened and every exercise you've finished, in one
+    view.
+  </p>
+
+  <div class="mt-6 flex flex-wrap gap-8">
+    <div>
+      <span class="text-2xl font-medium text-capella-500">{{
+        totals().chaptersRead
+      }}</span>
+      <span class="text-gray-100"> / {{ totals().chaptersTotal }} chapters read</span>
+    </div>
+    <div>
+      <span class="text-2xl font-medium text-capella-500">{{
+        totals().exercisesCompleted
+      }}</span>
+      <span class="text-gray-100">
+        / {{ totals().exercisesTotal }} exercises completed</span
+      >
+    </div>
+  </div>
+
+  @for (group of unitGroups(); track group.id) {
+    <section class="mt-10">
+      <h2 class="m-0 text-xl font-medium text-gray-50">{{ group.title }}</h2>
+      <ol class="mt-4 ml-1.5 border-l-2 border-gray-400 pl-6">
+        @for (node of group.nodes; track node.chapter.id) {
+          <li class="relative pb-6 last:pb-0">
+            <span
+              class="absolute top-1 -left-[calc(1.5rem+7px)] flex h-3 w-3 rounded-full"
+              [class.bg-capella-500]="node.read"
+              [class.bg-gray-400]="!node.read"
+            ></span>
+            <a
+              [routerLink]="node.chapter.path"
+              class="flex items-center gap-1.5 no-underline"
+            >
+              <span
+                class="font-medium"
+                [class.text-capella-500]="node.read"
+                [class.text-gray-50]="!node.read"
+              >
+                {{ node.chapter.title }}
+              </span>
+              @if (node.read) {
+                <mat-icon class="!h-4 !w-4 !text-[16px] text-capella-500"
+                  >check_circle</mat-icon
+                >
+              }
+            </a>
+            @if (node.exerciseTotal > 0) {
+              <p
+                class="mt-1 text-sm"
+                [class.text-capella-500]="
+                  node.exerciseCompleted === node.exerciseTotal
+                "
+                [class.text-gray-100]="
+                  node.exerciseCompleted !== node.exerciseTotal
+                "
+              >
+                {{ node.exerciseCompleted }} / {{ node.exerciseTotal }}
+                exercises completed
+              </p>
+            }
+          </li>
+        }
+      </ol>
+    </section>
+  }
+</div>

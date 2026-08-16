@@ -1,0 +1,16 @@
+<div class="mt-12 flex items-center justify-between border-t border-gray-400 pt-6">
+  @if (adjacent().previous; as previous) {
+    <a mat-stroked-button [routerLink]="previous.path">
+      <mat-icon>arrow_back</mat-icon>
+      {{ getChapterNavLabel(previous) }}
+    </a>
+  } @else {
+    <span></span>
+  }
+  @if (adjacent().next; as next) {
+    <a mat-flat-button color="primary" [routerLink]="next.path">
+      {{ getChapterNavLabel(next) }}
+      <mat-icon>arrow_forward</mat-icon>
+    </a>
+  }
+</div>

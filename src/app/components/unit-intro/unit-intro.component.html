@@ -1,0 +1,17 @@
+<p class="text-sm uppercase tracking-wide text-capella-400">
+  {{ unit().title }}
+</p>
+<h1 class="m-0 mt-1 text-3xl font-medium">Introduction</h1>
+
+<p class="mt-6 text-gray-50">{{ unit().introduction }}</p>
+
+<h2 class="mt-10 text-xl font-medium">In this unit</h2>
+<ol class="mt-4 flex flex-col gap-2 pl-5 text-gray-50">
+  @for (chapter of chapters(); track chapter.id) {
+    <li>
+      <a [routerLink]="chapter.path" class="text-capella-400">{{
+        chapter.title
+      }}</a>
+    </li>
+  }
+</ol>

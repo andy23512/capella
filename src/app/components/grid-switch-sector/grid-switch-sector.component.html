@@ -1,0 +1,18 @@
+<svg:path [attr.d]="pathD()" fill="none" stroke-width="1.5" class="stroke-gray-100" />
+<svg:path
+  [attr.d]="pathD()"
+  [attr.opacity]="highlightKind() ? 0.5 : 0"
+  [class.fill-capella-500]="highlightKind() === 'press'"
+  [class.fill-blue-400]="highlightKind() === 'hold'"
+/>
+@if (label(); as text) {
+  <svg:text
+    [attr.x]="labelPosition().x"
+    [attr.y]="labelPosition().y"
+    [attr.font-size]="fontSize()"
+    text-anchor="middle"
+    dominant-baseline="central"
+    class="fill-white"
+    >{{ text }}</svg:text
+  >
+}

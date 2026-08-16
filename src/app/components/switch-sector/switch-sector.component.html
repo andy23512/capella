@@ -1,0 +1,18 @@
+<svg:path
+  [attr.d]="pathD()"
+  [class.fill-capella-500]="highlightKind() === 'press'"
+  [class.fill-blue-400]="highlightKind() === 'hold'"
+  [class.fill-gray-400]="!highlightKind()"
+  class="cursor-pointer stroke-gray-800 stroke-2 transition-colors hover:fill-capella-700"
+  (click)="sectorClick.emit()"
+/>
+<svg:text
+  [attr.x]="labelPosition().x"
+  [attr.y]="labelPosition().y"
+  [class.fill-gray-900]="!!highlightKind()"
+  [class.fill-white]="!highlightKind()"
+  class="pointer-events-none select-none text-sm font-bold"
+  text-anchor="middle"
+  dominant-baseline="middle"
+  >{{ direction().toUpperCase() }}</svg:text
+>

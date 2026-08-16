@@ -1,0 +1,39 @@
+<div class="mx-auto max-w-4xl p-8">
+  <p class="text-sm uppercase tracking-wide text-capella-400">
+    Unit 3: CharaChorder Special Keys
+  </p>
+  <h1 class="m-0 mt-1 text-3xl font-medium">
+    Chapter 2: Ambidextrous Throwover
+  </h1>
+
+  <p class="mt-6 text-gray-50">
+    Ambidextrous Throwover — also called Mirror Mode — is an entry mode
+    built for one-handed typing. While it's held, characters that would
+    normally come from your other hand get mirrored onto the hand
+    activating it, so that single hand can reach the full character set on
+    its own.
+  </p>
+  <p class="text-gray-50">
+    There's a switch for it on each hand, so it works no matter which hand
+    you have free. Unlike DUP, activating it doesn't produce its own
+    keystroke to detect, so there's no exercise here — just the two switch
+    positions to know.
+  </p>
+
+  <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <div class="rounded-lg bg-gray-700 p-4">
+      <p class="m-0 mb-3 text-center text-sm font-medium text-gray-100">
+        Left hand activation
+      </p>
+      <app-layout [highlight]="leftHighlight" [labels]="leftLabels" />
+    </div>
+    <div class="rounded-lg bg-gray-700 p-4">
+      <p class="m-0 mb-3 text-center text-sm font-medium text-gray-100">
+        Right hand activation
+      </p>
+      <app-layout [highlight]="rightHighlight" [labels]="rightLabels" />
+    </div>
+  </div>
+
+  <app-chapter-nav chapterId="ambidextrous-throwover" />
+</div>

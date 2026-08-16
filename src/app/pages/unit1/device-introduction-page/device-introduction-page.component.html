@@ -1,0 +1,24 @@
+<div class="mx-auto max-w-4xl p-8">
+  <p class="text-sm uppercase tracking-wide text-capella-400">
+    Unit 1: Introduction
+  </p>
+  <h1 class="m-0 mt-1 text-3xl font-medium">Chapter 1: Device introduction</h1>
+
+  <p class="mt-6 text-gray-50">
+    CharaChorder makes a family of "3D input devices." Instead of keys that
+    only go down, every switch on these devices can also tilt north, east,
+    south, or west — so a single switch can produce up to five different
+    inputs depending on which way you move it, and typing whole chords
+    becomes a matter of moving several fingers at once rather than pressing
+    keys in sequence. Four devices currently share this idea, each with a
+    different form factor and switch count.
+  </p>
+
+  <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+    @for (device of devices; track device.id) {
+      <app-device-card [device]="device" />
+    }
+  </div>
+
+  <app-chapter-nav chapterId="device-introduction" />
+</div>
