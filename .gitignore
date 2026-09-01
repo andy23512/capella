@@ -44,3 +44,6 @@ Thumbs.db
 .nx/cache
 .nx/workspace-data
 .nx
+
+# Claude Code (local tool runtime state)
+.claude/.headroom_wrap_marker.json
