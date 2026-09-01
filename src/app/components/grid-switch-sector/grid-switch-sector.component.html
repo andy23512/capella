@@ -5,14 +5,15 @@
   [class.fill-capella-500]="highlightKind() === 'press'"
   [class.fill-blue-400]="highlightKind() === 'hold'"
 />
-@if (label(); as text) {
+@if (label(); as label) {
   <svg:text
     [attr.x]="labelPosition().x"
     [attr.y]="labelPosition().y"
-    [attr.font-size]="fontSize()"
+    [style.font-size.px]="fontSize()"
     text-anchor="middle"
     dominant-baseline="central"
     class="fill-white"
-    >{{ text }}</svg:text
+    [class.material-symbols-outlined]="label.icon"
+    >{{ label.text }}</svg:text
   >
 }

@@ -51,9 +51,9 @@ export const UNITS: Unit[] = [
     id: 'unit-2',
     title: 'Unit 2: Standard Keys',
     introduction:
-      "With the switch mechanic down, it's time to put it to work. This unit drills the standard key set you already know from a regular keyboard — letters, numbers, symbols, functional keys like Enter and Backspace, and the F1–F12 function keys — but on the CharaChorder's 5-way switches. It closes with the device's built-in mouse features and the modifier-key combinations you already rely on, like copy and paste, all without leaving the switches. Each chapter pairs a short exercise with a live layout diagram that lights up exactly which switch to press.",
+      "With the switch mechanic down, it's time to put it to work. This unit drills the standard key set you already know from a regular keyboard — letters, numbers, symbols, functional keys like Enter and Backspace, and the F1–F12 function keys — but on the CharaChorder's 5-way switches. It closes with the device's built-in mouse features, all without leaving the switches. Each chapter pairs a short exercise with a live layout diagram that lights up exactly which switch to press.",
     summary:
-      "You've now practiced the full standard key set on the CharaChorder's switches — letters, numbers, symbols, functional keys, the F1–F12 row, the built-in mouse features, and modifier-key combinations like copy and paste — using the same layout diagram and highlight mechanic throughout. That coverage is the foundation for everything else the device can do, including the chorded shortcuts and word output that make CharaChorder devices distinct from a regular keyboard.",
+      "You've now practiced the full standard key set on the CharaChorder's switches — letters, numbers, symbols, functional keys, the F1–F12 row, and the built-in mouse features — using the same layout diagram and highlight mechanic throughout. That coverage is the foundation for everything else the device can do, including the chorded shortcuts and word output that make CharaChorder devices distinct from a regular keyboard.",
     resources: [
       {
         label:
@@ -104,12 +104,6 @@ export const UNITS: Unit[] = [
         unitId: 'unit-2',
         title: 'Chapter 6: Mouse Features',
         path: '/unit-2/mouse-features',
-      },
-      {
-        id: 'key-combinations',
-        unitId: 'unit-2',
-        title: 'Chapter 7: Key Combinations',
-        path: '/unit-2/key-combinations',
       },
       {
         id: 'unit-2-summary',

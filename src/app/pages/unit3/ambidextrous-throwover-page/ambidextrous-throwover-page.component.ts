@@ -20,9 +20,9 @@ export class AmbidextrousThrowoverPageComponent {
   protected readonly rightHighlight: HighlightKeyCombination | null =
     resolveNonKeyActionPosition('AmbidextrousThrowoverRight');
   protected readonly leftLabels: PositionLabels = this.leftHighlight
-    ? buildPositionLabels(this.leftHighlight, 'AT')
+    ? buildPositionLabels(this.leftHighlight, { text: 'AT' })
     : {};
   protected readonly rightLabels: PositionLabels = this.rightHighlight
-    ? buildPositionLabels(this.rightHighlight, 'AT')
+    ? buildPositionLabels(this.rightHighlight, { text: 'AT' })
     : {};
 }

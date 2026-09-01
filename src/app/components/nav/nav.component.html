@@ -30,6 +30,15 @@
         <mat-icon class="mr-1 align-middle !text-[20px]">map</mat-icon>
         Learning Map
       </a>
+      <a
+        mat-list-item
+        routerLink="/settings"
+        routerLinkActive="list-item-active"
+        (click)="onNavLinkClick()"
+      >
+        <mat-icon class="mr-1 align-middle !text-[20px]">settings</mat-icon>
+        Settings
+      </a>
       @for (unit of units; track unit.id) {
         <h4 class="font-bold" matSubheader>{{ unit.title }}</h4>
         @for (chapter of unit.chapters; track chapter.id) {
@@ -53,7 +62,7 @@
         mat-icon-button
         (click)="drawer.toggle()"
       >
-        <mat-icon>left_panel_open</mat-icon>
+        <mat-icon>menu</mat-icon>
       </button>
     }
     <router-outlet></router-outlet>

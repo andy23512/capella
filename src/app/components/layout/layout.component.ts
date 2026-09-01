@@ -1,10 +1,11 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import {
   FingerMap,
   HandMap,
   HighlightKeyCombination,
   POSITION_CODE_LAYOUT,
 } from 'tangent-cc-lib';
+import { DeviceLayoutService } from '../../services/device-layout.service';
 import { PositionLabels } from '../../utils/key-position.utils';
 import { GridSwitchComponent } from '../grid-switch/grid-switch.component';
 
@@ -14,7 +15,9 @@ type Finger = keyof FingerMap<unknown>;
 const CELL_SIZE = 200;
 const GAP = 24;
 const GRID_COLUMNS = 10;
-const GRID_ROWS = 5;
+/** Rows needed with the 3rd thumb switch (thumbEnd) shown vs hidden (M4G has no thumbEnd). */
+const GRID_ROWS_WITH_THUMB_3 = 5;
+const GRID_ROWS_WITHOUT_THUMB_3 = 4;
 const SWITCHES: Finger[] = [
   'little',
   'ring',
@@ -35,16 +38,26 @@ const SIDES: Hand[] = ['left', 'right'];
   templateUrl: './layout.component.html',
 })
 export class LayoutComponent {
+  private readonly deviceLayoutService = inject(DeviceLayoutService);
+
   readonly highlight = input<HighlightKeyCombination | null>(null);
   readonly labels = input<PositionLabels>({});
 
   protected readonly sides = SIDES;
-  protected readonly switches = SWITCHES;
+  protected readonly switches = computed(() =>
+    this.deviceLayoutService.showThumb3Switch()
+      ? SWITCHES
+      : SWITCHES.filter((sw) => sw !== 'thumbEnd'),
+  );
   protected readonly positionCodeLayout = POSITION_CODE_LAYOUT;
   protected readonly viewBoxWidth =
     CELL_SIZE * GRID_COLUMNS + GAP * (GRID_COLUMNS - 1);
-  protected readonly viewBoxHeight =
-    CELL_SIZE * GRID_ROWS + GAP * (GRID_ROWS - 1);
+  protected readonly viewBoxHeight = computed(() => {
+    const rows = this.deviceLayoutService.showThumb3Switch()
+      ? GRID_ROWS_WITH_THUMB_3
+      : GRID_ROWS_WITHOUT_THUMB_3;
+    return CELL_SIZE * rows + GAP * (rows - 1);
+  });
 
   private gridX(column: number): number {
     return column * (CELL_SIZE + GAP) + CELL_SIZE / 2;

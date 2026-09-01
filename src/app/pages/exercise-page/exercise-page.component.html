@@ -32,16 +32,7 @@
             Press <strong class="text-capella-400">{{ step.label }}</strong>
           }
         </p>
-        @if (step.highlight) {
-          @if (step.highlight.layer !== '1' || step.highlight.shiftKey) {
-            <p class="m-0 text-center text-sm text-gray-200">
-              {{ layerLabel(step.highlight.layer) }}
-              @if (step.highlight.shiftKey) {
-                &nbsp;+ Shift
-              }
-            </p>
-          }
-        } @else {
+        @if (!step.highlight) {
           <p class="m-0 text-center text-sm text-gray-300">
             Not available in the default layout diagram below — press it on
             your keyboard to continue.

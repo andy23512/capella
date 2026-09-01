@@ -1,4 +1,5 @@
 import { Component, computed, input } from '@angular/core';
+import { PositionLabel } from '../../utils/key-position.utils';
 import {
   angularHalfGapDeg,
   describeOpenDonutSector,
@@ -23,12 +24,18 @@ const LABEL_BASE_FONT_SIZE = 56;
 export class GridSwitchSectorComponent {
   readonly center = input.required<{ x: number; y: number }>();
   readonly centerAngle = input.required<number>();
-  readonly label = input<string>('');
+  readonly label = input<PositionLabel | null>(null);
   readonly highlightKind = input<'press' | 'hold' | null>(null);
 
-  protected readonly fontSize = computed(() =>
-    fontSizeForLabel(this.label(), LABEL_BASE_FONT_SIZE),
-  );
+  protected readonly fontSize = computed(() => {
+    const label = this.label();
+    if (!label) {
+      return LABEL_BASE_FONT_SIZE;
+    }
+    return label.icon
+      ? LABEL_BASE_FONT_SIZE * 0.8
+      : fontSizeForLabel(label.text, LABEL_BASE_FONT_SIZE);
+  });
 
   protected readonly pathD = computed(() => {
     const d = this.centerAngle();

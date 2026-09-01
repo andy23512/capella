@@ -94,13 +94,6 @@ export const APP_ROUTES: Route[] = [
       ).then((m) => m.MouseFeaturesPageComponent),
   },
   {
-    path: 'unit-2/key-combinations',
-    loadComponent: () =>
-      import(
-        './pages/unit2/key-combinations-page/key-combinations-page.component'
-      ).then((m) => m.KeyCombinationsPageComponent),
-  },
-  {
     path: 'unit-2/summary',
     loadComponent: () =>
       import('./pages/unit2/summary-page/summary-page.component').then(
@@ -168,6 +161,13 @@ export const APP_ROUTES: Route[] = [
     loadComponent: () =>
       import('./pages/exercise-page/exercise-page.component').then(
         (m) => m.ExercisePageComponent,
+      ),
+  },
+  {
+    path: 'settings',
+    loadComponent: () =>
+      import('./pages/settings-page/settings-page.component').then(
+        (m) => m.SettingsPageComponent,
       ),
   },
 ];

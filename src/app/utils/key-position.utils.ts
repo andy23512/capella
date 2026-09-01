@@ -3,12 +3,14 @@ import {
   ActionType,
   CharacterActionCode,
   DEFAULT_DEVICE_LAYOUT,
+  DeviceLayout,
   FingerMap,
   HandMap,
   HighlightKeyCombination,
   HighlightSetting,
   KEYBOARD_LAYOUTS_FROM_KBDLAYOUT,
   KeyCombination,
+  M4G_DEFAULT_DEVICE_LAYOUT,
   NonKeyActionName,
   NonWSKCode,
   POSITION_CODE_LAYOUT,
@@ -21,6 +23,10 @@ import {
 } from 'tangent-cc-lib';
 import { SwitchDirection } from '../components/switch/switch.component';
 import { ExerciseStep } from '../models/exercise.models';
+import {
+  DeviceLayoutId,
+  deviceLayoutId,
+} from '../services/device-layout.service';
 
 export interface DecodedPosition {
   hand: keyof HandMap<unknown>;
@@ -28,19 +34,40 @@ export interface DecodedPosition {
   direction: SwitchDirection;
 }
 
-/** Maps a switch's position code to the short text shown on it in the layout diagram. */
-export type PositionLabels = Record<number, string>;
+/** A switch's on-diagram label — plain text, or (when `icon` is set) a Material Icons ligature name. */
+export interface PositionLabel {
+  readonly text: string;
+  readonly icon?: boolean;
+}
 
-/** Short on-switch display text for modifier keys used in 'combo' exercise steps. */
-const MODIFIER_SHORT_LABEL: Partial<Record<NonWSKCode, string>> = {
-  ControlLeft: 'CTRL',
-  ControlRight: 'CTRL',
-  AltLeft: 'ALT',
-  AltRight: 'ALT',
-  ShiftLeft: 'SHIFT',
-  ShiftRight: 'SHIFT',
-  MetaLeft: 'CMD',
-  MetaRight: 'CMD',
+/** Maps a switch's position code to the label shown on it in the layout diagram. */
+export type PositionLabels = Record<number, PositionLabel>;
+
+/** On-switch label for a non-printing key, ported from Alnitak's NON_WSK_CODE_2_RAW_KEY_LABEL_MAP (tangent-cc-lib). */
+const NAMED_KEY_LABEL: Partial<Record<NonWSKCode, PositionLabel>> = {
+  Enter: { text: 'keyboard_return', icon: true },
+  Backspace: { text: 'backspace', icon: true },
+  Tab: { text: 'keyboard_tab', icon: true },
+  Delete: { text: 'DEL' },
+  Escape: { text: 'ESC' },
+  ArrowUp: { text: 'keyboard_arrow_up', icon: true },
+  ArrowDown: { text: 'keyboard_arrow_down', icon: true },
+  ArrowLeft: { text: 'keyboard_arrow_left', icon: true },
+  ArrowRight: { text: 'keyboard_arrow_right', icon: true },
+};
+
+/** On-switch label for a mouse action, ported from Alnitak's NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP (tangent-cc-lib). */
+const MOUSE_ACTION_LABEL: Partial<Record<NonKeyActionName, PositionLabel>> = {
+  MouseLeftClick: { text: 'left_click', icon: true },
+  MouseRightClick: { text: 'right_click', icon: true },
+  MouseMoveUp: { text: 'arrow_circle_up', icon: true },
+  MouseMoveDown: { text: 'arrow_circle_down', icon: true },
+  MouseMoveLeft: { text: 'arrow_circle_left', icon: true },
+  MouseMoveRight: { text: 'arrow_circle_right', icon: true },
+  MouseScrollCoastUp: { text: 'swipe_up', icon: true },
+  MouseScrollCoastDown: { text: 'swipe_down', icon: true },
+  MouseScrollCoastLeft: { text: 'swipe_left', icon: true },
+  MouseScrollCoastRight: { text: 'swipe_right', icon: true },
 };
 
 const US_KEYBOARD_LAYOUT =
@@ -48,12 +75,38 @@ const US_KEYBOARD_LAYOUT =
   null;
 const CHARACTER_KEY_CODE_MAP =
   convertKeyboardLayoutToCharacterKeyCodeMap(US_KEYBOARD_LAYOUT);
-const LAYER_SHIFT_POSITION_CODE_MAP = getLayerShiftPositionCodeMap(
-  DEFAULT_DEVICE_LAYOUT,
-);
-const MODIFIER_KEY_POSITION_CODE_MAP = getModifierKeyPositionCodeMap(
-  DEFAULT_DEVICE_LAYOUT,
-);
+
+const DEVICE_LAYOUTS: Record<DeviceLayoutId, DeviceLayout> = {
+  'cc1-cc2-ccu': DEFAULT_DEVICE_LAYOUT,
+  m4g: M4G_DEFAULT_DEVICE_LAYOUT,
+};
+
+interface DerivedLayoutData {
+  layerShiftPositionCodeMap: ReturnType<typeof getLayerShiftPositionCodeMap>;
+  modifierKeyPositionCodeMap: ReturnType<typeof getModifierKeyPositionCodeMap>;
+}
+
+const DERIVED_LAYOUT_DATA_CACHE = new Map<DeviceLayoutId, DerivedLayoutData>();
+
+function activeDeviceLayout(): DeviceLayout {
+  return DEVICE_LAYOUTS[deviceLayoutId()];
+}
+
+/** Lazily derived, per-device-layout data — memoized so switching layouts doesn't recompute a layout already visited. */
+function activeDerivedLayoutData(): DerivedLayoutData {
+  const id = deviceLayoutId();
+  const cached = DERIVED_LAYOUT_DATA_CACHE.get(id);
+  if (cached) {
+    return cached;
+  }
+  const layout = DEVICE_LAYOUTS[id];
+  const derived: DerivedLayoutData = {
+    layerShiftPositionCodeMap: getLayerShiftPositionCodeMap(layout),
+    modifierKeyPositionCodeMap: getModifierKeyPositionCodeMap(layout),
+  };
+  DERIVED_LAYOUT_DATA_CACHE.set(id, derived);
+  return derived;
+}
 
 /** Same defaults Alnitak ships (src/app/stores/highlight-setting.store.ts). */
 const HIGHLIGHT_SETTING: HighlightSetting = {
@@ -100,29 +153,31 @@ export function decodePositionCode(code: number): DecodedPosition | null {
   return POSITION_CODE_TO_DECODED.get(code) ?? null;
 }
 
-/** Short generic label for a held (non-character) switch, based on which modifier/layer-shift it is — or null if it isn't one of the recognized ones (e.g. a 'combo' step's explicit modifier switch, labeled by its caller instead). */
+/** Short generic label for a held (non-character) switch, based on which modifier/layer-shift it is — or null if it isn't one of the recognized ones. */
 function labelForHeldPosition(
   highlight: HighlightKeyCombination,
   positionCode: number,
-): string | null {
-  if (MODIFIER_KEY_POSITION_CODE_MAP.shift[highlight.layer]?.includes(positionCode)) {
-    return 'SHIFT';
+): PositionLabel | null {
+  const { layerShiftPositionCodeMap, modifierKeyPositionCodeMap } =
+    activeDerivedLayoutData();
+  if (modifierKeyPositionCodeMap.shift[highlight.layer]?.includes(positionCode)) {
+    return { text: 'shift', icon: true };
   }
   if (
-    MODIFIER_KEY_POSITION_CODE_MAP.altGraph[highlight.layer]?.includes(
+    modifierKeyPositionCodeMap.altGraph[highlight.layer]?.includes(
       positionCode,
     )
   ) {
-    return 'ALT GR';
+    return { text: 'ALT GR' };
   }
-  if (LAYER_SHIFT_POSITION_CODE_MAP.numShift.includes(positionCode)) {
-    return 'NUM';
+  if (layerShiftPositionCodeMap.numShift.includes(positionCode)) {
+    return { text: 'counter_2', icon: true };
   }
-  if (LAYER_SHIFT_POSITION_CODE_MAP.fnShift.includes(positionCode)) {
-    return 'FN';
+  if (layerShiftPositionCodeMap.fnShift.includes(positionCode)) {
+    return { text: 'FN' };
   }
-  if (LAYER_SHIFT_POSITION_CODE_MAP.flagShift.includes(positionCode)) {
-    return 'FLAG';
+  if (layerShiftPositionCodeMap.flagShift.includes(positionCode)) {
+    return { text: 'FLAG' };
   }
   return null;
 }
@@ -132,12 +187,11 @@ function labelForHeldPosition(
  * for rendering on the layout diagram. `characterLabel` is shown on the
  * character-key switch itself; any other held switches (Shift/layer-shift/
  * AltGr) get a generic short label where recognized; `extra` lets a caller
- * (e.g. a 'combo' step's own modifier switch) supply additional labels that
- * take precedence.
+ * supply additional labels that take precedence.
  */
 export function buildPositionLabels(
   highlight: HighlightKeyCombination,
-  characterLabel: string,
+  characterLabel: PositionLabel,
   extra?: PositionLabels,
 ): PositionLabels {
   const labels: PositionLabels = {
@@ -162,10 +216,12 @@ function highlightFromKeyCombinations(
   if (!keyCombinations || keyCombinations.length === 0) {
     return null;
   }
+  const { layerShiftPositionCodeMap, modifierKeyPositionCodeMap } =
+    activeDerivedLayoutData();
   return getHighlightKeyCombinationFromKeyCombinations(
     keyCombinations,
-    LAYER_SHIFT_POSITION_CODE_MAP,
-    MODIFIER_KEY_POSITION_CODE_MAP,
+    layerShiftPositionCodeMap,
+    modifierKeyPositionCodeMap,
     HIGHLIGHT_SETTING,
   );
 }
@@ -178,6 +234,7 @@ export function resolveCharacterKeyPosition(
   if (!candidates) {
     return null;
   }
+  const layout = activeDeviceLayout();
   for (const candidate of candidates) {
     const actionCodes =
       getCharacterActionCodesFromCharacterKeyCode(candidate);
@@ -186,7 +243,7 @@ export function resolveCharacterKeyPosition(
     }
     const keyCombinations = getKeyCombinationsFromActionCodes(
       actionCodes,
-      DEFAULT_DEVICE_LAYOUT,
+      layout,
     );
     const highlight = highlightFromKeyCombinations(keyCombinations);
     if (highlight) {
@@ -206,13 +263,14 @@ export function resolveNamedKeyPosition(
   const candidates = ACTIONS.filter(
     (a) => a.type === ActionType.NonWSK && a.keyCode === keyCode,
   );
+  const layout = activeDeviceLayout();
   for (const candidate of candidates) {
     const actionCodes: CharacterActionCode[] = [
       { actionCode: candidate.codeId, shiftKey: false, altGraphKey: false },
     ];
     const keyCombinations = getKeyCombinationsFromActionCodes(
       actionCodes,
-      DEFAULT_DEVICE_LAYOUT,
+      layout,
     );
     const highlight = highlightFromKeyCombinations(keyCombinations);
     if (highlight) {
@@ -237,30 +295,9 @@ export function resolveNonKeyActionPosition(
   ];
   const keyCombinations = getKeyCombinationsFromActionCodes(
     actionCodes,
-    DEFAULT_DEVICE_LAYOUT,
+    activeDeviceLayout(),
   );
   return highlightFromKeyCombinations(keyCombinations);
-}
-
-/** Resolves a modifier + character combo (e.g. Ctrl+C) to a switch highlight. */
-export function resolveComboPosition(
-  modifierKeyCode: NonWSKCode,
-  char: string,
-): HighlightKeyCombination | null {
-  const modifierHighlight = resolveNamedKeyPosition(modifierKeyCode);
-  const characterHighlight = resolveCharacterKeyPosition(char);
-  if (!modifierHighlight || !characterHighlight) {
-    return null;
-  }
-  return {
-    ...characterHighlight,
-    positionCodes: Array.from(
-      new Set([
-        ...characterHighlight.positionCodes,
-        modifierHighlight.characterKeyPositionCode,
-      ]),
-    ),
-  };
 }
 
 export interface ChordIllustration {
@@ -269,11 +306,10 @@ export interface ChordIllustration {
 }
 
 /**
- * Combines several characters' switch positions into one illustrative
- * "press these together" highlight — for showing what a chord's input
- * looks like. Not a real trained chord (there's no default chord
- * dictionary); every switch is rendered the same way (as a hold) since a
- * chord has no single "primary" switch the way a modifier combo does.
+ * Combines several characters' switch positions into one "press these
+ * together" highlight — for showing what a chord's input looks like. Every
+ * switch is rendered the same way (as a hold) since a chord has no single
+ * "primary" switch the way a modifier combo does.
  */
 export function resolveChordIllustration(
   chars: string[],
@@ -301,7 +337,7 @@ export function resolveChordIllustration(
   const labels: PositionLabels = {};
   chars.forEach((char, i) => {
     const highlight = highlights[i]!;
-    labels[highlight.characterKeyPositionCode] = char.toUpperCase();
+    labels[highlight.characterKeyPositionCode] = { text: char.toUpperCase() };
     highlight.positionCodes.forEach((code) => {
       positionCodes.add(code);
       if (!(code in labels)) {
@@ -337,8 +373,6 @@ export function resolveStepPosition(
       return resolveNonKeyActionPosition(step.key as NonKeyActionName);
     case 'dup':
       return resolveNonKeyActionPosition('Dup');
-    case 'combo':
-      return resolveComboPosition(step.modifier as NonWSKCode, step.key);
   }
 }
 
@@ -347,24 +381,26 @@ export function resolveStepLabels(
   step: ExerciseStep,
   highlight: HighlightKeyCombination,
 ): PositionLabels {
-  if (step.kind === 'combo' && step.modifier) {
-    const modifierHighlight = resolveNamedKeyPosition(
-      step.modifier as NonWSKCode,
-    );
-    const extra = modifierHighlight
-      ? {
-          [modifierHighlight.characterKeyPositionCode]:
-            MODIFIER_SHORT_LABEL[step.modifier as NonWSKCode] ??
-            step.modifier,
-        }
-      : undefined;
-    return buildPositionLabels(highlight, step.key.toUpperCase(), extra);
-  }
   if (step.kind === 'character') {
-    // Whitespace characters (e.g. Space) render invisibly on the switch —
-    // fall back to the step's own human-readable label (e.g. "Space", "␣").
-    const characterLabel = step.key.trim() === '' ? step.label : step.key;
+    // Whitespace characters (e.g. Space) render invisibly as text — use
+    // Alnitak's 'space_bar' icon instead of the step's own label.
+    const characterLabel: PositionLabel =
+      step.key.trim() === ''
+        ? { text: 'space_bar', icon: true }
+        : { text: step.key };
     return buildPositionLabels(highlight, characterLabel);
   }
-  return buildPositionLabels(highlight, step.label);
+  if (step.kind === 'named-key') {
+    const label = NAMED_KEY_LABEL[step.key as NonWSKCode] ?? {
+      text: step.label,
+    };
+    return buildPositionLabels(highlight, label);
+  }
+  if (step.kind === 'mouse') {
+    const label = MOUSE_ACTION_LABEL[step.key as NonKeyActionName] ?? {
+      text: step.label,
+    };
+    return buildPositionLabels(highlight, label);
+  }
+  return buildPositionLabels(highlight, { text: step.label });
 }

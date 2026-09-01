@@ -41,10 +41,6 @@ function dupPairSteps(chars: string[]): ExerciseStep[] {
   ]);
 }
 
-function comboStep(label: string, char: string): ExerciseStep {
-  return { label, kind: 'combo', key: char, modifier: 'ControlLeft' };
-}
-
 export const LETTERS_EXERCISES: Exercise[] = [
   {
     id: 'az',
@@ -67,9 +63,9 @@ export const NUMBER_EXERCISES: Exercise[] = [
   {
     id: '0-9',
     chapterId: 'number',
-    title: '0–9',
+    title: '1–0',
     description: 'Every digit, once each, in order.',
-    steps: charSteps('0123456789'),
+    steps: charSteps('1234567890'),
   },
 ];
 
@@ -111,14 +107,12 @@ export const FUNCTIONAL_KEYS_EXERCISES: Exercise[] = [
     id: 'navigation',
     chapterId: 'functional-keys',
     title: 'Navigation keys',
-    description: 'The arrow keys, plus Home and End.',
+    description: 'The arrow keys.',
     steps: namedSteps([
       ['Arrow Up', 'ArrowUp'],
       ['Arrow Down', 'ArrowDown'],
       ['Arrow Left', 'ArrowLeft'],
       ['Arrow Right', 'ArrowRight'],
-      ['Home', 'Home'],
-      ['End', 'End'],
     ]),
   },
 ];
@@ -128,12 +122,12 @@ export const FUNCTION_KEYS_EXERCISES: Exercise[] = [
     id: 'f1-f12',
     chapterId: 'function-keys',
     title: 'F1–F12',
-    description: 'The full row of function keys, in order.',
+    description:
+      'The full row of function keys, in order. F11 is skipped since it is bound to a system-level shortcut (e.g. Show Desktop on macOS) and cannot be captured by the browser.',
     steps: namedSteps(
-      Array.from({ length: 12 }, (_, i) => {
-        const label = `F${i + 1}`;
-        return [label, label] as [string, string];
-      }),
+      Array.from({ length: 12 }, (_, i) => `F${i + 1}`)
+        .filter((label) => label !== 'F11')
+        .map((label) => [label, label] as [string, string]),
     ),
   },
 ];
@@ -186,19 +180,6 @@ export const DUP_EXERCISES: Exercise[] = [
   },
 ];
 
-export const KEY_COMBINATIONS_EXERCISES: Exercise[] = [
-  {
-    id: 'copy-paste',
-    chapterId: 'key-combinations',
-    title: 'Copy & Paste',
-    description: 'Hold Ctrl and press C to copy, then Ctrl and V to paste.',
-    steps: [
-      comboStep('Ctrl + C', 'c'),
-      comboStep('Ctrl + V', 'v'),
-    ],
-  },
-];
-
 export const ALL_EXERCISES: Exercise[] = [
   ...LETTERS_EXERCISES,
   ...NUMBER_EXERCISES,
@@ -206,7 +187,6 @@ export const ALL_EXERCISES: Exercise[] = [
   ...FUNCTIONAL_KEYS_EXERCISES,
   ...FUNCTION_KEYS_EXERCISES,
   ...MOUSE_FEATURES_EXERCISES,
-  ...KEY_COMBINATIONS_EXERCISES,
   ...DUP_EXERCISES,
 ];
 

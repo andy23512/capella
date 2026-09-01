@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { DirectionMap, HighlightKeyCombination } from 'tangent-cc-lib';
-import { PositionLabels } from '../../utils/key-position.utils';
+import { PositionLabel, PositionLabels } from '../../utils/key-position.utils';
 import { fontSizeForLabel } from '../../utils/math.utils';
 import { GridSwitchSectorComponent } from '../grid-switch-sector/grid-switch-sector.component';
 
@@ -58,12 +58,18 @@ export class GridSwitchComponent {
   );
 
   protected readonly centerLabel = computed(
-    () => this.labels()[this.positionCodeMap().c] ?? '',
+    () => this.labels()[this.positionCodeMap().c] ?? null,
   );
 
-  protected readonly centerFontSize = computed(() =>
-    fontSizeForLabel(this.centerLabel(), CENTER_BASE_FONT_SIZE),
-  );
+  protected readonly centerFontSize = computed(() => {
+    const label = this.centerLabel();
+    if (!label) {
+      return CENTER_BASE_FONT_SIZE;
+    }
+    return label.icon
+      ? CENTER_BASE_FONT_SIZE * 0.8
+      : fontSizeForLabel(label.text, CENTER_BASE_FONT_SIZE);
+  });
 
   protected directionHighlightKind(
     direction: TiltDirection,
@@ -71,7 +77,7 @@ export class GridSwitchComponent {
     return highlightKindFor(this.positionCodeMap()[direction], this.highlight());
   }
 
-  protected directionLabel(direction: TiltDirection): string {
-    return this.labels()[this.positionCodeMap()[direction]] ?? '';
+  protected directionLabel(direction: TiltDirection): PositionLabel | null {
+    return this.labels()[this.positionCodeMap()[direction]] ?? null;
   }
 }

@@ -9,7 +9,7 @@ import {
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { HighlightKeyCombination, Layer } from 'tangent-cc-lib';
+import { HighlightKeyCombination } from 'tangent-cc-lib';
 import { LayoutComponent } from '../../components/layout/layout.component';
 import { ALL_EXERCISES } from '../../data/exercises';
 import { UNITS } from '../../data/units';
@@ -26,13 +26,6 @@ interface ResolvedStep extends ExerciseStep {
   labels: PositionLabels;
 }
 
-const LAYER_LABELS: Record<Layer, string> = {
-  [Layer.Primary]: 'Primary layer',
-  [Layer.Secondary]: 'Secondary layer',
-  [Layer.Tertiary]: 'Tertiary layer',
-  [Layer.Quaternary]: 'Quaternary layer',
-};
-
 /** Expected MouseEvent.button for each mouse click action. */
 const MOUSE_CLICK_BUTTON: Partial<Record<string, number>> = {
   MouseLeftClick: 0,
@@ -48,9 +41,6 @@ const MOUSE_MOVE_AXIS: Partial<Record<string, { axis: 'x' | 'y'; sign: 1 | -1 }>
     MouseMoveRight: { axis: 'x', sign: 1 },
   };
 const MOUSE_MOVE_THRESHOLD_PX = 80;
-
-/** KeyboardEvent.key values for a modifier going down on its own. */
-const MODIFIER_KEY_NAMES = new Set(['Control', 'Shift', 'Alt', 'Meta']);
 
 /** Which wheel delta satisfies each mouse scroll action. */
 const MOUSE_SCROLL_MATCHER: Partial<Record<string, (event: WheelEvent) => boolean>> =
@@ -132,20 +122,12 @@ export class ExercisePageComponent {
     if (!step || step.kind === 'mouse') {
       return;
     }
-    if (step.kind === 'combo' && MODIFIER_KEY_NAMES.has(event.key)) {
-      // The modifier going down on its own — wait for the character too.
-      return;
-    }
     event.preventDefault();
     const matches =
       step.kind === 'character' || step.kind === 'dup'
         ? event.key.length === 1 &&
           event.key.toLowerCase() === step.key.toLowerCase()
-        : step.kind === 'combo'
-          ? event.ctrlKey &&
-            event.key.length === 1 &&
-            event.key.toLowerCase() === step.key.toLowerCase()
-          : event.key === step.key;
+        : event.key === step.key;
     if (matches) {
       this.advance();
       return;
@@ -220,10 +202,6 @@ export class ExercisePageComponent {
     if (delta * move.sign >= MOUSE_MOVE_THRESHOLD_PX) {
       this.advance();
     }
-  }
-
-  protected layerLabel(layer: Layer): string {
-    return LAYER_LABELS[layer];
   }
 
   protected restart() {

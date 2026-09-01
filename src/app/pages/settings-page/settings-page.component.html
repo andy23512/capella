@@ -1,0 +1,25 @@
+<div class="mx-auto max-w-4xl p-8">
+  <h1 class="m-0 text-3xl font-medium">Settings</h1>
+
+  <p class="mt-6 text-gray-50">
+    Choose which device's default layout the layout diagrams and exercises
+    should match.
+  </p>
+
+  <mat-radio-group
+    class="mt-4 flex flex-col gap-3"
+    [value]="deviceLayoutService.deviceLayoutId()"
+    (change)="onDeviceLayoutChange($event.value)"
+  >
+    <mat-radio-button value="cc1-cc2-ccu">
+      CC1 / CC2 / CCU default layout
+    </mat-radio-button>
+    <mat-radio-button value="m4g">
+      M4G default layout
+      <span class="block text-sm text-gray-300">
+        Master Forge has no 3rd thumb switch — the layout diagram hides it
+        when this is selected.
+      </span>
+    </mat-radio-button>
+  </mat-radio-group>
+</div>

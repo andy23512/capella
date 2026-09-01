@@ -2,9 +2,19 @@
   [routerLink]="['/exercise', exercise().id]"
   class="flex h-full w-full flex-col rounded-lg bg-gray-700 p-5 text-left transition-colors hover:bg-gray-600"
 >
-  <h3 class="m-0 text-lg font-medium">{{ exercise().title }}</h3>
+  <h3 class="m-0 flex items-center gap-1.5 text-lg font-medium">
+    {{ exercise().title }}
+    @if (completed()) {
+      <mat-icon class="!h-4 !w-4 !text-[16px] text-capella-500"
+        >check_circle</mat-icon
+      >
+    }
+  </h3>
   <p class="mt-1 flex-1 text-sm text-gray-100">{{ exercise().description }}</p>
-  <span class="mt-3 text-xs text-capella-400"
-    >{{ exercise().steps.length }} steps</span
+  <span
+    class="mt-3 text-xs"
+    [class.text-capella-400]="!completed()"
+    [class.text-capella-500]="completed()"
+    >{{ completed() ? 'Completed' : exercise().steps.length + ' steps' }}</span
   >
 </a>

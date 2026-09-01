@@ -19,10 +19,11 @@
   <svg:text
     [attr.x]="center().x"
     [attr.y]="center().y"
-    [attr.font-size]="centerFontSize()"
+    [style.font-size.px]="centerFontSize()"
     text-anchor="middle"
     dominant-baseline="central"
     class="fill-white"
-    >{{ label }}</svg:text
+    [class.material-symbols-outlined]="label.icon"
+    >{{ label.text }}</svg:text
   >
 }
