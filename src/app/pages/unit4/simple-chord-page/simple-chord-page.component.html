@@ -14,17 +14,18 @@
     of switches, trained to one output.
   </p>
   <p class="text-gray-50">
-    Chords aren't built in — there's no factory-default word list, they're
-    trained by you (or synced from a shared chord library). So the diagram
-    below isn't a real chord; it's purely illustrative: it shows the
-    switches for D, O, and G lit up together, standing in for what it would
-    look like if you trained that combination to output "dog" instead of
-    typing it letter by letter.
+    A CharaChorder device actually ships with a set of "Starter Chords"
+    already loaded, covering some of the most common words in English — but
+    you can also train your own, add more via Device Manager, import a
+    shared chord library, or create one on the fly with impulse chording. The
+    diagram below shows one of those built-in starter chords: pressing B and
+    C together outputs the word "because" instead of typing it letter by
+    letter.
   </p>
 
   <div class="mt-6 rounded-lg bg-gray-700 p-4">
     <p class="m-0 mb-3 text-center text-sm font-medium text-gray-100">
-      Illustrative example — not a real trained chord
+      B + C = "because" — one of CharaChorder's built-in Starter Chords
     </p>
     <app-layout
       [highlight]="exampleChord?.highlight ?? null"
@@ -36,8 +37,9 @@
     Because character entry and chording share the same switches, you don't
     have to choose one or the other — CharaChorder devices default to
     "fluid" entry: press one switch at a time and it types normally, or
-    press several together within the chord timing window and it fires the
-    trained chord instead.
+    press several switches down together and release them together — within
+    the device's Press Tolerance and Release Tolerance windows — and it
+    fires the trained chord instead.
   </p>
 
   <app-chapter-nav chapterId="simple-chord" />

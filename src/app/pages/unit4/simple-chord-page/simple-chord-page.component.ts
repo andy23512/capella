@@ -10,5 +10,5 @@ import { resolveChordIllustration } from '../../../utils/key-position.utils';
   imports: [LayoutComponent, ChapterNavComponent],
 })
 export class SimpleChordPageComponent {
-  protected readonly exampleChord = resolveChordIllustration(['d', 'o', 'g']);
+  protected readonly exampleChord = resolveChordIllustration(['b', 'c']);
 }
