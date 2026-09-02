@@ -38,16 +38,18 @@
 
   <p class="mt-4 text-gray-50">
     @if (mode() === 'cc') {
-      The dashed lines mark the direction your finger naturally moves. On
-      CC1/CC2/CCU, each switch's N/E/S/W wedges line up with those lines
-      directly — tilting north on the switch matches moving your finger
-      north.
+      The red lines in the photo below mark which way each switch is
+      oriented. On CC1/CC2/CCU, that orientation lines up directly with
+      your finger's natural movement — tilting north on the switch matches
+      moving your finger north.
     } @else {
-      With Master Forge's orientation, the same wedges sit rotated about
-      45° from the dashed "natural" lines — your finger ends up moving
-      diagonally, northeast or southeast, to hit what the diagram labels
-      as north or east. Muscle memory built on CC1/CC2/CCU can misfire
-      here, landing on the neighboring wedge instead.
+      The red lines in the photo below mark which way each switch is
+      oriented — and on Master Forge, that's rotated about 45° from where
+      your finger naturally wants to go, since the switches follow the
+      digitizer's edge instead. Your finger ends up moving diagonally,
+      northeast or southeast, to hit what the layout labels as north or
+      east. Muscle memory built on CC1/CC2/CCU can misfire here, landing on
+      the neighboring switch instead.
     }
   </p>
 
@@ -55,13 +57,13 @@
     @if (mode() === 'cc') {
       <img
         src="assets/switch-orientation/cc-switch-orientation.jpg"
-        alt="Photo of a CC1/CC2/CCU digitizer half with red crosses marking each non-thumb switch's natural finger direction, lining up straight with the finger"
+        alt="Photo of a CC1/CC2/CCU digitizer half with red crosses marking each non-thumb switch's orientation, lining up straight with natural finger direction"
         class="w-full rounded-lg"
       />
     } @else {
       <img
         src="assets/switch-orientation/forge-switch-orientation.png"
-        alt="Photo of a Master Forge digitizer half with red crosses marking each non-thumb switch's natural finger direction, sitting at roughly a 45° angle from the finger"
+        alt="Photo of a Master Forge digitizer half with red crosses marking each non-thumb switch's orientation, sitting at roughly a 45° angle from natural finger direction"
         class="w-full rounded-lg"
       />
     }
@@ -73,7 +75,7 @@
         rel="noopener"
         class="text-capella-400"
         >review of Master Forge</a
-      >. The red lines mark the natural finger-movement direction.
+      >. The red lines mark each switch's orientation.
     </figcaption>
   </figure>
 
