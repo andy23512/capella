@@ -74,6 +74,16 @@
         "styles": ["src/styles.scss"],
         "scripts": []
       }
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy",
+      "options": {
+        "buildTarget": "capella:build:production",
+        "baseHref": "/capella/",
+        "name": "Tangent Chang",
+        "email": "andy23512@gmail.com",
+        "dir": "dist/capella"
+      }
     }
   }
 }
