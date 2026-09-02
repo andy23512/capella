@@ -101,6 +101,13 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
+    path: 'unit-3/introduction',
+    loadComponent: () =>
+      import(
+        './pages/unit3/introduction-page/introduction-page.component'
+      ).then((m) => m.Unit3IntroductionPageComponent),
+  },
+  {
     path: 'unit-3/dup',
     loadComponent: () =>
       import('./pages/unit3/dup-page/dup-page.component').then(
@@ -113,6 +120,20 @@ export const APP_ROUTES: Route[] = [
       import(
         './pages/unit3/ambidextrous-throwover-page/ambidextrous-throwover-page.component'
       ).then((m) => m.AmbidextrousThrowoverPageComponent),
+  },
+  {
+    path: 'unit-3/summary',
+    loadComponent: () =>
+      import('./pages/unit3/summary-page/summary-page.component').then(
+        (m) => m.Unit3SummaryPageComponent,
+      ),
+  },
+  {
+    path: 'unit-4/introduction',
+    loadComponent: () =>
+      import(
+        './pages/unit4/introduction-page/introduction-page.component'
+      ).then((m) => m.Unit4IntroductionPageComponent),
   },
   {
     path: 'unit-4/simple-chord',
@@ -143,6 +164,20 @@ export const APP_ROUTES: Route[] = [
       ).then((m) => m.ArpeggiatePunctuationPageComponent),
   },
   {
+    path: 'unit-4/summary',
+    loadComponent: () =>
+      import('./pages/unit4/summary-page/summary-page.component').then(
+        (m) => m.Unit4SummaryPageComponent,
+      ),
+  },
+  {
+    path: 'unit-5/introduction',
+    loadComponent: () =>
+      import(
+        './pages/unit5/introduction-page/introduction-page.component'
+      ).then((m) => m.Unit5IntroductionPageComponent),
+  },
+  {
     path: 'unit-5/compound-chord',
     loadComponent: () =>
       import(
@@ -155,6 +190,13 @@ export const APP_ROUTES: Route[] = [
       import(
         './pages/unit5/dynamic-chord-library-page/dynamic-chord-library-page.component'
       ).then((m) => m.DynamicChordLibraryPageComponent),
+  },
+  {
+    path: 'unit-5/summary',
+    loadComponent: () =>
+      import('./pages/unit5/summary-page/summary-page.component').then(
+        (m) => m.Unit5SummaryPageComponent,
+      ),
   },
   {
     path: 'exercise/:exerciseId',

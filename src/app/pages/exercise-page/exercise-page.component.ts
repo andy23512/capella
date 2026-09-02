@@ -112,6 +112,8 @@ export class ExercisePageComponent {
   private mismatchTimeout?: ReturnType<typeof setTimeout>;
   private moveDeltaX = 0;
   private moveDeltaY = 0;
+  /** Characters typed so far toward the current 'chord' step's output text. */
+  protected readonly chordBuffer = signal('');
 
   @HostListener('window:keydown', ['$event'])
   onKeydown(event: KeyboardEvent) {
@@ -123,6 +125,10 @@ export class ExercisePageComponent {
       return;
     }
     event.preventDefault();
+    if (step.kind === 'chord') {
+      this.onChordKeydown(event, step.key);
+      return;
+    }
     const matches =
       step.kind === 'character' || step.kind === 'dup'
         ? event.key.length === 1 &&
@@ -133,6 +139,31 @@ export class ExercisePageComponent {
       return;
     }
     this.registerMismatch();
+  }
+
+  /**
+   * A fired chord doesn't arrive as one keystroke — CharaChorder's default
+   * behavior types the raw switch characters first (e.g. "bc"), backspaces
+   * them, then types the chord's output text. So this just tracks a
+   * trailing window of recent keystrokes (honoring Backspace) and advances
+   * once it matches the output text — no mismatch tracking, since that
+   * raw-then-corrected burst would otherwise flag as errors on every fire.
+   */
+  private onChordKeydown(event: KeyboardEvent, outputText: string) {
+    if (event.key === 'Backspace') {
+      this.chordBuffer.update((buffer) => buffer.slice(0, -1));
+      return;
+    }
+    if (event.key.length !== 1) {
+      return;
+    }
+    this.chordBuffer.update((buffer) =>
+      (buffer + event.key).slice(-outputText.length),
+    );
+    if (this.chordBuffer().toLowerCase() === outputText.toLowerCase()) {
+      this.chordBuffer.set('');
+      this.advance();
+    }
   }
 
   @HostListener('window:mousedown', ['$event'])
@@ -209,6 +240,7 @@ export class ExercisePageComponent {
     this.mistakes.set(0);
     this.moveDeltaX = 0;
     this.moveDeltaY = 0;
+    this.chordBuffer.set('');
   }
 
   private advance() {

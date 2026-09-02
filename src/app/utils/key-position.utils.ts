@@ -28,9 +28,12 @@ import {
   deviceLayoutId,
 } from '../services/device-layout.service';
 
+export type Hand = keyof HandMap<unknown>;
+type Finger = keyof FingerMap<unknown>;
+
 export interface DecodedPosition {
-  hand: keyof HandMap<unknown>;
-  finger: keyof FingerMap<unknown>;
+  hand: Hand;
+  finger: Finger;
   direction: SwitchDirection;
 }
 
@@ -300,6 +303,69 @@ export function resolveNonKeyActionPosition(
   return highlightFromKeyCombinations(keyCombinations);
 }
 
+const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+/** Which tilt direction a switch's letter comes from when Ambidextrous Throwover mirrors the opposite hand onto it — center/north/south stay put, east and west swap since the mirror is left-right. */
+const MIRROR_DIRECTION: Record<SwitchDirection, SwitchDirection> = {
+  c: 'c',
+  n: 'n',
+  s: 's',
+  e: 'w',
+  w: 'e',
+};
+
+const OPPOSITE_HAND: Record<Hand, Hand> = { left: 'right', right: 'left' };
+
+/** Every letter's switch position in the default (unmirrored) layout. */
+export function buildAlphabetLabels(): PositionLabels {
+  const labels: PositionLabels = {};
+  for (const char of ALPHABET) {
+    const highlight = resolveCharacterKeyPosition(char);
+    if (highlight) {
+      labels[highlight.characterKeyPositionCode] = { text: char.toUpperCase() };
+    }
+  }
+  return labels;
+}
+
+/**
+ * The alphabet layout as it appears while `activeHand`'s Ambidextrous
+ * Throwover switch is held: every switch on that hand takes on the opposite
+ * hand's letter at the same finger and mirrored tilt direction (north/south/
+ * center unchanged, east/west swapped), and shows nothing if the opposite
+ * hand's mirrored switch isn't a letter. The other hand keeps its own
+ * default letters.
+ */
+export function buildAmbidextrousThrowoverLabels(
+  activeHand: Hand | null,
+): PositionLabels {
+  const base = buildAlphabetLabels();
+  if (!activeHand) {
+    return base;
+  }
+  const labels: PositionLabels = { ...base };
+  const sourceHand = OPPOSITE_HAND[activeHand];
+  (Object.keys(POSITION_CODE_LAYOUT[activeHand]) as Finger[]).forEach(
+    (finger) => {
+      const targetDirections = POSITION_CODE_LAYOUT[activeHand][finger];
+      const sourceDirections = POSITION_CODE_LAYOUT[sourceHand][finger];
+      (Object.keys(targetDirections) as SwitchDirection[]).forEach(
+        (direction) => {
+          const targetCode = targetDirections[direction];
+          const sourceCode = sourceDirections[MIRROR_DIRECTION[direction]];
+          const sourceLabel = base[sourceCode];
+          if (sourceLabel) {
+            labels[targetCode] = sourceLabel;
+          } else {
+            delete labels[targetCode];
+          }
+        },
+      );
+    },
+  );
+  return labels;
+}
+
 export interface ChordIllustration {
   highlight: HighlightKeyCombination;
   labels: PositionLabels;
@@ -373,6 +439,8 @@ export function resolveStepPosition(
       return resolveNonKeyActionPosition(step.key as NonKeyActionName);
     case 'dup':
       return resolveNonKeyActionPosition('Dup');
+    case 'chord':
+      return resolveChordIllustration(step.chordChars ?? [])?.highlight ?? null;
   }
 }
 
@@ -401,6 +469,9 @@ export function resolveStepLabels(
       text: step.label,
     };
     return buildPositionLabels(highlight, label);
+  }
+  if (step.kind === 'chord') {
+    return resolveChordIllustration(step.chordChars ?? [])?.labels ?? {};
   }
   return buildPositionLabels(highlight, { text: step.label });
 }

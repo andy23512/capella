@@ -129,6 +129,13 @@ export const UNITS: Unit[] = [
     ],
     chapters: [
       {
+        id: 'unit-3-introduction',
+        unitId: 'unit-3',
+        title: 'Introduction',
+        path: '/unit-3/introduction',
+        kind: 'intro',
+      },
+      {
         id: 'dup',
         unitId: 'unit-3',
         title: 'Chapter 1: DUP',
@@ -139,6 +146,13 @@ export const UNITS: Unit[] = [
         unitId: 'unit-3',
         title: 'Chapter 2: Ambidextrous Throwover',
         path: '/unit-3/ambidextrous-throwover',
+      },
+      {
+        id: 'unit-3-summary',
+        unitId: 'unit-3',
+        title: 'Summary',
+        path: '/unit-3/summary',
+        kind: 'summary',
       },
     ],
   },
@@ -156,6 +170,13 @@ export const UNITS: Unit[] = [
       },
     ],
     chapters: [
+      {
+        id: 'unit-4-introduction',
+        unitId: 'unit-4',
+        title: 'Introduction',
+        path: '/unit-4/introduction',
+        kind: 'intro',
+      },
       {
         id: 'simple-chord',
         unitId: 'unit-4',
@@ -180,6 +201,13 @@ export const UNITS: Unit[] = [
         title: 'Chapter 4: Arpeggiate Punctuation',
         path: '/unit-4/arpeggiate-punctuation',
       },
+      {
+        id: 'unit-4-summary',
+        unitId: 'unit-4',
+        title: 'Summary',
+        path: '/unit-4/summary',
+        kind: 'summary',
+      },
     ],
   },
   {
@@ -197,6 +225,13 @@ export const UNITS: Unit[] = [
     ],
     chapters: [
       {
+        id: 'unit-5-introduction',
+        unitId: 'unit-5',
+        title: 'Introduction',
+        path: '/unit-5/introduction',
+        kind: 'intro',
+      },
+      {
         id: 'compound-chord',
         unitId: 'unit-5',
         title: 'Chapter 1: Compound Chord',
@@ -207,6 +242,13 @@ export const UNITS: Unit[] = [
         unitId: 'unit-5',
         title: 'Chapter 2: Dynamic Chord Library',
         path: '/unit-5/dynamic-chord-library',
+      },
+      {
+        id: 'unit-5-summary',
+        unitId: 'unit-5',
+        title: 'Summary',
+        path: '/unit-5/summary',
+        kind: 'summary',
       },
     ],
   },

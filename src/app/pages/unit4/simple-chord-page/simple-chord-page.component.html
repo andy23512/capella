@@ -42,5 +42,17 @@
     fires the trained chord instead.
   </p>
 
+  <h2 class="mt-10 text-xl font-medium">Try it</h2>
+  <p class="mt-2 text-gray-50">
+    Pick the exercise below — the exercise page will prompt B + C three
+    times and light up where to press on the device diagram, so you can feel
+    the "because" chord fire for yourself.
+  </p>
+  <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+    @for (exercise of exercises; track exercise.id) {
+      <app-exercise-card [exercise]="exercise" />
+    }
+  </div>
+
   <app-chapter-nav chapterId="simple-chord" />
 </div>

@@ -20,19 +20,34 @@
     positions to know.
   </p>
 
-  <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-    <div class="rounded-lg bg-gray-700 p-4">
-      <p class="m-0 mb-3 text-center text-sm font-medium text-gray-100">
-        Left hand activation
-      </p>
-      <app-layout [highlight]="leftHighlight" [labels]="leftLabels" />
-    </div>
-    <div class="rounded-lg bg-gray-700 p-4">
-      <p class="m-0 mb-3 text-center text-sm font-medium text-gray-100">
-        Right hand activation
-      </p>
-      <app-layout [highlight]="rightHighlight" [labels]="rightLabels" />
-    </div>
+  <p class="mt-6 text-gray-50">
+    Try it below: switch between the default layout and holding each AT
+    switch, and see how the alphabet moves onto the hand holding it — same
+    finger, same north/south tilt, but east and west swap, since it's a
+    literal left-right mirror of the other hand's letters.
+  </p>
+  <p class="text-gray-50">
+    This mirroring isn't limited to letters — every switch on the other
+    hand, including punctuation, numbers, and other actions, gets mirrored
+    over the same way. The diagram below only shows letters to keep things
+    simple.
+  </p>
+
+  <mat-button-toggle-group
+    class="mt-2"
+    [value]="activeHand()"
+    (change)="onModeChange($event)"
+  >
+    <mat-button-toggle [value]="null">Default</mat-button-toggle>
+    <mat-button-toggle value="left">Hold left AT</mat-button-toggle>
+    <mat-button-toggle value="right">Hold right AT</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <p class="m-0 mt-3 text-center text-sm font-medium text-gray-100">
+    {{ caption() }}
+  </p>
+  <div class="mt-3 rounded-lg bg-gray-700 p-4">
+    <app-layout [highlight]="highlight()" [labels]="labels()" />
   </div>
 
   <app-chapter-nav chapterId="ambidextrous-throwover" />

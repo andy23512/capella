@@ -1,15 +1,13 @@
 import { Component, computed, inject, input } from '@angular/core';
 import {
   FingerMap,
-  HandMap,
   HighlightKeyCombination,
   POSITION_CODE_LAYOUT,
 } from 'tangent-cc-lib';
 import { DeviceLayoutService } from '../../services/device-layout.service';
-import { PositionLabels } from '../../utils/key-position.utils';
+import { Hand, PositionLabels } from '../../utils/key-position.utils';
 import { GridSwitchComponent } from '../grid-switch/grid-switch.component';
 
-type Hand = keyof HandMap<unknown>;
 type Finger = keyof FingerMap<unknown>;
 
 const CELL_SIZE = 200;

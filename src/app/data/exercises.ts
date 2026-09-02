@@ -41,6 +41,18 @@ function dupPairSteps(chars: string[]): ExerciseStep[] {
   ]);
 }
 
+function chordStep(
+  chordChars: string[],
+  outputText: string,
+): ExerciseStep {
+  return {
+    label: chordChars.map((char) => char.toUpperCase()).join(' + '),
+    kind: 'chord',
+    key: outputText,
+    chordChars,
+  };
+}
+
 export const LETTERS_EXERCISES: Exercise[] = [
   {
     id: 'az',
@@ -169,6 +181,21 @@ export const MOUSE_FEATURES_EXERCISES: Exercise[] = [
   },
 ];
 
+export const SIMPLE_CHORD_EXERCISES: Exercise[] = [
+  {
+    id: 'because-chord',
+    chapterId: 'simple-chord',
+    title: '"because" starter chord',
+    description:
+      'Press B and C together — within the device\'s Press/Release Tolerance — to fire the built-in "because" chord. Three reps.',
+    steps: [
+      chordStep(['b', 'c'], 'because'),
+      chordStep(['b', 'c'], 'because'),
+      chordStep(['b', 'c'], 'because'),
+    ],
+  },
+];
+
 export const DUP_EXERCISES: Exercise[] = [
   {
     id: 'double-letters',
@@ -187,6 +214,7 @@ export const ALL_EXERCISES: Exercise[] = [
   ...FUNCTIONAL_KEYS_EXERCISES,
   ...FUNCTION_KEYS_EXERCISES,
   ...MOUSE_FEATURES_EXERCISES,
+  ...SIMPLE_CHORD_EXERCISES,
   ...DUP_EXERCISES,
 ];
 

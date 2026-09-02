@@ -32,6 +32,14 @@
             Press <strong class="text-capella-400">{{ step.label }}</strong>
           }
         </p>
+        @if (step.kind === 'chord') {
+          <p class="mt-1 text-center font-mono text-lg text-gray-100">
+            <span>{{ chordBuffer() }}</span
+            ><span
+              class="ml-0.5 inline-block h-5 border-l-2 border-solid border-capella-400 align-middle animate-ping"
+            ></span>
+          </p>
+        }
         @if (!step.highlight) {
           <p class="m-0 text-center text-sm text-gray-300">
             Not available in the default layout diagram below — press it on

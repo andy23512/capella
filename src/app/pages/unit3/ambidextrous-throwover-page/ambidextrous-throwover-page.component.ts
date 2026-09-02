@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
+import {
+  MatButtonToggle,
+  MatButtonToggleChange,
+  MatButtonToggleGroup,
+} from '@angular/material/button-toggle';
 import { HighlightKeyCombination } from 'tangent-cc-lib';
 import { ChapterNavComponent } from '../../../components/chapter-nav/chapter-nav.component';
 import { LayoutComponent } from '../../../components/layout/layout.component';
 import {
+  Hand,
   PositionLabels,
-  buildPositionLabels,
+  buildAmbidextrousThrowoverLabels,
   resolveNonKeyActionPosition,
 } from '../../../utils/key-position.utils';
 
@@ -12,17 +18,51 @@ import {
   selector: 'app-ambidextrous-throwover-page',
   templateUrl: './ambidextrous-throwover-page.component.html',
   standalone: true,
-  imports: [LayoutComponent, ChapterNavComponent],
+  imports: [
+    LayoutComponent,
+    ChapterNavComponent,
+    MatButtonToggleGroup,
+    MatButtonToggle,
+  ],
 })
 export class AmbidextrousThrowoverPageComponent {
-  protected readonly leftHighlight: HighlightKeyCombination | null =
+  private readonly leftAtHighlight: HighlightKeyCombination | null =
     resolveNonKeyActionPosition('AmbidextrousThrowoverLeft');
-  protected readonly rightHighlight: HighlightKeyCombination | null =
+  private readonly rightAtHighlight: HighlightKeyCombination | null =
     resolveNonKeyActionPosition('AmbidextrousThrowoverRight');
-  protected readonly leftLabels: PositionLabels = this.leftHighlight
-    ? buildPositionLabels(this.leftHighlight, { text: 'AT' })
-    : {};
-  protected readonly rightLabels: PositionLabels = this.rightHighlight
-    ? buildPositionLabels(this.rightHighlight, { text: 'AT' })
-    : {};
+
+  protected readonly activeHand = signal<Hand | null>(null);
+
+  protected readonly highlight = computed<HighlightKeyCombination | null>(
+    () => {
+      const hand = this.activeHand();
+      if (hand === 'left') return this.leftAtHighlight;
+      if (hand === 'right') return this.rightAtHighlight;
+      return null;
+    },
+  );
+
+  protected readonly labels = computed<PositionLabels>(() => {
+    const labels = { ...buildAmbidextrousThrowoverLabels(this.activeHand()) };
+    const atHighlight = this.highlight();
+    if (atHighlight) {
+      labels[atHighlight.characterKeyPositionCode] = { text: 'AT' };
+    }
+    return labels;
+  });
+
+  protected readonly caption = computed(() => {
+    switch (this.activeHand()) {
+      case 'left':
+        return 'Holding left AT — the right hand\'s letters mirror onto the left hand.';
+      case 'right':
+        return 'Holding right AT — the left hand\'s letters mirror onto the right hand.';
+      default:
+        return 'Default layout — no Ambidextrous Throwover switch held.';
+    }
+  });
+
+  protected onModeChange(event: MatButtonToggleChange) {
+    this.activeHand.set(event.value as Hand | null);
+  }
 }
