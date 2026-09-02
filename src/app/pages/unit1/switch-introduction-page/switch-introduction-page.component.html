@@ -7,37 +7,14 @@
   </h1>
 
   <p class="mt-6 text-gray-50">
-    Every non-thumb switch on a CharaChorder device is a
-    <strong>5-way switch</strong>: instead of one on/off state, it senses
-    which of four directions it's tilted in — north, east, south, or west —
-    plus a straight-down press. One physical switch can therefore stand in
-    for up to five different inputs.
+    Every switch on a CharaChorder device is a 3D switch: instead of one
+    on/off state, it senses which of four directions it's tilted in — north,
+    east, south, or west. On CC1, CC2, and CCU, each switch also senses a
+    straight-down press as a separate fifth state, making it a true
+    <strong>5-way switch</strong> that can stand in for up to five different
+    inputs. Master Forge's switches are 4-way instead — see below for how
+    their center press differs.
   </p>
-  <p class="text-gray-50">
-    Click a direction on the diagram below to see what it means.
-  </p>
-
-  <div class="mt-6 flex flex-col items-center gap-4 rounded-lg bg-gray-700 p-6 sm:flex-row sm:items-start sm:justify-around">
-    <app-switch
-      [rotation]="rotation()"
-      [showReference]="mode() === 'forge'"
-      [selectedDirection]="selectedDirection()"
-      (directionSelected)="onDirectionSelected($event)"
-    />
-    <div class="min-h-[4rem] max-w-xs text-center sm:text-left">
-      @if (selectedInfo(); as info) {
-        <p class="m-0 text-lg font-medium text-capella-400">
-          {{ info.label }}
-        </p>
-        <p class="m-0 mt-1 text-sm text-gray-100">{{ info.description }}</p>
-      } @else {
-        <p class="m-0 text-sm text-gray-200">
-          Click a wedge, or the center circle, to see what that direction
-          does.
-        </p>
-      }
-    </div>
-  </div>
 
   <h2 class="mt-10 text-xl font-medium">Orientation differs by device</h2>
   <p class="text-gray-50">
@@ -123,10 +100,11 @@
   </blockquote>
 
   <p class="mt-6 text-sm text-gray-200">
-    One more Master Forge difference worth knowing: pressing a switch
-    straight down isn't sensed as its own state the way it is on
-    CC1/CC2/CCU — it's read as all four cardinal directions firing at
-    once.
+    One more Master Forge difference worth knowing: each of its switches is
+    built from four unidirectional microswitches underneath, with no
+    separate center sensor. So pressing straight down isn't sensed as its
+    own state the way it is on CC1/CC2/CCU — it's read as all four cardinal
+    directions firing at once.
   </p>
 
   <app-chapter-nav chapterId="3d-switch-introduction" />
