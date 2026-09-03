@@ -5,29 +5,13 @@
   - 判斷方式：不自行實作同時按下/放開的組合鍵偵測邏輯，改為監聽輸入框 `input` 事件、比對 value 內容是否符合 GTM 印出的標記文字（如 `>I<mpulse output: `、`>I<mpulse input: `、複合和弦待續的結尾 `|`）來判斷目前所在步驟
   - 架構：獨立於 `exercise-page.component.ts` 既有的通用 step runner（那套是「比對固定正解」模型，跟 Impulse Chord「使用者自訂 output/input 並即時回顯」的性質不合），另做一個小型專用 FSM：`idle → output 輸入中 → output 已確定 → input 嘗試中（可重試）→ input 已確定 → 完成`，並支援 Esc 中途取消回到 `idle`
   - Enter 副作用：`keydown` 對 Enter 統一 `preventDefault()`，避免觸發表單送出/換行；步驟推進不依賴是否有攔到 Enter 的 keydown，而是純粹看 value 內容變化（實機測試確認 Enter 不會有副作用，無需再驗證是否送出 Enter 鍵盤事件）
-- [ ] Chord Modifier 練習
-  - 定案：Modifier 開關在本站涵蓋的四款機種（CC1/CC2/CCU/Master Forge）上是同一顆，並無機種差異（差異只存在於範圍外的 Lite/X），因此理論上可以畫 highlight diagram；實際開關位置待查文件或請使用者於實機確認後再補圖，圖示可視為後補項目、非實作前置條件
-  - 架構：沿用既有 `exercise-page.component.ts` 的通用 step runner 與 `'chord'` step 判定邏輯（比對最終輸出文字，不管實際按鍵/時序），不用另做專用 FSM——這點與 Impulse Chord 不同
-  - Arpeggiate 時序問題的解法：每個 step 的說明文字要「先」把 chord + modifier 兩個動作一起交代清楚（例如「chord 'run'，完成後立刻點 Present Tense 開關」），因為 step runner 本來就是先顯示說明、使用者才動作，不是等偵測到 chord 完成才反應式提示 modifier，所以不會有「太晚」的問題；判定仍只看最終輸出文字（如 modifier 套用後的 "running"）是否吻合
-  - 待辦：實作前需先查 docs.charachorder.com 確認 (1) 四款機種預設已訓練好的 default chord 清單（避免練習還要求使用者先自行訓練 chord）(2) 各 Modifier 對應的實際開關位置（用於後補 diagram）
-  - CCOS Meta API 資料來源已確認可行：`https://charachorder.io/firmware/{device}/{version}/` 下的 `meta.json` → `factory_defaults.chords` 可取得 `starter_chords.json`／`functional_chords.json`／`riley_chords.json`／`arpeggiates.json`；機種對應的 firmware target（參考 `CharaChorder/DeviceManager` repo 的 `src/lib/serial/device.ts`）：CC1 = `one_m0`、CC2 = `two_s3`、CCU = `two_s3`（與 CC2 共用同一顆板子/韌體）、Master Forge = `m4g_s3`
-  - ⚠️ 重大待確認事項：既有 lesson 頁列的 5 種 Modifier（Capitalization／Present Tense／Pluralizer／Past Tense／Comparative）目前查無官方依據，需要先解決才能繼續規劃練習內容
-    - `docs.charachorder.com` 專用頁 `Chord Modifiers.rst` 原始碼標記 `.. only:: internal_build`，內容僅 `WIP`，等同未對外公開任何實質內容
-    - Glossary 對 Chord Modifiers 的定義只是概括性的一句話（會改變 chord 的 prefix/suffix/capitalization/conjugation/part of speech/language/structure），未列出具體 5 種名稱
-    - 實際比對 CCOS `actions.json`（透過 CCOS Meta API 抓 two_s3 3.1.0-beta.3）搜尋 PLURAL/TENSE/COMPARATIVE/CONJUGAT/SUFFIX/PREFIX 關鍵字，完全沒有對應的 action code
-    - 目前唯一能在實機資料中驗證存在的 Modifier 只有 `CAPITALIZE`（action 573，描述為「可作為 output modifier 使用來大寫目前的 chord」），且在 two_s3 的 `arpeggiates.json` 出廠預設中確實被這樣使用（句讀符號 arpeggiate 後接大寫下一個字）
-    - 下一步：跟使用者確認方向——(a) lesson/practice 改以 Capitalization 為主要甚至唯一範例，或 (b) 使用者能從實機/其他管道提供其餘 4 種 Modifier 的依據再繼續規劃
-  - 使用者確認的 Modifier 對應開關（未查官方文件圖片交叉比對，直接採信使用者說法）：Capitalization = 左/右 Shift、Present Tense = 左 AT（Ambidextrous Throwover）鍵、Plural = 右 AT 鍵、Past Tense = 左 Numeric Layer 鍵、Comparative = 右 Numeric Layer 鍵
-    - 「AT」= Ambidextrous Throwover（跟 Unit 3 該章節同一顆開關，非 AltGraph）——代表同一顆實體開關依情境有不同作用：單獨使用時是鏡像對側手的 Ambidextrous Throwover，跟 chord 同時/arpeggiate 併用時則是 Present Tense／Plural 的 Modifier，這種「同開關依情境切換用途」的模式跟 Glossary 對 DUP 鍵的描述（字元輸入 vs 和弦輸入下作用不同）是同一種設計語言
-  - Highlight diagram 技術可行性已確認、且比預期更省事：
-    - Capitalization（Shift）／Past Tense、Comparative（Numeric Layer）：透過 `tangent-cc-lib` 的 `getModifierKeyPositionCodeMap`（`shift` per layer）與 `getLayerShiftPositionCodeMap`（`numShift`）取得 position code，再用 `decodePositionCode` 判斷左右手，仿照 `key-position.utils.ts` 內 `labelForHeldPosition` 的寫法即可
-    - Present Tense、Plural（左/右 AT）：可直接沿用 `ambidextrous-throwover-page.component.ts` 已經在用的 `resolveNonKeyActionPosition('AmbidextrousThrowoverLeft' / 'AmbidextrousThrowoverRight')`，不用新寫解析邏輯
-  - 單字變換規則來源已確認：內建在 CCOS 韌體，官方開源於 `https://github.com/CharaChorder/CCOS-firmware/tree/main/grammar`，共 4 個 CSV（`plural.csv`／`past.csv`／`presentParticiple.csv`／`comparative.csv`），格式為「不規則例外清單 + 萬用字元預設規則」（例：plural 預設 `*,s`，加上 `*x,xes`／`*ch,ches`／`*!y,ies`／`*lf,lves` 等例外規則；past 預設 `*,ed`；presentParticiple 預設 `*,ing`；comparative 預設 `*,er`）
-    - `plural.csv`／`past.csv`／`presentParticiple.csv` 三份內容看起來正常、可信
-    - ⚠️ `comparative.csv` 的例外清單內容可疑，大量是不相關的單字配對（如 `general,generic`、`curse,cursor`、`part,appear`），疑似未完成/佔位資料，只有少數如 `big,bigger`、`easy,easier` 看起來正常——練習/教材選字時應避開例外清單裡的字，只用純粹套用預設規則（`*,er`）的字
-    - 練習範例字建議（皆不落在任何一份 CSV 的例外清單內，只吃預設規則，結果可預期；已比對實際 `starter_chords.json` 排除非出廠預設字，如 `box`／`dog` 經查證並非出廠預設 chord 已排除）：Present Tense `work → working`、Plural `book → books`、Past Tense `help → helped`、Comparative `small → smaller`
-    - 已確認 `starter_chords.json`（出廠預設 chord 詞庫）在 CC1（`one_m0`）／CC2、CCU（`two_s3`）／Master Forge（`m4g_s3`）四款機種間為完全相同的檔案（MD5 一致），且在 `two_s3`／`one_m0` 上比對 3.0.0 ～ 3.1.0-beta.3 各版本韌體也維持一致，因此上述範例字不受機種或韌體版本差異影響
-    - 殘留小疑慮：grammar CSV 是從 `CharaChorder/CCOS-firmware` 的 `main` 分支抓的（該 repo 沒有對應 3.0.x/3.1.x 韌體的 tag，最新 tag 只到 `v2.0.1`），無法百分之百對應到實機當下韌體版本的規則表內容；但選用的範例字都只吃各表最基本的預設規則、非例外清單項目，風險低——先不處理，實機測試若遇到落差再排查
+- [x] Chord Modifier 練習 — `src/app/pages/unit4/chord-modifier-page/`、練習資料在 `src/app/data/exercises.ts` 的 `CHORD_MODIFIER_EXERCISES`，**尚未實機測試**
+  - 架構：沿用既有 `exercise-page.component.ts` 的通用 step runner 與 `'chord'` step 判定邏輯（比對最終輸出文字，不管實際按鍵/時序），不用另做專用 FSM——這點與 Impulse Chord 不同；`ExerciseStep` 新增 `chordModifier` 欄位，判定邏輯本身完全不用改
+  - Modifier 對應開關（使用者提供，四款機種 CC1/CC2/CCU/Master Forge 皆相同，已用 `tangent-cc-lib` 對 `DEFAULT_DEVICE_LAYOUT`／`M4G_DEFAULT_DEVICE_LAYOUT` 兩者驗證 position code 一致）：Capitalization = 左/右 Shift、Present Tense = 左 AT（Ambidextrous Throwover）鍵、Plural = 右 AT 鍵、Past Tense = 左 Numeric Layer 鍵、Comparative = 右 Numeric Layer 鍵
+  - Highlight diagram：`key-position.utils.ts` 的 `resolveChordIllustration(chars, modifier?)` 新增 `modifier` 參數，解析出對應 position code 疊加進 chord 的 highlight——Capitalization／Past Tense／Comparative 用 `getModifierKeyPositionCodeMap`／`getLayerShiftPositionCodeMap` + `decodePositionCode` 判斷左右手，Present Tense／Plural 直接沿用既有的 `resolveNonKeyActionPosition('AmbidextrousThrowoverLeft' / 'Right')`
+  - 練習範例字（皆為出廠預設 starter chord，已用 CCOS Meta API 解出實際按鍵組合）：Capitalization `run（N+R+U）→ Run`、Present Tense `work（O+R+W）→ working`、Plural `book（B+K+O）→ books`、Past Tense `help（E+H+L）→ helped`、Comparative `small（A+M+S）→ smaller`
+  - 時序文案：使用者回饋 same-time 觸發在實機上不好用，練習說明與 lesson 文案都改成推薦 arpeggiate（先完成 chord，緊接著點 modifier 開關）的寫法，不再並列同時觸發
+  - 殘留小疑慮：文字變換規則 CSV 取自 `CharaChorder/CCOS-firmware` 的 `main` 分支（無對應 3.0.x/3.1.x 韌體的 tag），無法百分之百對應實機當下韌體版本；選用範例字都只吃各表最基本的預設規則、非例外清單項目，風險低，待實機測試若有落差再排查
 - [ ] Arpeggiate Punctuation 練習
 - [ ] Compound Chord 引導練習
 - [ ] Dynamic Chord Library 教學（較複雜，暫不做練習，只補設定方式的說明）

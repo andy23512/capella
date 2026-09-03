@@ -1,5 +1,9 @@
 import { NonKeyActionName } from 'tangent-cc-lib';
-import { Exercise, ExerciseStep } from '../models/exercise.models';
+import {
+  ChordModifierKind,
+  Exercise,
+  ExerciseStep,
+} from '../models/exercise.models';
 
 function charSteps(text: string): ExerciseStep[] {
   return [...text].map((char) => ({
@@ -50,6 +54,29 @@ function chordStep(
     kind: 'chord',
     key: outputText,
     chordChars,
+  };
+}
+
+const CHORD_MODIFIER_LABEL: Record<ChordModifierKind, string> = {
+  capitalization: 'Capitalization',
+  presentTense: 'Present Tense',
+  plural: 'Plural',
+  pastTense: 'Past Tense',
+  comparative: 'Comparative',
+};
+
+/** A chord fired together with a Chord Modifier switch, e.g. the "work" chord + Present Tense for "working". */
+function chordModifierStep(
+  chordChars: string[],
+  modifier: ChordModifierKind,
+  outputText: string,
+): ExerciseStep {
+  return {
+    label: `${chordChars.map((char) => char.toUpperCase()).join(' + ')} + ${CHORD_MODIFIER_LABEL[modifier]}`,
+    kind: 'chord',
+    key: outputText,
+    chordChars,
+    chordModifier: modifier,
   };
 }
 
@@ -196,6 +223,69 @@ export const SIMPLE_CHORD_EXERCISES: Exercise[] = [
   },
 ];
 
+export const CHORD_MODIFIER_EXERCISES: Exercise[] = [
+  {
+    id: 'chord-modifier-capitalization',
+    chapterId: 'chord-modifier',
+    title: 'Capitalization',
+    description:
+      'Fire the "run" starter chord, then immediately tap either Shift switch — arpeggiately — to capitalize its output: "Run". Three reps.',
+    steps: [
+      chordModifierStep(['n', 'r', 'u'], 'capitalization', 'Run'),
+      chordModifierStep(['n', 'r', 'u'], 'capitalization', 'Run'),
+      chordModifierStep(['n', 'r', 'u'], 'capitalization', 'Run'),
+    ],
+  },
+  {
+    id: 'chord-modifier-present-tense',
+    chapterId: 'chord-modifier',
+    title: 'Present Tense',
+    description:
+      'Fire the "work" starter chord, then immediately tap the left AT (Ambidextrous Throwover) switch — arpeggiately — to turn it into "working". Three reps.',
+    steps: [
+      chordModifierStep(['o', 'r', 'w'], 'presentTense', 'working'),
+      chordModifierStep(['o', 'r', 'w'], 'presentTense', 'working'),
+      chordModifierStep(['o', 'r', 'w'], 'presentTense', 'working'),
+    ],
+  },
+  {
+    id: 'chord-modifier-plural',
+    chapterId: 'chord-modifier',
+    title: 'Plural',
+    description:
+      'Fire the "book" starter chord, then immediately tap the right AT (Ambidextrous Throwover) switch — arpeggiately — to turn it into "books". Three reps.',
+    steps: [
+      chordModifierStep(['b', 'k', 'o'], 'plural', 'books'),
+      chordModifierStep(['b', 'k', 'o'], 'plural', 'books'),
+      chordModifierStep(['b', 'k', 'o'], 'plural', 'books'),
+    ],
+  },
+  {
+    id: 'chord-modifier-past-tense',
+    chapterId: 'chord-modifier',
+    title: 'Past Tense',
+    description:
+      'Fire the "help" starter chord, then immediately tap the left Numeric Layer switch — arpeggiately — to turn it into "helped". Three reps.',
+    steps: [
+      chordModifierStep(['e', 'h', 'l'], 'pastTense', 'helped'),
+      chordModifierStep(['e', 'h', 'l'], 'pastTense', 'helped'),
+      chordModifierStep(['e', 'h', 'l'], 'pastTense', 'helped'),
+    ],
+  },
+  {
+    id: 'chord-modifier-comparative',
+    chapterId: 'chord-modifier',
+    title: 'Comparative',
+    description:
+      'Fire the "small" starter chord, then immediately tap the right Numeric Layer switch — arpeggiately — to turn it into "smaller". Three reps.',
+    steps: [
+      chordModifierStep(['a', 'm', 's'], 'comparative', 'smaller'),
+      chordModifierStep(['a', 'm', 's'], 'comparative', 'smaller'),
+      chordModifierStep(['a', 'm', 's'], 'comparative', 'smaller'),
+    ],
+  },
+];
+
 export const DUP_EXERCISES: Exercise[] = [
   {
     id: 'double-letters',
@@ -215,6 +305,7 @@ export const ALL_EXERCISES: Exercise[] = [
   ...FUNCTION_KEYS_EXERCISES,
   ...MOUSE_FEATURES_EXERCISES,
   ...SIMPLE_CHORD_EXERCISES,
+  ...CHORD_MODIFIER_EXERCISES,
   ...DUP_EXERCISES,
 ];
 

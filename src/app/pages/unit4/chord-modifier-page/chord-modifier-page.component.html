@@ -7,25 +7,63 @@
   <p class="mt-6 text-gray-50">
     A chord modifier is an input added alongside a chord that changes its
     output rather than replacing it — the chord still fires, just altered.
-    Common changes include:
+    There are five:
   </p>
   <ul class="ml-4 list-disc space-y-1 text-gray-50">
     <li>Capitalization — capitalizes the output ("run" → "Run")</li>
-    <li>Present Tense — ("run" → "running", "work" → "working")</li>
-    <li>Pluralizer — ("box" → "boxes", "dog" → "dogs")</li>
-    <li>Past Tense — ("run" → "ran")</li>
-    <li>Comparative — ("big" → "bigger", "small" → "smaller")</li>
+    <li>Present Tense — ("work" → "working")</li>
+    <li>Plural — ("book" → "books")</li>
+    <li>Past Tense — ("help" → "helped")</li>
+    <li>Comparative — ("small" → "smaller")</li>
   </ul>
 
   <p class="mt-4 text-gray-50">
-    Each of these five has a fixed default switch — it's not something you
-    choose yourself the way a chord's own switches are. Which switch
-    differs by device model, so there's no single diagram to show here.
-    What is fixed across devices is the timing option available to trigger
-    one: a modifier can be added at the same time as the chord, or
-    arpeggiately — a quick tap right after — which is the timing mechanic
-    covered next.
+    Each of these five has a fixed switch — it's not something you choose
+    yourself the way a chord's own switches are. On the devices this site
+    covers (CC1, CC2, CCU, and Master Forge), that mapping is the same:
+    Capitalization is either Shift switch, Present Tense is the left AT
+    (Ambidextrous Throwover) switch, Plural is the right AT switch, Past
+    Tense is the left Numeric Layer switch, and Comparative is the right
+    Numeric Layer switch.
   </p>
+  <p class="mt-4 text-gray-50">
+    The AT switches do double duty depending on context — held by themselves
+    they mirror the opposite hand's letters, the Ambidextrous Throwover
+    feature from the last unit, but held together with a chord they act as
+    the Present Tense/Plural modifier instead. The diagram below shows that
+    second case: the left AT switch, tapped right after the "work" starter
+    chord, turns its output into "working".
+  </p>
+
+  <div class="mt-6 rounded-lg bg-gray-700 p-4">
+    <p class="m-0 mb-3 text-center text-sm font-medium text-gray-100">
+      O + R + W, then left AT = "working" — the "work" starter chord with the
+      Present Tense modifier
+    </p>
+    <app-layout
+      [highlight]="exampleChord?.highlight ?? null"
+      [labels]="exampleChord?.labels ?? {}"
+    />
+  </div>
+
+  <p class="mt-6 text-sm text-gray-200">
+    A modifier can technically be added at the same time as the chord, but
+    that's a tight timing window in practice — arpeggiately, firing the
+    chord first and tapping the modifier switch right after, is what
+    actually works and what the exercises below use. That timing mechanic is
+    covered in more depth next chapter.
+  </p>
+
+  <h2 class="mt-10 text-xl font-medium">Try it</h2>
+  <p class="mt-2 text-gray-50">
+    Five exercises, one per modifier, each firing a built-in starter chord
+    together with its switch.
+  </p>
+  <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+    @for (exercise of exercises; track exercise.id) {
+      <app-exercise-card [exercise]="exercise" />
+    }
+  </div>
 
   <app-chapter-nav chapterId="chord-modifier" />
 </div>
