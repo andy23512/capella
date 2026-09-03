@@ -150,6 +150,13 @@ export const APP_ROUTES: Route[] = [
       ).then((m) => m.ImpulseChordPageComponent),
   },
   {
+    path: 'unit-4/impulse-chord/practice',
+    loadComponent: () =>
+      import(
+        './pages/unit4/impulse-chord-practice-page/impulse-chord-practice-page.component'
+      ).then((m) => m.ImpulseChordPracticePageComponent),
+  },
+  {
     path: 'unit-4/chord-modifier',
     loadComponent: () =>
       import(
