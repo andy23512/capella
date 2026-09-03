@@ -12,71 +12,95 @@
     reflects back what your device prints.
   </p>
 
-  <input
-    type="text"
-    class="mt-6 w-full rounded-lg bg-gray-700 p-4 font-mono text-lg text-gray-50 outline-none ring-capella-400 focus:ring-2"
-    placeholder="Click here, then trigger Impulse Chord on your device"
-    autocomplete="off"
-    spellcheck="false"
-    [value]="value()"
-    (input)="onInput($event)"
-    (keydown)="onKeydown($event)"
-  />
-
-  <div class="mt-6 rounded-lg bg-gray-700 p-4">
-    @switch (phase().kind) {
-      @case ('idle') {
-        <p class="m-0 text-gray-100">
-          Nothing printed into the box yet — trigger Impulse Chord on your
-          device (e.g. <strong>i+DUP</strong>) while the box above is
-          focused.
-        </p>
-      }
-      @case ('output') {
-        <p class="m-0 text-gray-100">
-          Step 1 of 2: type the output text you want this chord to produce,
-          then press <strong class="text-capella-400">Enter</strong> on your
-          device to confirm it.
-        </p>
-        <p class="mt-2 font-mono text-lg text-capella-400">
-          {{ phase().text || '(nothing typed yet)' }}
-        </p>
-      }
-      @case ('input') {
-        <p class="m-0 text-gray-100">
-          Step 2 of 2: press and release the switches you want as this
-          chord's input, all together. Not what you meant? Just try again —
-          the combo below updates every time.
-        </p>
-        <p class="mt-2 font-mono text-lg text-capella-400">
-          {{ phase().combo || '(nothing pressed yet)' }}
-        </p>
-        @if (phase().chaining) {
-          <p class="mt-1 text-sm text-gray-300">
-            Waiting for a second combo to chain into a compound chord —
-            perform it, then press Enter to confirm.
-          </p>
+  @if (justCompleted()) {
+    <div class="mt-6 rounded-lg bg-gray-700 p-4 text-center">
+      <p class="m-0 text-lg font-medium text-capella-400">Done</p>
+      <p class="mt-2 text-sm text-gray-100">
+        @if (skippedThisSession()) {
+          Marked complete without touching your device's chord library.
         } @else {
-          <p class="mt-1 text-sm text-gray-300">
-            Happy with it? Press Enter to confirm and save it to your
-            device.
+          Your device left the Impulse Chord prompt, so the chord should now
+          be saved on it. Try firing it to check.
+        }
+      </p>
+      <div class="mt-4 flex justify-center">
+        <button mat-stroked-button type="button" (click)="reset()">
+          Redo
+        </button>
+      </div>
+    </div>
+  } @else {
+    <input
+      type="text"
+      class="mt-6 w-full rounded-lg bg-gray-700 p-4 font-mono text-lg text-gray-50 outline-none ring-capella-400 focus:ring-2"
+      placeholder="Click here, then trigger Impulse Chord on your device"
+      autocomplete="off"
+      spellcheck="false"
+      [value]="value()"
+      (input)="onInput($event)"
+      (keydown)="onKeydown($event)"
+    />
+
+    <div class="mt-6 rounded-lg bg-gray-700 p-4">
+      @switch (phase().kind) {
+        @case ('idle') {
+          <p class="m-0 text-gray-100">
+            Nothing printed into the box yet — trigger Impulse Chord on your
+            device (e.g. <strong>i+DUP</strong>) while the box above is
+            focused.
           </p>
         }
+        @case ('output') {
+          <p class="m-0 text-gray-100">
+            Step 1 of 2: type the output text you want this chord to
+            produce, then press
+            <strong class="text-capella-400">Enter</strong> on your device
+            to confirm it.
+          </p>
+          <p class="mt-2 font-mono text-lg text-capella-400">
+            {{ phase().text || '(nothing typed yet)' }}
+          </p>
+        }
+        @case ('input') {
+          <p class="m-0 text-gray-100">
+            Step 2 of 2: press and release the switches you want as this
+            chord's input, all together. Not what you meant? Just try
+            again — the combo below updates every time.
+          </p>
+          <p class="mt-2 font-mono text-lg text-capella-400">
+            {{ phase().combo || '(nothing pressed yet)' }}
+          </p>
+          @if (phase().chaining) {
+            <p class="mt-1 text-sm text-gray-300">
+              Waiting for a second combo to chain into a compound chord —
+              perform it, then press Enter to confirm.
+            </p>
+          } @else {
+            <p class="mt-1 text-sm text-gray-300">
+              Happy with it? Press Enter to confirm and save it to your
+              device.
+            </p>
+          }
+        }
       }
-      @case ('done') {
-        <p class="m-0 text-lg font-medium text-capella-400">
-          Done — your device left the Impulse Chord prompt, so the chord
-          should now be saved on it. Try firing it to check.
-        </p>
-      }
-    }
-  </div>
+    </div>
 
-  <p class="mt-4 text-center text-xs text-gray-300">
-    Made a mistake? Press <strong>Escape</strong> on your device to start
-    over, or
-    <button type="button" class="text-capella-400 underline" (click)="reset()">
-      reset this box
-    </button>.
-  </p>
+    <div class="mt-4 flex flex-col items-center gap-3">
+      <p class="m-0 text-center text-xs text-gray-300">
+        Made a mistake? Press <strong>Escape</strong> on your device to
+        start over, or
+        <button
+          type="button"
+          class="text-capella-400 underline"
+          (click)="reset()"
+        >
+          reset this box
+        </button>.
+      </p>
+      <button mat-stroked-button type="button" (click)="skip()">
+        Don't want this touching your device's chord library? Skip —
+        mark complete
+      </button>
+    </div>
+  }
 </div>

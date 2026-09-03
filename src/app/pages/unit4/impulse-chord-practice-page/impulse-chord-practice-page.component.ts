@@ -17,7 +17,7 @@ const OUTPUT_MARKER_RE = /^>I<mpulse output:\s*(.*)$/;
 const INPUT_MARKER_RE = /^>I<mpulse input:\s*(.*)$/;
 
 interface ImpulsePracticePhase {
-  kind: 'idle' | 'output' | 'input' | 'done';
+  kind: 'idle' | 'output' | 'input';
   /** Output text typed so far — only meaningful when kind is 'output'. */
   text: string;
   /** Chord input combo so far — only meaningful when kind is 'input'. */
@@ -37,14 +37,23 @@ export class ImpulseChordPracticePageComponent {
   private readonly progressService = inject(ProgressService);
 
   protected readonly value = signal('');
-  /** Set once the field first matches a GTM marker, to tell 'idle' apart from 'done' (both look like "no marker match"). */
+  /** Set once the field first matches a GTM marker, so leaving the marker text again can be read as "the device just finished". */
   private readonly hasStarted = signal(false);
 
   /**
-   * The whole state is derived straight from the current field value — the
-   * real device already redraws it from scratch (print, then Backspace the
-   * old text, then reprint) on every step, so there is no need to track
-   * transitions ourselves.
+   * Whether this session's flow is complete — either the device left the
+   * GTM prompt, or the user skipped. Kept separate from
+   * ProgressService.isExerciseCompleted, which never un-sets once true, so
+   * that Redo can bring this page's own view back to the live practice UI.
+   */
+  protected readonly justCompleted = signal(false);
+  protected readonly skippedThisSession = signal(false);
+
+  /**
+   * The in-progress state is derived straight from the current field value
+   * — the real device already redraws it from scratch (print, then
+   * Backspace the old text, then reprint) on every step, so there is no
+   * need to track transitions ourselves.
    */
   protected readonly phase = computed<ImpulsePracticePhase>(() => {
     const raw = this.value();
@@ -62,12 +71,7 @@ export class ImpulseChordPracticePageComponent {
       return { kind: 'input', text: '', combo, chaining };
     }
 
-    return {
-      kind: this.hasStarted() ? 'done' : 'idle',
-      text: '',
-      combo: '',
-      chaining: false,
-    };
+    return { kind: 'idle', text: '', combo: '', chaining: false };
   });
 
   protected onInput(event: Event) {
@@ -76,7 +80,7 @@ export class ImpulseChordPracticePageComponent {
     if (OUTPUT_MARKER_RE.test(raw) || INPUT_MARKER_RE.test(raw)) {
       this.hasStarted.set(true);
     } else if (this.hasStarted()) {
-      this.progressService.markExerciseCompleted(IMPULSE_CHORD_PRACTICE_ID);
+      this.complete(false);
     }
   }
 
@@ -87,8 +91,21 @@ export class ImpulseChordPracticePageComponent {
     }
   }
 
+  /** For users who don't want this practice touching their device's real chord library. */
+  protected skip() {
+    this.complete(true);
+  }
+
+  private complete(skipped: boolean) {
+    this.justCompleted.set(true);
+    this.skippedThisSession.set(skipped);
+    this.progressService.markExerciseCompleted(IMPULSE_CHORD_PRACTICE_ID);
+  }
+
   protected reset() {
     this.value.set('');
     this.hasStarted.set(false);
+    this.justCompleted.set(false);
+    this.skippedThisSession.set(false);
   }
 }
