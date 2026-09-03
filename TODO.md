@@ -17,6 +17,17 @@
     - 實際比對 CCOS `actions.json`（透過 CCOS Meta API 抓 two_s3 3.1.0-beta.3）搜尋 PLURAL/TENSE/COMPARATIVE/CONJUGAT/SUFFIX/PREFIX 關鍵字，完全沒有對應的 action code
     - 目前唯一能在實機資料中驗證存在的 Modifier 只有 `CAPITALIZE`（action 573，描述為「可作為 output modifier 使用來大寫目前的 chord」），且在 two_s3 的 `arpeggiates.json` 出廠預設中確實被這樣使用（句讀符號 arpeggiate 後接大寫下一個字）
     - 下一步：跟使用者確認方向——(a) lesson/practice 改以 Capitalization 為主要甚至唯一範例，或 (b) 使用者能從實機/其他管道提供其餘 4 種 Modifier 的依據再繼續規劃
+  - 使用者確認的 Modifier 對應開關（未查官方文件圖片交叉比對，直接採信使用者說法）：Capitalization = 左/右 Shift、Present Tense = 左 AT（Ambidextrous Throwover）鍵、Plural = 右 AT 鍵、Past Tense = 左 Numeric Layer 鍵、Comparative = 右 Numeric Layer 鍵
+    - 「AT」= Ambidextrous Throwover（跟 Unit 3 該章節同一顆開關，非 AltGraph）——代表同一顆實體開關依情境有不同作用：單獨使用時是鏡像對側手的 Ambidextrous Throwover，跟 chord 同時/arpeggiate 併用時則是 Present Tense／Plural 的 Modifier，這種「同開關依情境切換用途」的模式跟 Glossary 對 DUP 鍵的描述（字元輸入 vs 和弦輸入下作用不同）是同一種設計語言
+  - Highlight diagram 技術可行性已確認、且比預期更省事：
+    - Capitalization（Shift）／Past Tense、Comparative（Numeric Layer）：透過 `tangent-cc-lib` 的 `getModifierKeyPositionCodeMap`（`shift` per layer）與 `getLayerShiftPositionCodeMap`（`numShift`）取得 position code，再用 `decodePositionCode` 判斷左右手，仿照 `key-position.utils.ts` 內 `labelForHeldPosition` 的寫法即可
+    - Present Tense、Plural（左/右 AT）：可直接沿用 `ambidextrous-throwover-page.component.ts` 已經在用的 `resolveNonKeyActionPosition('AmbidextrousThrowoverLeft' / 'AmbidextrousThrowoverRight')`，不用新寫解析邏輯
+  - 單字變換規則來源已確認：內建在 CCOS 韌體，官方開源於 `https://github.com/CharaChorder/CCOS-firmware/tree/main/grammar`，共 4 個 CSV（`plural.csv`／`past.csv`／`presentParticiple.csv`／`comparative.csv`），格式為「不規則例外清單 + 萬用字元預設規則」（例：plural 預設 `*,s`，加上 `*x,xes`／`*ch,ches`／`*!y,ies`／`*lf,lves` 等例外規則；past 預設 `*,ed`；presentParticiple 預設 `*,ing`；comparative 預設 `*,er`）
+    - `plural.csv`／`past.csv`／`presentParticiple.csv` 三份內容看起來正常、可信
+    - ⚠️ `comparative.csv` 的例外清單內容可疑，大量是不相關的單字配對（如 `general,generic`、`curse,cursor`、`part,appear`），疑似未完成/佔位資料，只有少數如 `big,bigger`、`easy,easier` 看起來正常——練習/教材選字時應避開例外清單裡的字，只用純粹套用預設規則（`*,er`）的字
+    - 練習範例字建議（皆不落在任何一份 CSV 的例外清單內，只吃預設規則，結果可預期；已比對實際 `starter_chords.json` 排除非出廠預設字，如 `box`／`dog` 經查證並非出廠預設 chord 已排除）：Present Tense `work → working`、Plural `book → books`、Past Tense `help → helped`、Comparative `small → smaller`
+    - 已確認 `starter_chords.json`（出廠預設 chord 詞庫）在 CC1（`one_m0`）／CC2、CCU（`two_s3`）／Master Forge（`m4g_s3`）四款機種間為完全相同的檔案（MD5 一致），且在 `two_s3`／`one_m0` 上比對 3.0.0 ～ 3.1.0-beta.3 各版本韌體也維持一致，因此上述範例字不受機種或韌體版本差異影響
+    - 殘留小疑慮：grammar CSV 是從 `CharaChorder/CCOS-firmware` 的 `main` 分支抓的（該 repo 沒有對應 3.0.x/3.1.x 韌體的 tag，最新 tag 只到 `v2.0.1`），無法百分之百對應到實機當下韌體版本的規則表內容；但選用的範例字都只吃各表最基本的預設規則、非例外清單項目，風險低——先不處理，實機測試若遇到落差再排查
 - [ ] Arpeggiate Punctuation 練習
 - [ ] Compound Chord 引導練習
 - [ ] Dynamic Chord Library 教學（較複雜，暫不做練習，只補設定方式的說明）
