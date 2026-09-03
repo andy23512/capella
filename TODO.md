@@ -10,6 +10,13 @@
   - 架構：沿用既有 `exercise-page.component.ts` 的通用 step runner 與 `'chord'` step 判定邏輯（比對最終輸出文字，不管實際按鍵/時序），不用另做專用 FSM——這點與 Impulse Chord 不同
   - Arpeggiate 時序問題的解法：每個 step 的說明文字要「先」把 chord + modifier 兩個動作一起交代清楚（例如「chord 'run'，完成後立刻點 Present Tense 開關」），因為 step runner 本來就是先顯示說明、使用者才動作，不是等偵測到 chord 完成才反應式提示 modifier，所以不會有「太晚」的問題；判定仍只看最終輸出文字（如 modifier 套用後的 "running"）是否吻合
   - 待辦：實作前需先查 docs.charachorder.com 確認 (1) 四款機種預設已訓練好的 default chord 清單（避免練習還要求使用者先自行訓練 chord）(2) 各 Modifier 對應的實際開關位置（用於後補 diagram）
+  - CCOS Meta API 資料來源已確認可行：`https://charachorder.io/firmware/{device}/{version}/` 下的 `meta.json` → `factory_defaults.chords` 可取得 `starter_chords.json`／`functional_chords.json`／`riley_chords.json`／`arpeggiates.json`；機種對應的 firmware target（參考 `CharaChorder/DeviceManager` repo 的 `src/lib/serial/device.ts`）：CC1 = `one_m0`、CC2 = `two_s3`、CCU = `two_s3`（與 CC2 共用同一顆板子/韌體）、Master Forge = `m4g_s3`
+  - ⚠️ 重大待確認事項：既有 lesson 頁列的 5 種 Modifier（Capitalization／Present Tense／Pluralizer／Past Tense／Comparative）目前查無官方依據，需要先解決才能繼續規劃練習內容
+    - `docs.charachorder.com` 專用頁 `Chord Modifiers.rst` 原始碼標記 `.. only:: internal_build`，內容僅 `WIP`，等同未對外公開任何實質內容
+    - Glossary 對 Chord Modifiers 的定義只是概括性的一句話（會改變 chord 的 prefix/suffix/capitalization/conjugation/part of speech/language/structure），未列出具體 5 種名稱
+    - 實際比對 CCOS `actions.json`（透過 CCOS Meta API 抓 two_s3 3.1.0-beta.3）搜尋 PLURAL/TENSE/COMPARATIVE/CONJUGAT/SUFFIX/PREFIX 關鍵字，完全沒有對應的 action code
+    - 目前唯一能在實機資料中驗證存在的 Modifier 只有 `CAPITALIZE`（action 573，描述為「可作為 output modifier 使用來大寫目前的 chord」），且在 two_s3 的 `arpeggiates.json` 出廠預設中確實被這樣使用（句讀符號 arpeggiate 後接大寫下一個字）
+    - 下一步：跟使用者確認方向——(a) lesson/practice 改以 Capitalization 為主要甚至唯一範例，或 (b) 使用者能從實機/其他管道提供其餘 4 種 Modifier 的依據再繼續規劃
 - [ ] Arpeggiate Punctuation 練習
 - [ ] Compound Chord 引導練習
 - [ ] Dynamic Chord Library 教學（較複雜，暫不做練習，只補設定方式的說明）
