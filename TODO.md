@@ -17,3 +17,11 @@
 - [ ] Dynamic Chord Library 教學（較複雜，暫不做練習，只補設定方式的說明）
 - [ ] 補上單元測試（目前 `nx test` 有設定但一支 `.spec.ts` 都沒有），優先針對輸入/狀態判斷邏輯（如 `<app-switch>` 方向判定、chording 練習的按鍵緩衝區邏輯）
 - [ ] 檢查所有 Unit（`src/app/data/units.ts`）的 Other resources 是否有需要補充的連結
+- [ ] Capella 的按鍵標籤（key label）改直接引用 `tangent-cc-lib`，不要手動維護一份
+  - 背景：`tangent-cc-lib` 已經有現成的 `NON_WSK_CODE_2_RAW_KEY_LABEL_MAP`、`NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP`、`SHIFT_KEY_LABEL`／`NUM_SHIFT_KEY_LABEL`／`FN_SHIFT_KEY_LABEL`／`FLAG_SHIFT_KEY_LABEL`／`ALT_GRAPH_KEY_LABEL`（`node_modules/tangent-cc-lib/dist/lib/data/key-label/key-labels.js`，經 `data/index.js` 正常 export），但 `src/app/utils/key-position.utils.ts` 的 `NAMED_KEY_LABEL`、`MOUSE_ACTION_LABEL`、`labelForHeldPosition`、`CHORD_MODIFIER_LABEL` 是手動 port 自 alnitak 的一份拷貝（見檔案內註解），沒有直接引用這個共用來源
+  - 已確認的落差（Capella 現狀 vs tangent-cc-lib 正確值），並用 `tangent-cc-lib` 的 layout 解析函式跑過目前所有 exercise 的字元／按鍵，確認實際會不會顯示在畫面上：
+    - **FN Shift**（會顯示）：`FUNCTION_KEYS_EXERCISES` 的 `F1–F12` 練習（F1–F10、F12，F11 因系統快捷鍵而跳過）會觸發 FN Shift 標籤——Capella 文字 `'FN'` vs `FN_SHIFT_KEY_LABEL` 應為 icon `'counter_3'`
+    - **Chord Modifier 的 Present Tense／Plural（AT 鍵）**（會顯示）：`CHORD_MODIFIER_EXERCISES` 會觸發——Capella 文字 `'AT'` vs `NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP.AmbidextrousThrowoverLeft/Right` 應為 icon `'switch_left'`／`'switch_right'`
+    - AltGraph／Flag Shift（目前不會顯示）：用 US 配列 + `DEFAULT_DEVICE_LAYOUT` 跑過所有現有 exercise 的字元／按鍵（含 letters/number/symbols/named-key），沒有任何一個會觸發 AltGraph 或 Flag Shift 標籤，屬於目前 unreachable 的分支，先不列入優先修正範圍，等未來有對應 Lesson 再一併處理
+    - Enter／Backspace／Tab／方向鍵／滑鼠動作等目前是一致的，暫無問題
+  - 待處理的型別落差：`tangent-cc-lib` 的 `RawKeyLabel` 有 `String`／`Icon`／`Logo`（字型 logo）／`ActionCode`（數值代碼）四種 type，Capella 的 `PositionLabel` 只有 `text` + `icon?: boolean` 兩種，改用共用來源前要決定 `Logo`／`ActionCode` 這兩種怎麼處理（目前用到的範圍只有 `String`／`Icon`，可能不受影響，但要確認）
