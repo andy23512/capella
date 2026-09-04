@@ -27,7 +27,12 @@
 - [x] ~~Compound Chord 引導練習~~ → 隨 Unit 5 一併移除，見下
 - [x] ~~Dynamic Chord Library 教學~~ → 隨 Unit 5 一併移除，見下
 - [x] Unit 5: Advanced Chording 整個移除 — 使用者判斷這超出 Tutorial 範疇（`src/app/pages/unit5/` 整個目錄、`app.routes.ts`／`units.ts` 的 unit-5 與其兩個 Chapter），一併修正 Unit 4 summary 文案原本預告 Unit 5 的那句、`README.md` 的 Units 清單
-- [ ] 補上單元測試（目前 `nx test` 有設定但一支 `.spec.ts` 都沒有），優先針對輸入/狀態判斷邏輯（如 `<app-switch>` 方向判定、chording 練習的按鍵緩衝區邏輯）
+- [x] 補上單元測試（目前 `nx test` 有設定但一支 `.spec.ts` 都沒有），優先針對輸入/狀態判斷邏輯（如 `<app-switch>` 方向判定、chording 練習的按鍵緩衝區邏輯）
+  - 新增 3 支 `.spec.ts`，共 19 個測試案例，`nx test` 全數通過：
+    - `src/app/components/switch/switch.component.spec.ts`：`<app-switch>` 的 tilt sector 角度計算（`sectorAngles()` 依 `rotation` 輸入正確偏移）與方向點擊事件（`directionSelected` 含中心 `'c'`）
+    - `src/app/utils/key-position.utils.spec.ts`：`decodePositionCode`（position code → hand/finger/direction，含無效 code 回傳 null）、`resolveCharacterKeyPosition`、`resolveChordIllustration`（多字元組合、同一開關衝突時回傳 null、modifier 疊加）、`resolveStepPosition`/`resolveStepLabels` 依 step kind 分派
+    - `src/app/pages/exercise-page/exercise-page.component.spec.ts`：chording 練習的 `chordBuffer`／`onChordKeydown` 判定邏輯——完全比對、`.trim()` 吸收裝置自動送出的尾隨空白、模擬「先印出原始按鍵字元再 Backspace 修正」的實機行為、Backspace 修正打錯字、比對錯誤時不算 mistake（呼應第 9-11 行的既有設計決策）
+    - 未涵蓋：`ExercisePageComponent` 的 mouse/character/named-key step 判定與 `ProgressService`/`DeviceLayoutService` 本身，之後如有需要可再補
 - [ ] 檢查所有 Unit（`src/app/data/units.ts`）的 Other resources 是否有需要補充的連結
 - [ ] Capella 的按鍵標籤（key label）改直接引用 `tangent-cc-lib`，不要手動維護一份
   - 背景：`tangent-cc-lib` 已經有現成的 `NON_WSK_CODE_2_RAW_KEY_LABEL_MAP`、`NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP`、`SHIFT_KEY_LABEL`／`NUM_SHIFT_KEY_LABEL`／`FN_SHIFT_KEY_LABEL`／`FLAG_SHIFT_KEY_LABEL`／`ALT_GRAPH_KEY_LABEL`（`node_modules/tangent-cc-lib/dist/lib/data/key-label/key-labels.js`，經 `data/index.js` 正常 export），但 `src/app/utils/key-position.utils.ts` 的 `NAMED_KEY_LABEL`、`MOUSE_ACTION_LABEL`、`labelForHeldPosition`、`CHORD_MODIFIER_LABEL` 是手動 port 自 alnitak 的一份拷貝（見檔案內註解），沒有直接引用這個共用來源
