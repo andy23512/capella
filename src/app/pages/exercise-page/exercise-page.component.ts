@@ -144,10 +144,12 @@ export class ExercisePageComponent {
   /**
    * A fired chord doesn't arrive as one keystroke — CharaChorder's default
    * behavior types the raw switch characters first (e.g. "bc"), backspaces
-   * them, then types the chord's output text. So this just tracks a
-   * trailing window of recent keystrokes (honoring Backspace) and advances
-   * once it matches the output text — no mismatch tracking, since that
-   * raw-then-corrected burst would otherwise flag as errors on every fire.
+   * them, then types the chord's output text followed by a trailing space
+   * (so the next word chord can fire without a manual space). So this just
+   * tracks keystrokes verbatim (honoring Backspace) and advances once the
+   * trimmed buffer matches the output text — no mismatch tracking, since
+   * that raw-then-corrected burst would otherwise flag as errors on every
+   * fire.
    */
   private onChordKeydown(event: KeyboardEvent, outputText: string) {
     if (event.key === 'Backspace') {
@@ -157,10 +159,8 @@ export class ExercisePageComponent {
     if (event.key.length !== 1) {
       return;
     }
-    this.chordBuffer.update((buffer) =>
-      (buffer + event.key).slice(-outputText.length),
-    );
-    if (this.chordBuffer().toLowerCase() === outputText.toLowerCase()) {
+    this.chordBuffer.update((buffer) => buffer + event.key);
+    if (this.chordBuffer().trim() === outputText) {
       this.chordBuffer.set('');
       this.advance();
     }
