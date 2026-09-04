@@ -72,7 +72,7 @@ function chordModifierStep(
   outputText: string,
 ): ExerciseStep {
   return {
-    label: `${chordChars.map((char) => char.toUpperCase()).join(' + ')} + ${CHORD_MODIFIER_LABEL[modifier]}`,
+    label: `${chordChars.map((char) => char.toUpperCase()).join(' + ')} → ${CHORD_MODIFIER_LABEL[modifier]}`,
     kind: 'chord',
     key: outputText,
     chordChars,

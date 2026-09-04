@@ -432,7 +432,8 @@ export interface ChordIllustration {
  * switch is rendered the same way (as a hold) since a chord has no single
  * "primary" switch the way a modifier combo does. If `modifier` is given, its
  * switch is added to the illustration too (e.g. Present Tense alongside a
- * "work" chord, for "working") — returns null if that switch can't be
+ * "work" chord, for "working") — rendered as the "press" one, to stand out
+ * from the chord's own switches — and returns null if that switch can't be
  * resolved on the active device layout.
  */
 export function resolveChordIllustration(
@@ -474,8 +475,13 @@ export function resolveChordIllustration(
     });
     positionCodes.add(highlight.characterKeyPositionCode);
   });
+  // Unlike the chord's own switches (none of which is "primary"), the
+  // modifier switch is the one thing that's distinct about this
+  // illustration, so it's set as characterKeyPositionCode to render it in
+  // the "press" color instead of blending in with the chord's "hold" color.
+  let modifierPositionCode: number | null = null;
   if (modifier) {
-    const modifierPositionCode = resolveChordModifierPositionCode(modifier);
+    modifierPositionCode = resolveChordModifierPositionCode(modifier);
     if (modifierPositionCode === null) {
       return null;
     }
@@ -485,7 +491,7 @@ export function resolveChordIllustration(
     }
   }
   const highlight: HighlightKeyCombination = {
-    characterKeyPositionCode: -1,
+    characterKeyPositionCode: modifierPositionCode ?? -1,
     positionCodes: Array.from(positionCodes),
     layer: highlights[0]!.layer,
     shiftKey: false,

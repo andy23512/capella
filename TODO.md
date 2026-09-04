@@ -5,16 +5,19 @@
   - 判斷方式：不自行實作同時按下/放開的組合鍵偵測邏輯，改為監聽輸入框 `input` 事件、比對 value 內容是否符合 GTM 印出的標記文字（如 `>I<mpulse output: `、`>I<mpulse input: `、複合和弦待續的結尾 `|`）來判斷目前所在步驟
   - 架構：獨立於 `exercise-page.component.ts` 既有的通用 step runner（那套是「比對固定正解」模型，跟 Impulse Chord「使用者自訂 output/input 並即時回顯」的性質不合），另做一個小型專用 FSM：`idle → output 輸入中 → output 已確定 → input 嘗試中（可重試）→ input 已確定 → 完成`，並支援 Esc 中途取消回到 `idle`
   - Enter 副作用：`keydown` 對 Enter 統一 `preventDefault()`，避免觸發表單送出/換行；步驟推進不依賴是否有攔到 Enter 的 keydown，而是純粹看 value 內容變化（實機測試確認 Enter 不會有副作用，無需再驗證是否送出 Enter 鍵盤事件）
-- [x] Chord Modifier 練習 — `src/app/pages/unit4/chord-modifier-page/`、練習資料在 `src/app/data/exercises.ts` 的 `CHORD_MODIFIER_EXERCISES`，Capitalization 已實機測試通過；Present Tense／Plural／Past Tense／Comparative 尚未實機測試
+- [x] Chord Modifier 練習 — `src/app/pages/unit4/chord-modifier-page/`、練習資料在 `src/app/data/exercises.ts` 的 `CHORD_MODIFIER_EXERCISES`，五種（Capitalization／Present Tense／Plural／Past Tense／Comparative）皆已實機測試通過
   - 實機測試 Capitalization 時發現並修正兩個 `exercise-page.component.ts` 的 `onChordKeydown` 判定問題：
     1. 原本用 `toLowerCase()` 做不分大小寫比對，導致沒按 Shift、單純觸發 `run` 也會被判定通過 Capitalization 這種「大小寫本身就是判定重點」的練習；已改為完全比對（大小寫需一致）
     2. 原本用 `slice(-outputText.length)` 做固定長度的尾端視窗來累積按鍵緩衝區；改為讓緩衝區單純依實際按鍵 push／依 Backspace pop（不截斷），並用 `.trim()` 吸收 CharaChorder 在單字後自動送出的空白鍵（方便連續觸發下一個字的 chord）。理由：比對邏輯應該直接反映「使用者／裝置自己用 Backspace 修正錯誤」的真實情境，而非依賴一個固定視窗剛好會自我修正的巧合特性；此寫法與 `../alnitak` 的 `src/app/stores/chord-practice.store.ts`（`nextBuffer.join('').trim() === queue[0].outputText`）作法一致
+  - 文案／視覺微調（實機測試後續）：
+    - `chordModifierStep()` 的 step label 分隔符從全 `+`（`N + R + U + Capitalization`）改為 chord 本身用 `+`、和 Modifier 之間用 `→`（`N + R + U → Capitalization`），呼應說明文字「先完成 chord、再 arpeggiate 點 Modifier」的順序性，而非同時按下
+    - `resolveChordIllustration()` 的 highlight 顏色：Modifier 開關改標記為 `characterKeyPositionCode`（沿用既有 press／hold 兩色語彙，press＝橘色 `fill-capella-500`），使其在圖上以 press／橘色凸顯，chord 本身的按鍵維持一律 hold／藍色（因為 chord 內沒有誰是主鍵），沒有新增顏色或元件
   - 架構：沿用既有 `exercise-page.component.ts` 的通用 step runner 與 `'chord'` step 判定邏輯（比對最終輸出文字，不管實際按鍵/時序），不用另做專用 FSM——這點與 Impulse Chord 不同；`ExerciseStep` 新增 `chordModifier` 欄位，判定邏輯本身完全不用改
   - Modifier 對應開關（使用者提供，四款機種 CC1/CC2/CCU/Master Forge 皆相同，已用 `tangent-cc-lib` 對 `DEFAULT_DEVICE_LAYOUT`／`M4G_DEFAULT_DEVICE_LAYOUT` 兩者驗證 position code 一致）：Capitalization = 左/右 Shift、Present Tense = 左 AT（Ambidextrous Throwover）鍵、Plural = 右 AT 鍵、Past Tense = 左 Numeric Layer 鍵、Comparative = 右 Numeric Layer 鍵
   - Highlight diagram：`key-position.utils.ts` 的 `resolveChordIllustration(chars, modifier?)` 新增 `modifier` 參數，解析出對應 position code 疊加進 chord 的 highlight——Capitalization／Past Tense／Comparative 用 `getModifierKeyPositionCodeMap`／`getLayerShiftPositionCodeMap` + `decodePositionCode` 判斷左右手，Present Tense／Plural 直接沿用既有的 `resolveNonKeyActionPosition('AmbidextrousThrowoverLeft' / 'Right')`
   - 練習範例字（皆為出廠預設 starter chord，已用 CCOS Meta API 解出實際按鍵組合）：Capitalization `run（N+R+U）→ Run`、Present Tense `work（O+R+W）→ working`、Plural `book（B+K+O）→ books`、Past Tense `help（E+H+L）→ helped`、Comparative `small（A+M+S）→ smaller`
   - 時序文案：使用者回饋 same-time 觸發在實機上不好用，練習說明與 lesson 文案都改成推薦 arpeggiate（先完成 chord，緊接著點 modifier 開關）的寫法，不再並列同時觸發
-  - 殘留小疑慮：文字變換規則 CSV 取自 `CharaChorder/CCOS-firmware` 的 `main` 分支（無對應 3.0.x/3.1.x 韌體的 tag），無法百分之百對應實機當下韌體版本；選用範例字都只吃各表最基本的預設規則、非例外清單項目，風險低，待實機測試若有落差再排查
+  - ~~殘留小疑慮：文字變換規則 CSV 取自 `CharaChorder/CCOS-firmware` 的 `main` 分支（無對應 3.0.x/3.1.x 韌體的 tag），無法百分之百對應實機當下韌體版本~~ → 五種 Modifier 皆已實機測試確認輸出正確，無落差，疑慮解除
 - [ ] Arpeggiate Punctuation 練習
 - [ ] Compound Chord 引導練習
 - [ ] Dynamic Chord Library 教學（較複雜，暫不做練習，只補設定方式的說明）
