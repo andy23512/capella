@@ -154,6 +154,21 @@ export const FUNCTIONAL_KEYS_EXERCISES: Exercise[] = [
       ['Arrow Right', 'ArrowRight'],
     ]),
   },
+  {
+    id: 'modifier-keys',
+    chapterId: 'functional-keys',
+    title: 'Modifier keys',
+    description:
+      'Alt, Control, and Meta (Cmd on Mac, Win on Windows) — held alongside other keys to trigger OS-level shortcuts. This just locates each switch; it does not fire an actual shortcut.',
+    steps: namedSteps([
+      ['Left Alt', 'AltLeft'],
+      ['Right Alt', 'AltRight'],
+      ['Left Control', 'ControlLeft'],
+      ['Right Control', 'ControlRight'],
+      ['Left Meta', 'MetaLeft'],
+      ['Right Meta', 'MetaRight'],
+    ]),
+  },
 ];
 
 export const FUNCTION_KEYS_EXERCISES: Exercise[] = [

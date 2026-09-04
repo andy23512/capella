@@ -133,7 +133,11 @@ export class ExercisePageComponent {
       step.kind === 'character' || step.kind === 'dup'
         ? event.key.length === 1 &&
           event.key.toLowerCase() === step.key.toLowerCase()
-        : event.key === step.key;
+        : // event.code (e.g. 'AltLeft') matches the NonWSKCode a 'named-key'
+          // step's key holds; event.key collapses Alt/Control/Meta's
+          // left/right switches to one string ('Alt'/'Control'/'Meta') and
+          // can't tell them apart.
+          event.code === step.key;
     if (matches) {
       this.advance();
       return;

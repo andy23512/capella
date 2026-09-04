@@ -19,6 +19,10 @@ function press(key: string) {
   window.dispatchEvent(new KeyboardEvent('keydown', { key }));
 }
 
+function pressCode(code: string) {
+  window.dispatchEvent(new KeyboardEvent('keydown', { code }));
+}
+
 function type(text: string) {
   for (const char of text) {
     press(char);
@@ -79,5 +83,35 @@ describe('ExercisePageComponent chord step handling', () => {
     expect(internals(fixture).currentIndex()).toBe(0);
     expect(internals(fixture).mistakes()).toBe(0);
     expect(internals(fixture).chordBuffer()).toBe('wrong');
+  });
+});
+
+describe('ExercisePageComponent named-key step handling', () => {
+  // modifier-keys' first step expects AltLeft — see src/app/data/exercises.ts.
+  const MODIFIER_KEYS_EXERCISE_ID = 'modifier-keys';
+  let fixture: ComponentFixture<ExercisePageComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ExercisePageComponent],
+      providers: [
+        provideRouter([]),
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: { paramMap: { get: () => MODIFIER_KEYS_EXERCISE_ID } },
+          },
+        },
+      ],
+    });
+    fixture = TestBed.createComponent(ExercisePageComponent);
+    fixture.detectChanges();
+  });
+
+  it('matches by event.code so left/right modifier switches can be told apart, since event.key collapses both to one string ("Alt")', () => {
+    pressCode('AltRight');
+    expect(internals(fixture).currentIndex()).toBe(0);
+    pressCode('AltLeft');
+    expect(internals(fixture).currentIndex()).toBe(1);
   });
 });
