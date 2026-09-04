@@ -18,7 +18,12 @@
   - 練習範例字（皆為出廠預設 starter chord，已用 CCOS Meta API 解出實際按鍵組合）：Capitalization `run（N+R+U）→ Run`、Present Tense `work（O+R+W）→ working`、Plural `book（B+K+O）→ books`、Past Tense `help（E+H+L）→ helped`、Comparative `small（A+M+S）→ smaller`
   - 時序文案：使用者回饋 same-time 觸發在實機上不好用，練習說明與 lesson 文案都改成推薦 arpeggiate（先完成 chord，緊接著點 modifier 開關）的寫法，不再並列同時觸發
   - ~~殘留小疑慮：文字變換規則 CSV 取自 `CharaChorder/CCOS-firmware` 的 `main` 分支（無對應 3.0.x/3.1.x 韌體的 tag），無法百分之百對應實機當下韌體版本~~ → 五種 Modifier 皆已實機測試確認輸出正確，無落差，疑慮解除
-- [ ] Arpeggiate Punctuation 練習
+- [x] ~~Arpeggiate Punctuation 練習~~ → 整個 Chapter 已移除（`unit-4/arpeggiate-punctuation`），原因見下
+  - 曾經實作過一版（Trailing／Sentence-Ending 兩個練習，`because` chord + 符號 arpeggiate），架構與 highlight 作法都比照 Chord Modifier；程式邏輯本身用瀏覽器模擬按鍵驗證過沒問題，但拿去實機測試時重現不了
+  - 原因：這個行為在使用者的裝置上（新版韌體）並不是內建 chord library 就有的東西，需要另外用 CCOS 手動設定/匯入對應的 arpeggiate 字典項目才會生效——跟 Chord Modifier 那五種是「所有支援機種出廠就有」的性質不同，不能直接假設是開箱即用的功能
+  - 佐證：`CCOS-firmware` 的 `e2e/tests/arpeggiates/custom_period.yml` 測試本身就是先用 `addChords` 自訂了 `ARPEGGIATE + .` 這個對應（`output: [JOIN, ., CAPITALIZE, JOIN]`），代表這是在測試 token 執行引擎本身，而不是在驗證某個出廠預設值——這點在規劃階段沒有意識到，等實機測不出來才確認
+  - 已還原的東西：`src/app/pages/unit4/arpeggiate-punctuation-page/` 整個目錄、`app.routes.ts`／`units.ts` 的對應 chapter／route、`exercises.ts` 的 `ARPEGGIATE_PUNCTUATION_EXERCISES`、`ExerciseStep.arpeggiateChar`／`resolveChordIllustration()` 的 `arpeggiateChar` 參數；Unit 4 的 introduction／summary 文案與 Chord Modifier 頁面「covered in more depth next chapter」的預告句也一併拿掉
+  - 之後如果要重新做，需要先確認：這個功能到底要不要教（畢竟需要額外設定，不是每個使用者都會做），或者調整成「教怎麼用 CCOS 設定 arpeggiate 字典」的說明型章節，而非練習型
 - [ ] Compound Chord 引導練習
 - [ ] Dynamic Chord Library 教學（較複雜，暫不做練習，只補設定方式的說明）
 - [ ] 補上單元測試（目前 `nx test` 有設定但一支 `.spec.ts` 都沒有），優先針對輸入/狀態判斷邏輯（如 `<app-switch>` 方向判定、chording 練習的按鍵緩衝區邏輯）

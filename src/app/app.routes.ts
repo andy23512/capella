@@ -164,13 +164,6 @@ export const APP_ROUTES: Route[] = [
       ).then((m) => m.ChordModifierPageComponent),
   },
   {
-    path: 'unit-4/arpeggiate-punctuation',
-    loadComponent: () =>
-      import(
-        './pages/unit4/arpeggiate-punctuation-page/arpeggiate-punctuation-page.component'
-      ).then((m) => m.ArpeggiatePunctuationPageComponent),
-  },
-  {
     path: 'unit-4/summary',
     loadComponent: () =>
       import('./pages/unit4/summary-page/summary-page.component').then(
