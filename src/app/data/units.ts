@@ -162,7 +162,7 @@ export const UNITS: Unit[] = [
     introduction:
       "Every unit so far has been character entry — one switch at a time. This unit introduces the CharaChorder's other mode: chording, where pressing several switches together produces something other than those characters in sequence, like a whole word. You'll see the basic mechanic, an on-the-fly variant called an impulse chord, and how modifiers change a chord's output — arpeggiated in right after it, a quick tap rather than a hold, without slowing you down.",
     summary:
-      "You've now seen the core chording mechanic: pressing multiple switches together for one output, impulse chords for training something on the spot, and chord modifiers for changing a chord's prefix, suffix, capitalization, and more — arpeggiated in with a quick tap right after the chord rather than a hold. Unit 5 builds on this with the more advanced chaining and library features chording enables.",
+      "You've now seen the core chording mechanic: pressing multiple switches together for one output, impulse chords for training something on the spot, and chord modifiers for changing a chord's prefix, suffix, capitalization, and more — arpeggiated in with a quick tap right after the chord rather than a hold. Together with the standard key set and special keys from Units 2 and 3, that's the complete toolkit this tutorial covers for getting text and commands out through a CharaChorder's switches.",
     resources: [
       {
         label: 'CharaChorder Docs — Glossary',
@@ -200,48 +200,6 @@ export const UNITS: Unit[] = [
         unitId: 'unit-4',
         title: 'Summary',
         path: '/unit-4/summary',
-        kind: 'summary',
-      },
-    ],
-  },
-  {
-    id: 'unit-5',
-    title: 'Unit 5: Advanced Chording',
-    introduction:
-      "With the basics of chording down, this unit covers two features for scaling chording up. A compound chord chains separately trained chords together within a timing window so a handful of word-parts can cover far more words than they could alone. A dynamic chord library takes that further, letting the same switches mean different things depending on which library is active — so separate chord sets, like one for email and one for code, don't have to conflict.",
-    summary:
-      "You've now covered the full arc of chording on a CharaChorder: simple chords, impulse chords, modifiers, arpeggiating, compound chords, and dynamic chord libraries. Together with the standard key set and special keys from Units 2 and 3, that's the complete toolkit the device offers for getting text and commands out through its switches.",
-    resources: [
-      {
-        label: 'CharaChorder Docs — Glossary',
-        url: 'https://docs.charachorder.com/Glossary.html',
-      },
-    ],
-    chapters: [
-      {
-        id: 'unit-5-introduction',
-        unitId: 'unit-5',
-        title: 'Introduction',
-        path: '/unit-5/introduction',
-        kind: 'intro',
-      },
-      {
-        id: 'compound-chord',
-        unitId: 'unit-5',
-        title: 'Chapter 1: Compound Chord',
-        path: '/unit-5/compound-chord',
-      },
-      {
-        id: 'dynamic-chord-library',
-        unitId: 'unit-5',
-        title: 'Chapter 2: Dynamic Chord Library',
-        path: '/unit-5/dynamic-chord-library',
-      },
-      {
-        id: 'unit-5-summary',
-        unitId: 'unit-5',
-        title: 'Summary',
-        path: '/unit-5/summary',
         kind: 'summary',
       },
     ],

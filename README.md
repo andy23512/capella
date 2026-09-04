@@ -21,7 +21,6 @@ and how to actually use it, one short chapter at a time.
 - Unit 2: Standard Keys
 - Unit 3: CharaChorder Special Keys
 - Unit 4: Basic Chording
-- Unit 5: Advanced Chording
 
 Each unit's chapters pair an explanation with an interactive device-layout
 diagram, and most pair with a hands-on exercise that listens for real

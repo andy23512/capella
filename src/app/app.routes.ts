@@ -171,34 +171,6 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
-    path: 'unit-5/introduction',
-    loadComponent: () =>
-      import(
-        './pages/unit5/introduction-page/introduction-page.component'
-      ).then((m) => m.Unit5IntroductionPageComponent),
-  },
-  {
-    path: 'unit-5/compound-chord',
-    loadComponent: () =>
-      import(
-        './pages/unit5/compound-chord-page/compound-chord-page.component'
-      ).then((m) => m.CompoundChordPageComponent),
-  },
-  {
-    path: 'unit-5/dynamic-chord-library',
-    loadComponent: () =>
-      import(
-        './pages/unit5/dynamic-chord-library-page/dynamic-chord-library-page.component'
-      ).then((m) => m.DynamicChordLibraryPageComponent),
-  },
-  {
-    path: 'unit-5/summary',
-    loadComponent: () =>
-      import('./pages/unit5/summary-page/summary-page.component').then(
-        (m) => m.Unit5SummaryPageComponent,
-      ),
-  },
-  {
     path: 'exercise/:exerciseId',
     loadComponent: () =>
       import('./pages/exercise-page/exercise-page.component').then(

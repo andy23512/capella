@@ -24,8 +24,9 @@
   - 佐證：`CCOS-firmware` 的 `e2e/tests/arpeggiates/custom_period.yml` 測試本身就是先用 `addChords` 自訂了 `ARPEGGIATE + .` 這個對應（`output: [JOIN, ., CAPITALIZE, JOIN]`），代表這是在測試 token 執行引擎本身，而不是在驗證某個出廠預設值——這點在規劃階段沒有意識到，等實機測不出來才確認
   - 已還原的東西：`src/app/pages/unit4/arpeggiate-punctuation-page/` 整個目錄、`app.routes.ts`／`units.ts` 的對應 chapter／route、`exercises.ts` 的 `ARPEGGIATE_PUNCTUATION_EXERCISES`、`ExerciseStep.arpeggiateChar`／`resolveChordIllustration()` 的 `arpeggiateChar` 參數；Unit 4 的 introduction／summary 文案與 Chord Modifier 頁面「covered in more depth next chapter」的預告句也一併拿掉
   - 之後如果要重新做，需要先確認：這個功能到底要不要教（畢竟需要額外設定，不是每個使用者都會做），或者調整成「教怎麼用 CCOS 設定 arpeggiate 字典」的說明型章節，而非練習型
-- [ ] Compound Chord 引導練習
-- [ ] Dynamic Chord Library 教學（較複雜，暫不做練習，只補設定方式的說明）
+- [x] ~~Compound Chord 引導練習~~ → 隨 Unit 5 一併移除，見下
+- [x] ~~Dynamic Chord Library 教學~~ → 隨 Unit 5 一併移除，見下
+- [x] Unit 5: Advanced Chording 整個移除 — 使用者判斷這超出 Tutorial 範疇（`src/app/pages/unit5/` 整個目錄、`app.routes.ts`／`units.ts` 的 unit-5 與其兩個 Chapter），一併修正 Unit 4 summary 文案原本預告 Unit 5 的那句、`README.md` 的 Units 清單
 - [ ] 補上單元測試（目前 `nx test` 有設定但一支 `.spec.ts` 都沒有），優先針對輸入/狀態判斷邏輯（如 `<app-switch>` 方向判定、chording 練習的按鍵緩衝區邏輯）
 - [ ] 檢查所有 Unit（`src/app/data/units.ts`）的 Other resources 是否有需要補充的連結
 - [ ] Capella 的按鍵標籤（key label）改直接引用 `tangent-cc-lib`，不要手動維護一份
