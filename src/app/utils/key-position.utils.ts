@@ -1,19 +1,28 @@
 import {
   ACTIONS,
   ActionType,
+  ALT_GRAPH_KEY_LABEL,
   CharacterActionCode,
   DEFAULT_DEVICE_LAYOUT,
   DeviceLayout,
+  FLAG_SHIFT_KEY_LABEL,
+  FN_SHIFT_KEY_LABEL,
   FingerMap,
   HandMap,
   HighlightKeyCombination,
   HighlightSetting,
   KEYBOARD_LAYOUTS_FROM_KBDLAYOUT,
   KeyCombination,
+  KeyLabelType,
   M4G_DEFAULT_DEVICE_LAYOUT,
+  NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
+  NON_WSK_CODE_2_RAW_KEY_LABEL_MAP,
+  NUM_SHIFT_KEY_LABEL,
   NonKeyActionName,
   NonWSKCode,
   POSITION_CODE_LAYOUT,
+  RawKeyLabel,
+  SHIFT_KEY_LABEL,
   convertKeyboardLayoutToCharacterKeyCodeMap,
   getCharacterActionCodesFromCharacterKeyCode,
   getHighlightKeyCombinationFromKeyCombinations,
@@ -46,32 +55,27 @@ export interface PositionLabel {
 /** Maps a switch's position code to the label shown on it in the layout diagram. */
 export type PositionLabels = Record<number, PositionLabel>;
 
-/** On-switch label for a non-printing key, ported from Alnitak's NON_WSK_CODE_2_RAW_KEY_LABEL_MAP (tangent-cc-lib). */
-const NAMED_KEY_LABEL: Partial<Record<NonWSKCode, PositionLabel>> = {
-  Enter: { text: 'keyboard_return', icon: true },
-  Backspace: { text: 'backspace', icon: true },
-  Tab: { text: 'keyboard_tab', icon: true },
-  Delete: { text: 'DEL' },
-  Escape: { text: 'ESC' },
-  ArrowUp: { text: 'keyboard_arrow_up', icon: true },
-  ArrowDown: { text: 'keyboard_arrow_down', icon: true },
-  ArrowLeft: { text: 'keyboard_arrow_left', icon: true },
-  ArrowRight: { text: 'keyboard_arrow_right', icon: true },
-};
-
-/** On-switch label for a mouse action, ported from Alnitak's NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP (tangent-cc-lib). */
-const MOUSE_ACTION_LABEL: Partial<Record<NonKeyActionName, PositionLabel>> = {
-  MouseLeftClick: { text: 'left_click', icon: true },
-  MouseRightClick: { text: 'right_click', icon: true },
-  MouseMoveUp: { text: 'arrow_circle_up', icon: true },
-  MouseMoveDown: { text: 'arrow_circle_down', icon: true },
-  MouseMoveLeft: { text: 'arrow_circle_left', icon: true },
-  MouseMoveRight: { text: 'arrow_circle_right', icon: true },
-  MouseScrollCoastUp: { text: 'swipe_up', icon: true },
-  MouseScrollCoastDown: { text: 'swipe_down', icon: true },
-  MouseScrollCoastLeft: { text: 'swipe_left', icon: true },
-  MouseScrollCoastRight: { text: 'swipe_right', icon: true },
-};
+/**
+ * Converts a tangent-cc-lib key label to Capella's on-switch label format.
+ * Only String and Icon ever occur across the labels Capella references
+ * (NON_WSK_CODE_2_RAW_KEY_LABEL_MAP, NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
+ * and the individual SHIFT/NUM_SHIFT/FN_SHIFT/FLAG_SHIFT/ALT_GRAPH
+ * constants) — Logo and ActionCode have no PositionLabel rendering yet
+ * because no exercise triggers one.
+ */
+function toPositionLabel(rawLabel: RawKeyLabel): PositionLabel {
+  switch (rawLabel.type) {
+    case KeyLabelType.String:
+      return { text: rawLabel.c };
+    case KeyLabelType.Icon:
+      return { text: rawLabel.c, icon: true };
+    case KeyLabelType.Logo:
+    case KeyLabelType.ActionCode:
+      throw new Error(
+        `No PositionLabel rendering for tangent-cc-lib's "${rawLabel.type}" key labels yet.`,
+      );
+  }
+}
 
 const US_KEYBOARD_LAYOUT =
   KEYBOARD_LAYOUTS_FROM_KBDLAYOUT.find((layout) => layout.id === 'us') ??
@@ -164,23 +168,23 @@ function labelForHeldPosition(
   const { layerShiftPositionCodeMap, modifierKeyPositionCodeMap } =
     activeDerivedLayoutData();
   if (modifierKeyPositionCodeMap.shift[highlight.layer]?.includes(positionCode)) {
-    return { text: 'shift', icon: true };
+    return toPositionLabel(SHIFT_KEY_LABEL);
   }
   if (
     modifierKeyPositionCodeMap.altGraph[highlight.layer]?.includes(
       positionCode,
     )
   ) {
-    return { text: 'ALT GR' };
+    return toPositionLabel(ALT_GRAPH_KEY_LABEL);
   }
   if (layerShiftPositionCodeMap.numShift.includes(positionCode)) {
-    return { text: 'counter_2', icon: true };
+    return toPositionLabel(NUM_SHIFT_KEY_LABEL);
   }
   if (layerShiftPositionCodeMap.fnShift.includes(positionCode)) {
-    return { text: 'FN' };
+    return toPositionLabel(FN_SHIFT_KEY_LABEL);
   }
   if (layerShiftPositionCodeMap.flagShift.includes(positionCode)) {
-    return { text: 'FLAG' };
+    return toPositionLabel(FLAG_SHIFT_KEY_LABEL);
   }
   return null;
 }
@@ -366,13 +370,17 @@ export function buildAmbidextrousThrowoverLabels(
   return labels;
 }
 
-/** On-switch label for each Chord Modifier switch — 'AT' matches the label already used for Ambidextrous Throwover elsewhere; the other two reuse labelForHeldPosition's generic Shift/Numeric Layer icons. */
+/** On-switch label for each Chord Modifier switch, reusing tangent-cc-lib's labels for the same switches elsewhere (Shift, the Ambidextrous Throwover switches, and the Numeric Layer switches). */
 const CHORD_MODIFIER_LABEL: Record<ChordModifierKind, PositionLabel> = {
-  capitalization: { text: 'shift', icon: true },
-  presentTense: { text: 'AT' },
-  plural: { text: 'AT' },
-  pastTense: { text: 'counter_2', icon: true },
-  comparative: { text: 'counter_2', icon: true },
+  capitalization: toPositionLabel(SHIFT_KEY_LABEL),
+  presentTense: toPositionLabel(
+    NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP.AmbidextrousThrowoverLeft,
+  ),
+  plural: toPositionLabel(
+    NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP.AmbidextrousThrowoverRight,
+  ),
+  pastTense: toPositionLabel(NUM_SHIFT_KEY_LABEL),
+  comparative: toPositionLabel(NUM_SHIFT_KEY_LABEL),
 };
 
 /** First position code among `codes` that decodes to `hand`, or null if none does. */
@@ -537,15 +545,15 @@ export function resolveStepLabels(
     return buildPositionLabels(highlight, characterLabel);
   }
   if (step.kind === 'named-key') {
-    const label = NAMED_KEY_LABEL[step.key as NonWSKCode] ?? {
-      text: step.label,
-    };
+    const label = toPositionLabel(
+      NON_WSK_CODE_2_RAW_KEY_LABEL_MAP[step.key as NonWSKCode],
+    );
     return buildPositionLabels(highlight, label);
   }
   if (step.kind === 'mouse') {
-    const label = MOUSE_ACTION_LABEL[step.key as NonKeyActionName] ?? {
-      text: step.label,
-    };
+    const label = toPositionLabel(
+      NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP[step.key as NonKeyActionName],
+    );
     return buildPositionLabels(highlight, label);
   }
   if (step.kind === 'chord') {

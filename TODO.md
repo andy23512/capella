@@ -36,11 +36,7 @@
 - [x] 檢查所有 Unit（`src/app/data/units.ts`）的 Other resources 是否有需要補充的連結
   - Unit 4：拿掉 `CharaChorder Docs — Glossary`，改成 `CharaChorder Docs — Chords`（`docs.charachorder.com/Chords.html`）與 Tangent 的英文和弦輸入學習建議部落格文
   - Unit 1-3：使用者已看過確認沒問題；額外查過 docs.charachorder.com 目錄，沒有比現有連結更貼合 Unit 1（3D switch 機制）/Unit 3（DUP／Ambidextrous Throwover）範疇的專屬頁面——`Layout.html` 講的是排列設計哲學與作業系統端 keycode 轉換的細節，超出這兩個 Unit 目前範圍，不建議替換
-- [ ] Capella 的按鍵標籤（key label）改直接引用 `tangent-cc-lib`，不要手動維護一份
-  - 背景：`tangent-cc-lib` 已經有現成的 `NON_WSK_CODE_2_RAW_KEY_LABEL_MAP`、`NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP`、`SHIFT_KEY_LABEL`／`NUM_SHIFT_KEY_LABEL`／`FN_SHIFT_KEY_LABEL`／`FLAG_SHIFT_KEY_LABEL`／`ALT_GRAPH_KEY_LABEL`（`node_modules/tangent-cc-lib/dist/lib/data/key-label/key-labels.js`，經 `data/index.js` 正常 export），但 `src/app/utils/key-position.utils.ts` 的 `NAMED_KEY_LABEL`、`MOUSE_ACTION_LABEL`、`labelForHeldPosition`、`CHORD_MODIFIER_LABEL` 是手動 port 自 alnitak 的一份拷貝（見檔案內註解），沒有直接引用這個共用來源
-  - 已確認的落差（Capella 現狀 vs tangent-cc-lib 正確值），並用 `tangent-cc-lib` 的 layout 解析函式跑過目前所有 exercise 的字元／按鍵，確認實際會不會顯示在畫面上：
-    - **FN Shift**（會顯示）：`FUNCTION_KEYS_EXERCISES` 的 `F1–F12` 練習（F1–F10、F12，F11 因系統快捷鍵而跳過）會觸發 FN Shift 標籤——Capella 文字 `'FN'` vs `FN_SHIFT_KEY_LABEL` 應為 icon `'counter_3'`
-    - **Chord Modifier 的 Present Tense／Plural（AT 鍵）**（會顯示）：`CHORD_MODIFIER_EXERCISES` 會觸發——Capella 文字 `'AT'` vs `NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP.AmbidextrousThrowoverLeft/Right` 應為 icon `'switch_left'`／`'switch_right'`
-    - AltGraph／Flag Shift（目前不會顯示）：用 US 配列 + `DEFAULT_DEVICE_LAYOUT` 跑過所有現有 exercise 的字元／按鍵（含 letters/number/symbols/named-key），沒有任何一個會觸發 AltGraph 或 Flag Shift 標籤，屬於目前 unreachable 的分支，先不列入優先修正範圍，等未來有對應 Lesson 再一併處理
-    - Enter／Backspace／Tab／方向鍵／滑鼠動作等目前是一致的，暫無問題
-  - 待處理的型別落差：`tangent-cc-lib` 的 `RawKeyLabel` 有 `String`／`Icon`／`Logo`（字型 logo）／`ActionCode`（數值代碼）四種 type，Capella 的 `PositionLabel` 只有 `text` + `icon?: boolean` 兩種，改用共用來源前要決定 `Logo`／`ActionCode` 這兩種怎麼處理（目前用到的範圍只有 `String`／`Icon`，可能不受影響，但要確認）
+- [x] Capella 的按鍵標籤（key label）改直接引用 `tangent-cc-lib`，不要手動維護一份
+  - 移除 `key-position.utils.ts` 手動維護的 `NAMED_KEY_LABEL`／`MOUSE_ACTION_LABEL` 拷貝，改為直接從 `tangent-cc-lib` import `NON_WSK_CODE_2_RAW_KEY_LABEL_MAP`、`NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP`、`SHIFT_KEY_LABEL`／`NUM_SHIFT_KEY_LABEL`／`FN_SHIFT_KEY_LABEL`／`FLAG_SHIFT_KEY_LABEL`／`ALT_GRAPH_KEY_LABEL`，`labelForHeldPosition`、`CHORD_MODIFIER_LABEL`、`resolveStepLabels` 的 named-key／mouse 分支都改吃這些共用來源
+  - 型別落差的解法：新增 `toPositionLabel(rawLabel: RawKeyLabel): PositionLabel` 轉換函式，`String`／`Icon` 兩種對應到 `PositionLabel` 的 `{text}`／`{text, icon: true}`；確認過 Capella 實際用到的這幾個 label 來源（`NON_WSK_CODE_2_RAW_KEY_LABEL_MAP`、`NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP`、上述幾個 shift 常數）裡從未出現 `Logo`／`ActionCode` 這兩種 type，因此這兩個分支直接 throw 描述性 Error（滿足 TypeScript exhaustiveness，同時記錄這個限制），不需要在 `PositionLabel` 上多加欄位
+  - 修正結果：FN Shift 顯示改為 icon `counter_3`（原本文字 `'FN'`），Chord Modifier 的 Present Tense／Plural（AT 鍵）改為 icon `switch_left`／`switch_right`（原本文字 `'AT'`）——`tsc --noEmit`（app／spec 兩份 tsconfig）與 `nx test`（19/19）皆通過，並在瀏覽器實際開 `/exercise/f1-f12` 與 `/exercise/chord-modifier-present-tense` 目視確認兩處圖示都正確換成了圓圈 3／左右切換箭頭 icon，不再是純文字
