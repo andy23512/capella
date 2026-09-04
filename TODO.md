@@ -33,7 +33,9 @@
     - `src/app/utils/key-position.utils.spec.ts`：`decodePositionCode`（position code → hand/finger/direction，含無效 code 回傳 null）、`resolveCharacterKeyPosition`、`resolveChordIllustration`（多字元組合、同一開關衝突時回傳 null、modifier 疊加）、`resolveStepPosition`/`resolveStepLabels` 依 step kind 分派
     - `src/app/pages/exercise-page/exercise-page.component.spec.ts`：chording 練習的 `chordBuffer`／`onChordKeydown` 判定邏輯——完全比對、`.trim()` 吸收裝置自動送出的尾隨空白、模擬「先印出原始按鍵字元再 Backspace 修正」的實機行為、Backspace 修正打錯字、比對錯誤時不算 mistake（呼應第 9-11 行的既有設計決策）
     - 未涵蓋：`ExercisePageComponent` 的 mouse/character/named-key step 判定與 `ProgressService`/`DeviceLayoutService` 本身，之後如有需要可再補
-- [ ] 檢查所有 Unit（`src/app/data/units.ts`）的 Other resources 是否有需要補充的連結
+- [x] 檢查所有 Unit（`src/app/data/units.ts`）的 Other resources 是否有需要補充的連結
+  - Unit 4：拿掉 `CharaChorder Docs — Glossary`，改成 `CharaChorder Docs — Chords`（`docs.charachorder.com/Chords.html`）與 Tangent 的英文和弦輸入學習建議部落格文
+  - Unit 1-3：使用者已看過確認沒問題；額外查過 docs.charachorder.com 目錄，沒有比現有連結更貼合 Unit 1（3D switch 機制）/Unit 3（DUP／Ambidextrous Throwover）範疇的專屬頁面——`Layout.html` 講的是排列設計哲學與作業系統端 keycode 轉換的細節，超出這兩個 Unit 目前範圍，不建議替換
 - [ ] Capella 的按鍵標籤（key label）改直接引用 `tangent-cc-lib`，不要手動維護一份
   - 背景：`tangent-cc-lib` 已經有現成的 `NON_WSK_CODE_2_RAW_KEY_LABEL_MAP`、`NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP`、`SHIFT_KEY_LABEL`／`NUM_SHIFT_KEY_LABEL`／`FN_SHIFT_KEY_LABEL`／`FLAG_SHIFT_KEY_LABEL`／`ALT_GRAPH_KEY_LABEL`（`node_modules/tangent-cc-lib/dist/lib/data/key-label/key-labels.js`，經 `data/index.js` 正常 export），但 `src/app/utils/key-position.utils.ts` 的 `NAMED_KEY_LABEL`、`MOUSE_ACTION_LABEL`、`labelForHeldPosition`、`CHORD_MODIFIER_LABEL` 是手動 port 自 alnitak 的一份拷貝（見檔案內註解），沒有直接引用這個共用來源
   - 已確認的落差（Capella 現狀 vs tangent-cc-lib 正確值），並用 `tangent-cc-lib` 的 layout 解析函式跑過目前所有 exercise 的字元／按鍵，確認實際會不會顯示在畫面上：

@@ -165,8 +165,13 @@ export const UNITS: Unit[] = [
       "You've now seen the core chording mechanic: pressing multiple switches together for one output, impulse chords for training something on the spot, and chord modifiers for changing a chord's prefix, suffix, capitalization, and more — arpeggiated in with a quick tap right after the chord rather than a hold. Together with the standard key set and special keys from Units 2 and 3, that's the complete toolkit this tutorial covers for getting text and commands out through a CharaChorder's switches.",
     resources: [
       {
-        label: 'CharaChorder Docs — Glossary',
-        url: 'https://docs.charachorder.com/Glossary.html',
+        label: 'CharaChorder Docs — Chords',
+        url: 'https://docs.charachorder.com/Chords.html',
+      },
+      {
+        label:
+          "Tangent's suggestion for learning English chorded entry on CharaChorder devices",
+        url: 'https://andy23512.github.io/blog/tangent-s-suggestion-for-learning-english-chorded-entry-on-charachorder-devices/',
       },
     ],
     chapters: [
