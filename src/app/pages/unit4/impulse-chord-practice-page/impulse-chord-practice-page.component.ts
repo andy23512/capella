@@ -16,6 +16,13 @@ export const IMPULSE_CHORD_PRACTICE_ID = 'impulse-chord-practice';
 const OUTPUT_MARKER_RE = /^>I<mpulse output:\s*(.*)$/;
 const INPUT_MARKER_RE = /^>I<mpulse input:\s*(.*)$/;
 
+/**
+ * How long the field may stay off a marker before it counts as "the device
+ * left the GTM prompt". On every step the device redraws by Backspacing the
+ * old text (which momentarily breaks the marker) and then reprinting it.
+ */
+const MARKER_LOST_GRACE_MS = 300;
+
 interface ImpulsePracticePhase {
   kind: 'idle' | 'output' | 'input';
   /** Output text typed so far — only meaningful when kind is 'output'. */
@@ -39,6 +46,7 @@ export class ImpulseChordPracticePageComponent {
   protected readonly value = signal('');
   /** Set once the field first matches a GTM marker, so leaving the marker text again can be read as "the device just finished". */
   private readonly hasStarted = signal(false);
+  private markerLostTimer: ReturnType<typeof setTimeout> | undefined;
 
   /**
    * Whether this session's flow is complete — either the device left the
@@ -79,8 +87,13 @@ export class ImpulseChordPracticePageComponent {
     this.value.set(raw);
     if (OUTPUT_MARKER_RE.test(raw) || INPUT_MARKER_RE.test(raw)) {
       this.hasStarted.set(true);
+      this.cancelMarkerLostTimer();
     } else if (this.hasStarted()) {
-      this.complete(false);
+      this.cancelMarkerLostTimer();
+      this.markerLostTimer = setTimeout(() => {
+        this.markerLostTimer = undefined;
+        this.complete(false);
+      }, MARKER_LOST_GRACE_MS);
     }
   }
 
@@ -96,13 +109,22 @@ export class ImpulseChordPracticePageComponent {
     this.complete(true);
   }
 
+  private cancelMarkerLostTimer() {
+    if (this.markerLostTimer !== undefined) {
+      clearTimeout(this.markerLostTimer);
+      this.markerLostTimer = undefined;
+    }
+  }
+
   private complete(skipped: boolean) {
+    this.cancelMarkerLostTimer();
     this.justCompleted.set(true);
     this.skippedThisSession.set(skipped);
     this.progressService.markExerciseCompleted(IMPULSE_CHORD_PRACTICE_ID);
   }
 
   protected reset() {
+    this.cancelMarkerLostTimer();
     this.value.set('');
     this.hasStarted.set(false);
     this.justCompleted.set(false);
