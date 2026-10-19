@@ -11,9 +11,12 @@
     the spot, right where you're typing — no separate app required.
   </p>
   <p class="text-gray-50">
-    It's called up by a hard-coded chord baked into the firmware, not
-    something you configure yourself: <strong>i+DUP</strong>. Performing it
-    walks you through a short prompt right in your text: perform the chord
+    It's called up by <strong>i+DUP</strong>, a hard-coded chord baked into
+    the firmware that always triggers Impulse Chord and can't be changed.
+    In Device Manager you can also assign Impulse Chord to another key or
+    chord of your own if you'd like a different trigger. Either way,
+    triggering Impulse Chord walks you through a short prompt right in your
+    text: perform the chord
     input you want to assign, call up impulse, type the output it should
     produce, confirm the output, then confirm the captured input — pressing
     Escape at any point starts you over instead of leaving you to delete
@@ -24,6 +27,47 @@
     about to retype the same phrase again, without breaking your flow to
     go train it properly first.
   </p>
+
+  <h2 class="mt-10 text-xl font-medium">The flow</h2>
+  <ol class="mt-4 flex list-none flex-col gap-1 p-0 text-gray-50 sm:max-w-xl">
+    <li class="flex gap-3 rounded-lg bg-gray-700 p-4 border border-dashed border-gray-300">
+      <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-capella-400 text-sm font-medium text-gray-900">1</span>
+      <div>
+        <p class="m-0 font-medium">Chord the input (optional)</p>
+        <p class="mt-1 text-sm text-gray-100">Perform the combo you want to assign, anywhere you can type. Jumbled letters mean the combo is free; if it prints an existing output, continuing will overwrite that chord. You can skip this and perform the combo at step 4 instead.</p>
+      </div>
+    </li>
+    <li aria-hidden="true" class="flex justify-center text-gray-300"><mat-icon>arrow_downward</mat-icon></li>
+    <li class="flex gap-3 rounded-lg bg-gray-700 p-4">
+      <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-capella-400 text-sm font-medium text-gray-900">2</span>
+      <div>
+        <p class="m-0 font-medium">Call impulse: <strong>i+DUP</strong></p>
+        <p class="mt-1 text-sm text-gray-100">The prompt <code class="font-mono">&gt;I&lt;mpulse output:</code> appears. Anything you chorded before it may sit in front of the prompt — that is fine.</p>
+      </div>
+    </li>
+    <li aria-hidden="true" class="flex justify-center text-gray-300"><mat-icon>arrow_downward</mat-icon></li>
+    <li class="flex gap-3 rounded-lg bg-gray-700 p-4">
+      <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-capella-400 text-sm font-medium text-gray-900">3</span>
+      <div>
+        <p class="m-0 font-medium">Type the output, then press <strong>Enter</strong></p>
+        <p class="mt-1 text-sm text-gray-100">Everything you type is recorded as the output, so use Escape rather than Backspace if you slip.</p>
+      </div>
+    </li>
+    <li aria-hidden="true" class="flex justify-center text-gray-300"><mat-icon>arrow_downward</mat-icon></li>
+    <li class="flex gap-3 rounded-lg bg-gray-700 p-4">
+      <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-capella-400 text-sm font-medium text-gray-900">4</span>
+      <div>
+        <p class="m-0 font-medium">Check the input, then press <strong>Enter</strong></p>
+        <p class="mt-1 text-sm text-gray-100">The prompt <code class="font-mono">&gt;I&lt;mpulse input:</code> shows the captured combo. If it is not what you want, or is empty, perform the combo you want and it updates. Enter saves the chord to your device.</p>
+      </div>
+    </li>
+  </ol>
+  <ul class="mt-4 list-disc pl-6 text-sm text-gray-100 sm:max-w-xl">
+    <li>
+      <strong>Escape</strong> at any step starts you over, so you never have
+      to delete what you typed.
+    </li>
+  </ul>
 
   <h2 class="mt-10 text-xl font-medium">Try it</h2>
   <p class="mt-2 text-gray-50">

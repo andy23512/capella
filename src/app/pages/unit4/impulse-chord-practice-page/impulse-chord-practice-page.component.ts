@@ -13,8 +13,12 @@ import { ProgressService } from '../../../services/progress.service';
 /** Also referenced from impulse-chord-page to check/mark completion. */
 export const IMPULSE_CHORD_PRACTICE_ID = 'impulse-chord-practice';
 
-const OUTPUT_MARKER_RE = /^>I<mpulse output:\s*(.*)$/;
-const INPUT_MARKER_RE = /^>I<mpulse input:\s*(.*)$/;
+/**
+ * Deliberately not anchored to the start: the user may fire a chord before
+ * i+DUP, so that chord's output can sit in front of the marker.
+ */
+const OUTPUT_MARKER_RE = />I<mpulse output:\s*(.*)$/;
+const INPUT_MARKER_RE = />I<mpulse input:\s*(.*)$/;
 
 /**
  * How long the field may stay off a marker before it counts as "the device
