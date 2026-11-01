@@ -4,6 +4,7 @@ import {
   Exercise,
   ExerciseStep,
 } from '../models/exercise.models';
+import { DeviceLayoutId } from '../services/device-layout.service';
 
 function charSteps(text: string): ExerciseStep[] {
   return [...text].map((char) => ({
@@ -326,6 +327,13 @@ export const ALL_EXERCISES: Exercise[] = [
   ...CHORD_MODIFIER_EXERCISES,
   ...DUP_EXERCISES,
 ];
+
+export function isExerciseAvailable(
+  exercise: Exercise,
+  deviceLayoutId: DeviceLayoutId,
+): boolean {
+  return !exercise.unavailableOnDeviceLayouts?.includes(deviceLayoutId);
+}
 
 export function exercisesForChapter(chapterId: string): Exercise[] {
   return ALL_EXERCISES.filter((exercise) => exercise.chapterId === chapterId);

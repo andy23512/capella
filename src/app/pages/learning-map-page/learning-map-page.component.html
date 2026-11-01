@@ -50,7 +50,11 @@
                 >
               }
             </a>
-            @if (node.exerciseTotal > 0) {
+            @if (node.exercisesDisabled) {
+              <p class="mt-1 text-sm text-gray-300">
+                Exercises disabled on the M4G layout
+              </p>
+            } @else if (node.exerciseTotal > 0) {
               <p
                 class="mt-1 text-sm"
                 [class.text-capella-500]="

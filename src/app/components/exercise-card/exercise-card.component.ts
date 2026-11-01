@@ -1,6 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { isExerciseAvailable } from '../../data/exercises';
 import { Exercise } from '../../models/exercise.models';
 import { DeviceLayoutService } from '../../services/device-layout.service';
 import { ProgressService } from '../../services/progress.service';
@@ -19,9 +20,10 @@ export class ExerciseCardComponent {
 
   protected readonly unavailable = computed(
     () =>
-      this.exercise().unavailableOnDeviceLayouts?.includes(
+      !isExerciseAvailable(
+        this.exercise(),
         this.deviceLayoutService.deviceLayoutId(),
-      ) ?? false,
+      ),
   );
 
   protected readonly completed = computed(() =>

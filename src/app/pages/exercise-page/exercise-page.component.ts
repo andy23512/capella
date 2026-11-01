@@ -11,7 +11,7 @@ import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HighlightKeyCombination } from 'tangent-cc-lib';
 import { LayoutComponent } from '../../components/layout/layout.component';
-import { ALL_EXERCISES } from '../../data/exercises';
+import { ALL_EXERCISES, isExerciseAvailable } from '../../data/exercises';
 import { UNITS } from '../../data/units';
 import { Exercise, ExerciseStep } from '../../models/exercise.models';
 import { DeviceLayoutService } from '../../services/device-layout.service';
@@ -87,9 +87,7 @@ export class ExercisePageComponent {
       return null;
     }
     if (
-      found.unavailableOnDeviceLayouts?.includes(
-        this.deviceLayoutService.deviceLayoutId(),
-      )
+      !isExerciseAvailable(found, this.deviceLayoutService.deviceLayoutId())
     ) {
       this.router.navigateByUrl(findChapterPath(found.chapterId));
       return null;

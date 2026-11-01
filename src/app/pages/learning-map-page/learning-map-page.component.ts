@@ -1,9 +1,13 @@
 import { Component, computed, inject } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { exercisesForChapter } from '../../data/exercises';
+import {
+  exercisesForChapter,
+  isExerciseAvailable,
+} from '../../data/exercises';
 import { UNITS } from '../../data/units';
 import { ChapterMeta } from '../../models/content.models';
+import { DeviceLayoutService } from '../../services/device-layout.service';
 import { ProgressService } from '../../services/progress.service';
 
 interface ChapterNode {
@@ -11,6 +15,8 @@ interface ChapterNode {
   read: boolean;
   exerciseTotal: number;
   exerciseCompleted: number;
+  /** The chapter has exercises, but the selected device layout disables all of them. */
+  exercisesDisabled: boolean;
 }
 
 interface UnitGroup {
@@ -27,16 +33,23 @@ interface UnitGroup {
 })
 export class LearningMapPageComponent {
   private readonly progressService = inject(ProgressService);
+  private readonly deviceLayoutService = inject(DeviceLayoutService);
 
   protected readonly unitGroups = computed<UnitGroup[]>(() =>
     UNITS.map((unit) => ({
       id: unit.id,
       title: unit.title,
       nodes: unit.chapters.map((chapter) => {
-        const exercises = exercisesForChapter(chapter.id);
+        const allExercises = exercisesForChapter(chapter.id);
+        const layoutId = this.deviceLayoutService.deviceLayoutId();
+        const exercises = allExercises.filter((exercise) =>
+          isExerciseAvailable(exercise, layoutId),
+        );
         return {
           chapter,
           read: this.progressService.isChapterRead(chapter.id),
+          exercisesDisabled:
+            allExercises.length > 0 && exercises.length === 0,
           exerciseTotal: exercises.length,
           exerciseCompleted: exercises.filter((exercise) =>
             this.progressService.isExerciseCompleted(exercise.id),
@@ -48,9 +61,10 @@ export class LearningMapPageComponent {
 
   protected readonly totals = computed(() => {
     const chapters = UNITS.flatMap((unit) => unit.chapters);
-    const exercises = chapters.flatMap((chapter) =>
-      exercisesForChapter(chapter.id),
-    );
+    const layoutId = this.deviceLayoutService.deviceLayoutId();
+    const exercises = chapters
+      .flatMap((chapter) => exercisesForChapter(chapter.id))
+      .filter((exercise) => isExerciseAvailable(exercise, layoutId));
     return {
       chaptersRead: chapters.filter((chapter) =>
         this.progressService.isChapterRead(chapter.id),
