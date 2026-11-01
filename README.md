@@ -9,7 +9,7 @@ One, CharaChorder Two, CCU, and Master Forge).
 
 ## About
 
-CharaChorder devices swap a traditional keyboard's flat grid of keys for
+CharaChorder 3D input devices swap a traditional keyboard's flat grid of keys for
 switches that move in five directions, letting one finger produce many
 different characters — and letting whole words come out from a single chord
 of switches pressed together. Capella walks through how the hardware works
