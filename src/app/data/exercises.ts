@@ -192,6 +192,7 @@ export const MOUSE_FEATURES_EXERCISES: Exercise[] = [
     chapterId: 'mouse-features',
     title: 'Cursor movement',
     description: 'Nudge the mouse cursor up, down, left, and right.',
+    unavailableOnDeviceLayouts: ['m4g'],
     steps: mouseSteps([
       ['Move up', 'MouseMoveUp'],
       ['Move down', 'MouseMoveDown'],
@@ -204,6 +205,7 @@ export const MOUSE_FEATURES_EXERCISES: Exercise[] = [
     chapterId: 'mouse-features',
     title: 'Left & right click',
     description: 'A left click, then a right click.',
+    unavailableOnDeviceLayouts: ['m4g'],
     steps: mouseSteps([
       ['Left click', 'MouseLeftClick'],
       ['Right click', 'MouseRightClick'],
@@ -214,6 +216,7 @@ export const MOUSE_FEATURES_EXERCISES: Exercise[] = [
     chapterId: 'mouse-features',
     title: 'Scrolling',
     description: 'Scroll up, down, left, and right.',
+    unavailableOnDeviceLayouts: ['m4g'],
     steps: mouseSteps([
       ['Scroll up', 'MouseScrollCoastUp'],
       ['Scroll down', 'MouseScrollCoastDown'],

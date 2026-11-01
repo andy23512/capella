@@ -1,3 +1,5 @@
+import { DeviceLayoutId } from '../services/device-layout.service';
+
 export type ExerciseStepKind =
   | 'character'
   | 'named-key'
@@ -44,4 +46,10 @@ export interface Exercise {
   title: string;
   description: string;
   steps: ExerciseStep[];
+  /**
+   * Device layouts whose default layout can't perform this exercise (e.g. the
+   * Master Forge default has no cursor movement). The exercise is shown as
+   * disabled while one of these layouts is selected in Settings.
+   */
+  unavailableOnDeviceLayouts?: DeviceLayoutId[];
 }

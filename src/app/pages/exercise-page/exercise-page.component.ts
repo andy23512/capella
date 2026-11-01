@@ -14,6 +14,7 @@ import { LayoutComponent } from '../../components/layout/layout.component';
 import { ALL_EXERCISES } from '../../data/exercises';
 import { UNITS } from '../../data/units';
 import { Exercise, ExerciseStep } from '../../models/exercise.models';
+import { DeviceLayoutService } from '../../services/device-layout.service';
 import { ProgressService } from '../../services/progress.service';
 import {
   PositionLabels,
@@ -77,12 +78,24 @@ export class ExercisePageComponent {
   private readonly router = inject(Router);
   private readonly progressService = inject(ProgressService);
 
-  protected readonly exercise =
-    findExercise(this.route.snapshot.paramMap.get('exerciseId')) ??
-    (() => {
+  private readonly deviceLayoutService = inject(DeviceLayoutService);
+
+  protected readonly exercise = (() => {
+    const found = findExercise(this.route.snapshot.paramMap.get('exerciseId'));
+    if (!found) {
       this.router.navigateByUrl('/learning-map');
       return null;
-    })();
+    }
+    if (
+      found.unavailableOnDeviceLayouts?.includes(
+        this.deviceLayoutService.deviceLayoutId(),
+      )
+    ) {
+      this.router.navigateByUrl(findChapterPath(found.chapterId));
+      return null;
+    }
+    return found;
+  })();
 
   protected readonly backPath = this.exercise
     ? findChapterPath(this.exercise.chapterId)
