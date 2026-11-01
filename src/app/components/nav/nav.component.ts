@@ -1,4 +1,4 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
 import { Component, ViewChild, inject } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
@@ -20,6 +20,13 @@ import {
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { UNITS } from '../../data/units';
+
+/**
+ * Width only, on purpose: Breakpoints.Handset also depends on orientation,
+ * so narrowing a desktop window flips between portrait and landscape
+ * thresholds and makes the sidebar close, reopen, then close again.
+ */
+const HANDSET_QUERY = '(max-width: 959.98px)';
 
 @Component({
   selector: 'app-nav',
@@ -47,7 +54,7 @@ export class NavComponent {
   @ViewChild('drawer') public drawer!: MatSidenav;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
+    .observe(HANDSET_QUERY)
     .pipe(
       map((result) => result.matches),
       shareReplay(1),
