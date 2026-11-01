@@ -14,15 +14,16 @@
     regular mouse and scroll wheel both count.
   </p>
 
-  <p
-    class="mt-6 rounded-lg border border-capella-600 bg-gray-700 p-4 text-sm text-gray-50"
-  >
-    <strong>Master Forge (M4G):</strong> the default layout is missing some
-    mouse functions — it has no cursor movement and no right click. So with
-    the M4G layout selected in
-    <a routerLink="/settings" class="text-capella-400 underline">Settings</a>,
-    all of the exercises below are disabled.
-  </p>
+  @if (deviceLayoutService.deviceLayoutId() === 'm4g') {
+    <p
+      class="mt-6 rounded-lg border border-capella-600 bg-gray-700 p-4 text-sm text-gray-50"
+    >
+      <strong>Master Forge (M4G):</strong> the default layout is missing some
+      mouse functions — it has no cursor movement and no right click — so all
+      of the exercises below are disabled while the M4G layout is selected in
+      <a routerLink="/settings" class="text-capella-400 underline">Settings</a>.
+    </p>
+  }
 
   <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
     @for (exercise of exercises; track exercise.id) {
