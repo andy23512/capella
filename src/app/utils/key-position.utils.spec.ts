@@ -36,13 +36,17 @@ describe('resolveCharacterKeyPosition', () => {
   it('resolves a lowercase letter to a switch highlight', () => {
     const highlight = resolveCharacterKeyPosition('a');
     expect(highlight).not.toBeNull();
-    expect(decodePositionCode(highlight!.characterKeyPositionCode)).not.toBeNull();
+    expect(
+      decodePositionCode(highlight!.characterKeyPositionCode),
+    ).not.toBeNull();
   });
 
   it('resolves the same character to the same switch every time', () => {
     const first = resolveCharacterKeyPosition('b');
     const second = resolveCharacterKeyPosition('b');
-    expect(first!.characterKeyPositionCode).toBe(second!.characterKeyPositionCode);
+    expect(first!.characterKeyPositionCode).toBe(
+      second!.characterKeyPositionCode,
+    );
   });
 });
 
@@ -61,17 +65,6 @@ describe('resolveChordIllustration', () => {
   it('refuses to illustrate two characters that land on the same switch', () => {
     // Same character twice always resolves to the same switch/direction.
     expect(resolveChordIllustration(['a', 'a'])).toBeNull();
-  });
-
-  it('adds the modifier switch as the character position, distinct from the chord switches', () => {
-    const illustration = resolveChordIllustration(['o', 'r', 'w'], 'presentTense');
-    expect(illustration).not.toBeNull();
-    expect(illustration!.highlight.characterKeyPositionCode).not.toBe(-1);
-    expect(
-      illustration!.highlight.positionCodes.includes(
-        illustration!.highlight.characterKeyPositionCode,
-      ),
-    ).toBe(true);
   });
 });
 

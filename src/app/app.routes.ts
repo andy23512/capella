@@ -157,13 +157,6 @@ export const APP_ROUTES: Route[] = [
       ).then((m) => m.ImpulseChordPracticePageComponent),
   },
   {
-    path: 'unit-4/chord-modifier',
-    loadComponent: () =>
-      import(
-        './pages/unit4/chord-modifier-page/chord-modifier-page.component'
-      ).then((m) => m.ChordModifierPageComponent),
-  },
-  {
     path: 'unit-4/summary',
     loadComponent: () =>
       import('./pages/unit4/summary-page/summary-page.component').then(

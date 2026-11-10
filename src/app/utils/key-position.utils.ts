@@ -31,7 +31,7 @@ import {
   getModifierKeyPositionCodeMap,
 } from 'tangent-cc-lib';
 import { SwitchDirection } from '../components/switch/switch.component';
-import { ChordModifierKind, ExerciseStep } from '../models/exercise.models';
+import { ExerciseStep } from '../models/exercise.models';
 import {
   DeviceLayoutId,
   deviceLayoutId,
@@ -78,8 +78,7 @@ function toPositionLabel(rawLabel: RawKeyLabel): PositionLabel {
 }
 
 const US_KEYBOARD_LAYOUT =
-  KEYBOARD_LAYOUTS_FROM_KBDLAYOUT.find((layout) => layout.id === 'us') ??
-  null;
+  KEYBOARD_LAYOUTS_FROM_KBDLAYOUT.find((layout) => layout.id === 'us') ?? null;
 const CHARACTER_KEY_CODE_MAP =
   convertKeyboardLayoutToCharacterKeyCodeMap(US_KEYBOARD_LAYOUT);
 
@@ -167,13 +166,13 @@ function labelForHeldPosition(
 ): PositionLabel | null {
   const { layerShiftPositionCodeMap, modifierKeyPositionCodeMap } =
     activeDerivedLayoutData();
-  if (modifierKeyPositionCodeMap.shift[highlight.layer]?.includes(positionCode)) {
+  if (
+    modifierKeyPositionCodeMap.shift[highlight.layer]?.includes(positionCode)
+  ) {
     return toPositionLabel(SHIFT_KEY_LABEL);
   }
   if (
-    modifierKeyPositionCodeMap.altGraph[highlight.layer]?.includes(
-      positionCode,
-    )
+    modifierKeyPositionCodeMap.altGraph[highlight.layer]?.includes(positionCode)
   ) {
     return toPositionLabel(ALT_GRAPH_KEY_LABEL);
   }
@@ -243,8 +242,7 @@ export function resolveCharacterKeyPosition(
   }
   const layout = activeDeviceLayout();
   for (const candidate of candidates) {
-    const actionCodes =
-      getCharacterActionCodesFromCharacterKeyCode(candidate);
+    const actionCodes = getCharacterActionCodesFromCharacterKeyCode(candidate);
     if (actionCodes.length === 0) {
       continue;
     }
@@ -370,65 +368,6 @@ export function buildAmbidextrousThrowoverLabels(
   return labels;
 }
 
-/** On-switch label for each Chord Modifier switch, reusing tangent-cc-lib's labels for the same switches elsewhere (Shift, the Ambidextrous Throwover switches, and the Numeric Layer switches). */
-const CHORD_MODIFIER_LABEL: Record<ChordModifierKind, PositionLabel> = {
-  capitalization: toPositionLabel(SHIFT_KEY_LABEL),
-  presentTense: toPositionLabel(
-    NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP.AmbidextrousThrowoverLeft,
-  ),
-  plural: toPositionLabel(
-    NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP.AmbidextrousThrowoverRight,
-  ),
-  pastTense: toPositionLabel(NUM_SHIFT_KEY_LABEL),
-  comparative: toPositionLabel(NUM_SHIFT_KEY_LABEL),
-};
-
-/** First position code among `codes` that decodes to `hand`, or null if none does. */
-function pickHandPositionCode(codes: number[], hand: Hand): number | null {
-  return (
-    codes.find((code) => decodePositionCode(code)?.hand === hand) ?? null
-  );
-}
-
-/**
- * Resolves a Chord Modifier switch to its position code on the active
- * device layout — base layer (1) Shift for Capitalization (either side, left
- * preferred), the left/right Ambidextrous Throwover switches for Present
- * Tense/Plural, and the left/right Numeric Layer switches for Past Tense/
- * Comparative, per the switch mapping confirmed for this site's supported
- * devices.
- */
-function resolveChordModifierPositionCode(
-  modifier: ChordModifierKind,
-): number | null {
-  const { layerShiftPositionCodeMap, modifierKeyPositionCodeMap } =
-    activeDerivedLayoutData();
-  switch (modifier) {
-    case 'capitalization':
-      return pickHandPositionCode(
-        modifierKeyPositionCodeMap.shift[1] ?? [],
-        'left',
-      );
-    case 'presentTense':
-      return (
-        resolveNonKeyActionPosition('AmbidextrousThrowoverLeft')
-          ?.characterKeyPositionCode ?? null
-      );
-    case 'plural':
-      return (
-        resolveNonKeyActionPosition('AmbidextrousThrowoverRight')
-          ?.characterKeyPositionCode ?? null
-      );
-    case 'pastTense':
-      return pickHandPositionCode(layerShiftPositionCodeMap.numShift, 'left');
-    case 'comparative':
-      return pickHandPositionCode(
-        layerShiftPositionCodeMap.numShift,
-        'right',
-      );
-  }
-}
-
 export interface ChordIllustration {
   highlight: HighlightKeyCombination;
   labels: PositionLabels;
@@ -438,15 +377,10 @@ export interface ChordIllustration {
  * Combines several characters' switch positions into one "press these
  * together" highlight — for showing what a chord's input looks like. Every
  * switch is rendered the same way (as a hold) since a chord has no single
- * "primary" switch the way a modifier combo does. If `modifier` is given, its
- * switch is added to the illustration too (e.g. Present Tense alongside a
- * "work" chord, for "working") — rendered as the "press" one, to stand out
- * from the chord's own switches — and returns null if that switch can't be
- * resolved on the active device layout.
+ * "primary" switch the way a modifier combo does.
  */
 export function resolveChordIllustration(
   chars: string[],
-  modifier?: ChordModifierKind,
 ): ChordIllustration | null {
   const highlights = chars.map((char) => resolveCharacterKeyPosition(char));
   if (highlights.some((highlight) => !highlight)) {
@@ -483,23 +417,8 @@ export function resolveChordIllustration(
     });
     positionCodes.add(highlight.characterKeyPositionCode);
   });
-  // Unlike the chord's own switches (none of which is "primary"), the
-  // modifier switch is the one thing that's distinct about this
-  // illustration, so it's set as characterKeyPositionCode to render it in
-  // the "press" color instead of blending in with the chord's "hold" color.
-  let modifierPositionCode: number | null = null;
-  if (modifier) {
-    modifierPositionCode = resolveChordModifierPositionCode(modifier);
-    if (modifierPositionCode === null) {
-      return null;
-    }
-    positionCodes.add(modifierPositionCode);
-    if (!(modifierPositionCode in labels)) {
-      labels[modifierPositionCode] = CHORD_MODIFIER_LABEL[modifier];
-    }
-  }
   const highlight: HighlightKeyCombination = {
-    characterKeyPositionCode: modifierPositionCode ?? -1,
+    characterKeyPositionCode: -1,
     positionCodes: Array.from(positionCodes),
     layer: highlights[0]!.layer,
     shiftKey: false,
@@ -523,10 +442,7 @@ export function resolveStepPosition(
     case 'dup':
       return resolveNonKeyActionPosition('Dup');
     case 'chord':
-      return (
-        resolveChordIllustration(step.chordChars ?? [], step.chordModifier)
-          ?.highlight ?? null
-      );
+      return resolveChordIllustration(step.chordChars ?? [])?.highlight ?? null;
   }
 }
 
@@ -557,10 +473,7 @@ export function resolveStepLabels(
     return buildPositionLabels(highlight, label);
   }
   if (step.kind === 'chord') {
-    return (
-      resolveChordIllustration(step.chordChars ?? [], step.chordModifier)
-        ?.labels ?? {}
-    );
+    return resolveChordIllustration(step.chordChars ?? [])?.labels ?? {};
   }
   return buildPositionLabels(highlight, { text: step.label });
 }

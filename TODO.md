@@ -5,7 +5,7 @@
   - 判斷方式：不自行實作同時按下/放開的組合鍵偵測邏輯，改為監聽輸入框 `input` 事件、比對 value 內容是否符合 GTM 印出的標記文字（如 `>I<mpulse output: `、`>I<mpulse input: `、複合和弦待續的結尾 `|`）來判斷目前所在步驟
   - 架構：獨立於 `exercise-page.component.ts` 既有的通用 step runner（那套是「比對固定正解」模型，跟 Impulse Chord「使用者自訂 output/input 並即時回顯」的性質不合），另做一個小型專用 FSM：`idle → output 輸入中 → output 已確定 → input 嘗試中（可重試）→ input 已確定 → 完成`，並支援 Esc 中途取消回到 `idle`
   - Enter 副作用：`keydown` 對 Enter 統一 `preventDefault()`，避免觸發表單送出/換行；步驟推進不依賴是否有攔到 Enter 的 keydown，而是純粹看 value 內容變化（實機測試確認 Enter 不會有副作用，無需再驗證是否送出 Enter 鍵盤事件）
-- [x] Chord Modifier 練習 — `src/app/pages/unit4/chord-modifier-page/`、練習資料在 `src/app/data/exercises.ts` 的 `CHORD_MODIFIER_EXERCISES`，五種（Capitalization／Present Tense／Plural／Past Tense／Comparative）皆已實機測試通過
+- [x] ~~Chord Modifier 練習~~ → 整個 Chapter 已移除（`unit-4/chord-modifier` 頁面、route、`CHORD_MODIFIER_EXERCISES`、`ChordModifierKind`、`resolveChordIllustration` 的 `modifier` 參數，及 Unit 4 intro／summary 相關文案）；以下為移除前的歷史紀錄 — `src/app/pages/unit4/chord-modifier-page/`、練習資料在 `src/app/data/exercises.ts` 的 `CHORD_MODIFIER_EXERCISES`，五種（Capitalization／Present Tense／Plural／Past Tense／Comparative）皆已實機測試通過
   - 實機測試 Capitalization 時發現並修正兩個 `exercise-page.component.ts` 的 `onChordKeydown` 判定問題：
     1. 原本用 `toLowerCase()` 做不分大小寫比對，導致沒按 Shift、單純觸發 `run` 也會被判定通過 Capitalization 這種「大小寫本身就是判定重點」的練習；已改為完全比對（大小寫需一致）
     2. 原本用 `slice(-outputText.length)` 做固定長度的尾端視窗來累積按鍵緩衝區；改為讓緩衝區單純依實際按鍵 push／依 Backspace pop（不截斷），並用 `.trim()` 吸收 CharaChorder 在單字後自動送出的空白鍵（方便連續觸發下一個字的 chord）。理由：比對邏輯應該直接反映「使用者／裝置自己用 Backspace 修正錯誤」的真實情境，而非依賴一個固定視窗剛好會自我修正的巧合特性；此寫法與 `../alnitak` 的 `src/app/stores/chord-practice.store.ts`（`nextBuffer.join('').trim() === queue[0].outputText`）作法一致

@@ -160,9 +160,9 @@ export const UNITS: Unit[] = [
     id: 'unit-4',
     title: 'Unit 4: Basic Chording',
     introduction:
-      "Every unit so far has been character entry — one switch at a time. This unit introduces the CharaChorder's other mode: chording, where pressing several switches together produces something other than those characters in sequence, like a whole word. You'll see the basic mechanic, an on-the-fly variant called an impulse chord, and how modifiers change a chord's output — arpeggiated in right after it, a quick tap rather than a hold, without slowing you down.",
+      "Every unit so far has been character entry — one switch at a time. This unit introduces the CharaChorder's other mode: chording, where pressing several switches together produces something other than those characters in sequence, like a whole word. You'll see the basic mechanic and an on-the-fly variant called an impulse chord.",
     summary:
-      "You've now seen the core chording mechanic: pressing multiple switches together for one output, impulse chords for training something on the spot, and chord modifiers for changing a chord's prefix, suffix, capitalization, and more — arpeggiated in with a quick tap right after the chord rather than a hold. Together with the standard key set and special keys from Units 2 and 3, that's the complete toolkit this tutorial covers for getting text and commands out through a CharaChorder's switches.",
+      "You've now seen the core chording mechanic: pressing multiple switches together for one output, and impulse chords for training something on the spot. Together with the standard key set and special keys from Units 2 and 3, that's the complete toolkit this tutorial covers for getting text and commands out through a CharaChorder's switches.",
     resources: [
       {
         label: 'CharaChorder Docs — Chords',
@@ -193,12 +193,6 @@ export const UNITS: Unit[] = [
         unitId: 'unit-4',
         title: 'Chapter 2: Impulse Chord',
         path: '/unit-4/impulse-chord',
-      },
-      {
-        id: 'chord-modifier',
-        unitId: 'unit-4',
-        title: 'Chapter 3: Chord Modifier',
-        path: '/unit-4/chord-modifier',
       },
       {
         id: 'unit-4-summary',
