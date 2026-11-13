@@ -126,5 +126,47 @@
     "simple-chord": "章節 1：基礎和弦",
     "impulse-chord": "章節 2：Impulse Chord",
     "unit-4-summary": "總結"
+  },
+  "deviceIntro": {
+    "description": "CharaChorder 推出了一系列「3D 輸入裝置」。這些裝置上的每個搖桿不只能向下按，還能往東、南、西、北四個方向傾斜，因此單一搖桿就能依移動方向產生最多五種不同的輸入，輸入和弦則變成同時移動多根手指，而不是依序按下按鍵。目前有四款裝置採用這個概念，各自有不同的外型與搖桿數量。"
+  },
+  "deviceCard": {
+    "switchesPerHand": "每手 {{count}} 個搖桿",
+    "thumbSwitchesPerHand": "每手 {{count}} 個拇指搖桿",
+    "officialProductPage": "官方產品頁面"
+  },
+  "devices": {
+    "cc1": {
+      "tagline": "元祖機型：出貨即完整組裝",
+      "description": "一切的起點。兩個半邊由可拆的機械加工鋁製中央連接桿接合，並透過 3.5mm TRS 線互相通訊，另有一條 USB-C 轉 USB-A 線負責供電與傳輸資料。即插即用，裝置本身儲存三層可設定的佈局。",
+      "notes": "小指搖桿比其他搖桿更扁更寬，比較容易按到。"
+    },
+    "cc2": {
+      "tagline": "更輕、更安靜、更耐用",
+      "description": "改良後的第二代，外型與 CC1 相同，同樣是分離式有線設計。搖桿的觸發力道幾乎減半、聲音小四倍以上、壽命則提升到五倍，而且鍵帽可以更換。"
+    },
+    "ccu": {
+      "tagline": "自己動手組裝，採用 CC2 的電子元件",
+      "description": "一套可 3D 列印的套件，並使用與 CC2 相同的電路板。你可以選擇預先設定好的外殼，或用線上 CAD 工具自訂。自己列印外殼再組裝，是能擁有 CC2 等級的搖桿體驗中，最能客製化、也最划算的方式。"
+    },
+    "master-forge": {
+      "tagline": "以 Digitizer 為基礎，為混合式和弦輸入設計",
+      "description": "由兩個獨立的 Digitizer（半邊裝置）組成，以機械與電氣橋接連接器相連，可改為用線連接。每個 Digitizer 有 8 個搖桿，而不是 9 個：每隻手專用於拇指的只有 2 個，CC1/CC2/CCU 則是 3 個。你會在後續看到它的搖桿朝向也與先前的裝置不同。",
+      "notes": "向下直按不會像 CC1/CC2/CCU 那樣被當成獨立的狀態，而是被視為四個基本方向同時觸發。"
+    }
+  },
+  "switchIntro": {
+    "intro": "CharaChorder 3D 輸入裝置上的每個搖桿都是 3D 搖桿：它能感測搖桿往哪個方向傾斜，分為東、南、西、北四個方向。在 CC1、CC2 與 CCU 上，每個搖桿還能把向下直按感測為獨立的第五種狀態，成為真正的<strong>五向搖桿</strong>，可以代表最多五種不同的輸入。Master Forge 的搖桿則是四向，中心按壓有何不同，請見下方說明。",
+    "orientationTitle": "各裝置的搖桿朝向差異",
+    "orientationBody": "上面提到的五個方向在每款裝置上都一樣，但實體上哪個方向算是「北」就不一定。在 CC1、CC2 與 CCU 上，拇指以外的搖桿朝向與手指自然的移動方向一致，所以傾斜搖桿的感覺就像往那個方向移動手指。Master Forge 改變了這一點：它拇指以外的搖桿朝向，是與 Digitizer（半邊裝置）的邊緣對齊，與手指自然想移動的方向大約差了 45° 的扭轉。",
+    "ccOrientation": "下方照片中的紅線標示每個搖桿的朝向。在 CC1/CC2/CCU 上，這個朝向與手指自然的移動方向直接對齊：搖桿往北傾斜，就等於手指往北移動。",
+    "forgeOrientation": "下方照片中的紅線標示每個搖桿的朝向。在 Master Forge 上，由於搖桿是跟著 Digitizer 的邊緣，朝向與手指自然想移動的方向旋轉了大約 45°。你的手指必須斜向移動，往東北或東南，才能按到佈局上標示為北或東的方向。在 CC1/CC2/CCU 上養成的肌肉記憶，在這裡可能會失靈，按到旁邊的搖桿。",
+    "ccAlt": "CC1/CC2/CCU 的 Digitizer 半邊的照片，用紅色十字標示拇指以外各個搖桿的朝向，與手指自然的方向呈一直線",
+    "forgeAlt": "Master Forge 的 Digitizer 半邊的照片，用紅色十字標示拇指以外各個搖桿的朝向，與手指自然的方向大約呈 45° 角",
+    "reviewUrl": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D-master-forge-%E7%9A%84%E8%A9%95%E5%83%B9/#%E6%90%96%E6%A1%BF%E7%9A%84%E6%96%B9%E5%90%91",
+    "photoCaption": "照片來自 Tangent 的<a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">對 Master Forge 的評價</a>。紅線標示每個搖桿的朝向。",
+    "naturalVaries": "所謂「自然」的方向，會因人與手而略有不同，所以請把上面的照片當作參考，而不是標準答案。請自己操作每個搖桿，確認哪個方向對你的手指來說最順手。",
+    "quote": "「拇指以外的搖桿的方向是與 Digitizer（半個 M4G）對齊的」，出自 Tangent 的<a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">對 Master Forge 的評價</a>，文中更深入地探討了實際的影響（以及佈局檢視器的替代做法）。",
+    "centerPress": "還有一項值得一提的 Master Forge 的差異：它的每個搖桿底下是由四個單向的微動開關組成，沒有獨立的中心感測器。所以向下直按不會像 CC1/CC2/CCU 那樣被感測為獨立的狀態，而是被視為四個基本方向同時觸發。"
   }
 }

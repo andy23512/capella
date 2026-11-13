@@ -6,26 +6,15 @@
     {{ 'chapters.3d-switch-introduction' | translate }}
   </h1>
 
-  <p class="mt-6 text-gray-50">
-    Every switch on a CharaChorder 3D input device is a 3D switch: instead of one
-    on/off state, it senses which of four directions it's tilted in — north,
-    east, south, or west. On CC1, CC2, and CCU, each switch also senses a
-    straight-down press as a separate fifth state, making it a true
-    <strong>5-way switch</strong> that can stand in for up to five different
-    inputs. Master Forge's switches are 4-way instead — see below for how
-    their center press differs.
-  </p>
+  <p
+    class="mt-6 text-gray-50"
+    [innerHTML]="'switchIntro.intro' | translate"
+  ></p>
 
-  <h2 class="mt-10 text-xl font-medium">Orientation differs by device</h2>
-  <p class="text-gray-50">
-    The five directions above are the same on every device — but which way
-    is physically "north" is not. On CC1, CC2, and CCU, the non-thumb
-    switches are oriented to match natural finger movement, so tilting a
-    switch feels like moving your finger in that direction. Master Forge
-    changes this: its non-thumb switches are oriented to match the edge of
-    the digitizer half instead, roughly a 45° twist away from where your
-    finger naturally wants to go.
-  </p>
+  <h2 class="mt-10 text-xl font-medium">
+    {{ 'switchIntro.orientationTitle' | translate }}
+  </h2>
+  <p class="text-gray-50">{{ 'switchIntro.orientationBody' | translate }}</p>
 
   <mat-button-toggle-group
     class="mt-4"
@@ -38,18 +27,9 @@
 
   <p class="mt-4 text-gray-50">
     @if (mode() === 'cc') {
-      The red lines in the photo below mark which way each switch is
-      oriented. On CC1/CC2/CCU, that orientation lines up directly with
-      your finger's natural movement — tilting north on the switch matches
-      moving your finger north.
+      {{ 'switchIntro.ccOrientation' | translate }}
     } @else {
-      The red lines in the photo below mark which way each switch is
-      oriented — and on Master Forge, that's rotated about 45° from where
-      your finger naturally wants to go, since the switches follow the
-      digitizer's edge instead. Your finger ends up moving diagonally,
-      northeast or southeast, to hit what the layout labels as north or
-      east. Muscle memory built on CC1/CC2/CCU can misfire here, landing on
-      the neighboring switch instead.
+      {{ 'switchIntro.forgeOrientation' | translate }}
     }
   </p>
 
@@ -57,56 +37,39 @@
     @if (mode() === 'cc') {
       <img
         src="assets/switch-orientation/cc-switch-orientation.jpg"
-        alt="Photo of a CC1/CC2/CCU digitizer half with red crosses marking each non-thumb switch's orientation, lining up straight with natural finger direction"
+        [alt]="'switchIntro.ccAlt' | translate"
         class="w-full rounded-lg"
       />
     } @else {
       <img
         src="assets/switch-orientation/forge-switch-orientation.png"
-        alt="Photo of a Master Forge digitizer half with red crosses marking each non-thumb switch's orientation, sitting at roughly a 45° angle from natural finger direction"
+        [alt]="'switchIntro.forgeAlt' | translate"
         class="w-full rounded-lg"
       />
     }
-    <figcaption class="mt-2 text-center text-sm text-gray-200">
-      Photos from Tangent's
-      <a
-        href="https://andy23512.github.io/blog/tangent-s-review-to-master-forge/#Switch-orientation"
-        target="_blank"
-        rel="noopener"
-        class="text-capella-400"
-        >review of Master Forge</a
-      >. The red lines mark each switch's orientation.
-    </figcaption>
+    <figcaption
+      class="mt-2 text-center text-sm text-gray-200 [&_a]:text-capella-400"
+      [innerHTML]="
+        'switchIntro.photoCaption'
+          | translate: { url: 'switchIntro.reviewUrl' | translate }
+      "
+    ></figcaption>
   </figure>
 
   <p class="mt-4 text-sm text-gray-200">
-    Exactly where "natural" points can vary a bit from person to person and
-    hand to hand, so treat the photos above as a starting point rather than
-    gospel — try tilting each switch yourself and confirm the direction
-    that feels right for your own fingers.
+    {{ 'switchIntro.naturalVaries' | translate }}
   </p>
 
   <blockquote
-    class="mt-4 border-l-4 border-capella-500 bg-gray-700 p-4 text-sm italic text-gray-100"
-  >
-    "the orientation of the non-thumb switches aligns with the digitizer
-    (half device)" — from Tangent's
-    <a
-      href="https://andy23512.github.io/blog/tangent-s-review-to-master-forge/#Switch-orientation"
-      target="_blank"
-      rel="noopener"
-      class="text-capella-400"
-      >review of Master Forge</a
-    >, which covers the practical impact (and a layout-viewer workaround)
-    in more depth.
-  </blockquote>
+    class="mt-4 border-l-4 border-capella-500 bg-gray-700 p-4 text-sm italic text-gray-100 [&_a]:text-capella-400"
+    [innerHTML]="
+      'switchIntro.quote'
+        | translate: { url: 'switchIntro.reviewUrl' | translate }
+    "
+  ></blockquote>
 
   <p class="mt-6 text-sm text-gray-200">
-    One more Master Forge difference worth knowing: each of its switches is
-    built from four unidirectional microswitches underneath, with no
-    separate center sensor. So pressing straight down isn't sensed as its
-    own state the way it is on CC1/CC2/CCU — it's read as all four cardinal
-    directions firing at once.
+    {{ 'switchIntro.centerPress' | translate }}
   </p>
 
   <app-chapter-nav chapterId="3d-switch-introduction" />

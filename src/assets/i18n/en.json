@@ -126,5 +126,47 @@
     "simple-chord": "Chapter 1: Simple Chord",
     "impulse-chord": "Chapter 2: Impulse Chord",
     "unit-4-summary": "Summary"
+  },
+  "deviceIntro": {
+    "description": "CharaChorder makes a family of \"3D input devices.\" Instead of keys that only go down, every switch on these devices can also tilt north, east, south, or west — so a single switch can produce up to five different inputs depending on which way you move it, and typing whole chords becomes a matter of moving several fingers at once rather than pressing keys in sequence. Four devices currently share this idea, each with a different form factor and switch count."
+  },
+  "deviceCard": {
+    "switchesPerHand": "{{count}} switches / hand",
+    "thumbSwitchesPerHand": "{{count}} thumb switches / hand",
+    "officialProductPage": "Official product page"
+  },
+  "devices": {
+    "cc1": {
+      "tagline": "The original — fully assembled",
+      "description": "The device that started it all. Two halves are joined by a removable machined-aluminum center bar and talk to each other over a 3.5mm TRS cable, with a single USB-C-to-USB-A cable for power and data. Plug-and-play, with three configurable layers stored on the device itself.",
+      "notes": "The pinky switch is flatter and wider than the rest for easier reach."
+    },
+    "cc2": {
+      "tagline": "Lighter, quieter, more durable",
+      "description": "A refined second generation on the same split, cabled form factor as CC1. Switches are nearly twice as light to actuate, over four times quieter, and rated to last five times longer — with keycaps you can actually replace."
+    },
+    "ccu": {
+      "tagline": "Build your own, powered by CC2 electronics",
+      "description": "A 3D-printable kit built around the same PCB as CC2. Pick a preconfigured shell or tailor your own with an online CAD tool, print the case yourself, and assemble it — the most customizable and affordable way to get CC2-level switch technology in your own hands."
+    },
+    "master-forge": {
+      "tagline": "A digitizer-based design for hybrid chorded entry",
+      "description": "Master Forge is built from two independent 'digitizers' joined by a mechanical and electrical bridge connector (can be switched to a cable). Each digitizer has 8 switches instead of 9 — only 2 per hand are dedicated to the thumb, down from 3 on CC1/CC2/CCU. As you'll see in the following chapter, its switches are also oriented differently from earlier devices.",
+      "notes": "Pressing straight down isn't sensed as its own state the way it is on CC1/CC2/CCU — it's read as all four cardinal directions firing at once."
+    }
+  },
+  "switchIntro": {
+    "intro": "Every switch on a CharaChorder 3D input device is a 3D switch: it senses which of four directions it's tilted in — north, east, south, or west. On CC1, CC2, and CCU, each switch also senses a straight-down press as a separate fifth state, making it a true <strong>5-way switch</strong> that can stand in for up to five different inputs. Master Forge's switches are 4-way instead — see below for how their center press differs.",
+    "orientationTitle": "Orientation differs by device",
+    "orientationBody": "The five directions above are the same on every device — but which way is physically \"north\" is not. On CC1, CC2, and CCU, the non-thumb switches are oriented to match natural finger movement, so tilting a switch feels like moving your finger in that direction. Master Forge changes this: its non-thumb switches are oriented to match the edge of the digitizer half instead, roughly a 45° twist away from where your finger naturally wants to go.",
+    "ccOrientation": "The red lines in the photo below mark which way each switch is oriented. On CC1/CC2/CCU, that orientation lines up directly with your finger's natural movement — tilting north on the switch matches moving your finger north.",
+    "forgeOrientation": "The red lines in the photo below mark which way each switch is oriented — and on Master Forge, that's rotated about 45° from where your finger naturally wants to go, since the switches follow the digitizer's edge instead. Your finger ends up moving diagonally, northeast or southeast, to hit what the layout labels as north or east. Muscle memory built on CC1/CC2/CCU can misfire here, landing on the neighboring switch instead.",
+    "ccAlt": "Photo of a CC1/CC2/CCU digitizer half with red crosses marking each non-thumb switch's orientation, lining up straight with natural finger direction",
+    "forgeAlt": "Photo of a Master Forge digitizer half with red crosses marking each non-thumb switch's orientation, sitting at roughly a 45° angle from natural finger direction",
+    "reviewUrl": "https://andy23512.github.io/blog/tangent-s-review-to-master-forge/#Switch-orientation",
+    "photoCaption": "Photos from Tangent's <a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">review of Master Forge</a>. The red lines mark each switch's orientation.",
+    "naturalVaries": "Exactly where \"natural\" points can vary a bit from person to person and hand to hand, so treat the photos above as a starting point rather than gospel — try tilting each switch yourself and confirm the direction that feels right for your own fingers.",
+    "quote": "\"the orientation of the non-thumb switches aligns with the digitizer (half device)\" — from Tangent's <a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">review of Master Forge</a>, which covers the practical impact (and a layout-viewer workaround) in more depth.",
+    "centerPress": "One more Master Forge difference worth knowing: each of its switches is built from four unidirectional microswitches underneath, with no separate center sensor. So pressing straight down isn't sensed as its own state the way it is on CC1/CC2/CCU — it's read as all four cardinal directions firing at once."
   }
 }
