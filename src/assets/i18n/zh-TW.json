@@ -13,6 +13,16 @@
       "m4gNote": "Master Forge 沒有拇指第三搖桿，選擇此項時，佈局上會隱藏該搖桿。"
     }
   },
+  "home": {
+    "tagline": "這是一個非官方的 CharaChorder 3D 輸入裝置教學網站，與 CharaChorder 沒有任何隸屬、關聯、授權、背書或任何正式關聯的關係。",
+    "description": "CharaChorder 3D 輸入裝置把傳統鍵盤平面排列的按鍵，換成可以往五個方向移動的搖桿，讓一根手指就能輸入許多不同的字元，也能同時按下多個搖桿，一次輸出整個單字。Capella 會用一個個簡短的章節，帶你了解其硬體如何運作，以及實際上怎麼使用。",
+    "assumptions": {
+      "title": "本教學假設：",
+      "keyboardLayout": "你的作業系統鍵盤佈局設為 QWERTY - US。網站中顯示的按鍵標示與位置都以 QWERTY - US 為準；如果你的作業系統使用其他佈局，部分標示可能會與你在裝置上看到的不同。",
+      "deviceDefaults": "你的 CharaChorder 3D 輸入裝置使用的是預設佈局與預設和弦庫。如果你有做任何修改，部分練習與和弦的行為可能不會跟教學中講的一致。"
+    },
+    "start": "開始{{unit}}"
+  },
   "nav": {
     "learningMap": "學習地圖",
     "settings": "設定",

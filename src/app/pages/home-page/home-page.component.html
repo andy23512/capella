@@ -6,32 +6,21 @@
     <h1 class="m-0 text-4xl font-medium">Capella</h1>
   </div>
   <p class="mt-2 text-gray-100">
-    An unofficial tutorial site for CharaChorder 3D input devices. Not
-    affiliated, associated, authorized, endorsed by, or in any way officially
-    connected with CharaChorder.
+    {{ 'home.tagline' | translate }}
   </p>
 
   <p class="mt-8 text-gray-50">
-    CharaChorder 3D input devices swap a traditional keyboard's flat grid of keys for
-    switches that move in five directions, letting one finger produce many
-    different characters — and letting whole words come out from a single chord
-    of switches pressed together. Capella walks through how the hardware works
-    and how to actually use it, one short chapter at a time.
+    {{ 'home.description' | translate }}
   </p>
 
   <div class="mt-8 text-gray-50">
-    <p class="m-0">This tutorial assumes:</p>
+    <p class="m-0">{{ 'home.assumptions.title' | translate }}</p>
     <ol class="mb-0 mt-2 list-decimal pl-6">
       <li>
-        Your operating system's keyboard layout is set to QWERTY - US. Key
-        labels and positions shown throughout the site are based on QWERTY -
-        US; if your OS uses a different layout, some labels may not match what
-        you see on your device.
+        {{ 'home.assumptions.keyboardLayout' | translate }}
       </li>
       <li class="mt-2">
-        Your CharaChorder 3D input device is using its default layout and
-        default chord library. If you have customized either one, some
-        exercises and chords may not behave as described.
+        {{ 'home.assumptions.deviceDefaults' | translate }}
       </li>
     </ol>
   </div>
@@ -42,7 +31,7 @@
     class="mt-8"
     routerLink="/unit-1/introduction"
   >
-    Start Unit 1: Introduction
+    {{ 'home.start' | translate: { unit: 'units.unit-1.title' | translate } }}
     <mat-icon iconPositionEnd>arrow_forward</mat-icon>
   </a>
 </div>
