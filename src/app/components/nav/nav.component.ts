@@ -17,6 +17,7 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { UNITS } from '../../data/units';
@@ -44,6 +45,7 @@ const HANDSET_QUERY = '(max-width: 959.98px)';
     RouterLink,
     RouterLinkActive,
     RouterOutlet,
+    TranslatePipe,
   ],
 })
 export class NavComponent {

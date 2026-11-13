@@ -3,45 +3,44 @@ import { Unit } from '../models/content.models';
 export const UNITS: Unit[] = [
   {
     id: 'unit-1',
-    title: 'Unit 1: Introduction',
-    introduction:
-      "This unit lays the groundwork before you touch a device: what a CharaChorder 3D input device actually is, and the 5-way switch mechanic that every device in the lineup is built around. You'll meet the four current devices, then get hands-on with an interactive switch diagram that shows how tilt direction — and its orientation — changes what a single switch can do.",
-    summary:
-      "You've now seen the four CharaChorder 3D input devices — CC1, CC2, CCU, and Master Forge — and how their shared 5-way switch mechanic turns one physical switch into up to five inputs. You also saw that switch orientation is not universal: CC1/CC2/CCU align with natural finger movement, while Master Forge aligns with the digitizer edge instead. With that foundation in place, Unit 2 moves on to actually practicing the standard key set.",
+    titleKey: 'units.unit-1.title',
+    shortTitleKey: 'units.unit-1.shortTitle',
+    introductionKey: 'units.unit-1.introduction',
+    summaryKey: 'units.unit-1.summary',
     resources: [
       {
-        label: 'CharaChorder Docs',
-        url: 'https://docs.charachorder.com/',
+        labelKey: 'units.unit-1.resources.resource1.label',
+        urlKey: 'units.unit-1.resources.resource1.url',
       },
       {
-        label: "Tangent's review of Master Forge",
-        url: 'https://andy23512.github.io/blog/tangent-s-review-to-master-forge/',
+        labelKey: 'units.unit-1.resources.resource2.label',
+        urlKey: 'units.unit-1.resources.resource2.url',
       },
     ],
     chapters: [
       {
         id: 'unit-1-introduction',
         unitId: 'unit-1',
-        title: 'Introduction',
+        titleKey: 'chapters.unit-1-introduction',
         path: '/unit-1/introduction',
         kind: 'intro',
       },
       {
         id: 'device-introduction',
         unitId: 'unit-1',
-        title: 'Chapter 1: Device introduction',
+        titleKey: 'chapters.device-introduction',
         path: '/unit-1/device-introduction',
       },
       {
         id: '3d-switch-introduction',
         unitId: 'unit-1',
-        title: 'Chapter 2: 3D switch introduction',
+        titleKey: 'chapters.3d-switch-introduction',
         path: '/unit-1/3d-switch-introduction',
       },
       {
         id: 'unit-1-summary',
         unitId: 'unit-1',
-        title: 'Summary',
+        titleKey: 'chapters.unit-1-summary',
         path: '/unit-1/summary',
         kind: 'summary',
       },
@@ -49,66 +48,64 @@ export const UNITS: Unit[] = [
   },
   {
     id: 'unit-2',
-    title: 'Unit 2: Standard Keys',
-    introduction:
-      "With the switch mechanic down, it's time to put it to work. This unit drills the standard key set you already know from a regular keyboard — letters, numbers, symbols, functional keys like Enter and Backspace, and the F1–F12 function keys — but on the CharaChorder's 5-way switches. It closes with the device's built-in mouse features, all without leaving the switches. Each chapter pairs a short exercise with a live layout diagram that lights up exactly which switch to press.",
-    summary:
-      "You've now practiced the full standard key set on the CharaChorder 3D input device's switches — letters, numbers, symbols, functional keys, the F1–F12 row, and the built-in mouse features — using the same layout diagram and highlight mechanic throughout. That coverage is the foundation for everything else the device can do, including the chorded shortcuts and word output that make CharaChorder 3D input devices distinct from a regular keyboard.",
+    titleKey: 'units.unit-2.title',
+    shortTitleKey: 'units.unit-2.shortTitle',
+    introductionKey: 'units.unit-2.introduction',
+    summaryKey: 'units.unit-2.summary',
     resources: [
       {
-        label:
-          "Tangent's suggestions for learning English character entry on CharaChorder 3D input devices",
-        url: 'https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/',
+        labelKey: 'units.unit-2.resources.resource1.label',
+        urlKey: 'units.unit-2.resources.resource1.url',
       },
     ],
     chapters: [
       {
         id: 'unit-2-introduction',
         unitId: 'unit-2',
-        title: 'Introduction',
+        titleKey: 'chapters.unit-2-introduction',
         path: '/unit-2/introduction',
         kind: 'intro',
       },
       {
         id: 'letters',
         unitId: 'unit-2',
-        title: 'Chapter 1: Letters',
+        titleKey: 'chapters.letters',
         path: '/unit-2/letters',
       },
       {
         id: 'number',
         unitId: 'unit-2',
-        title: 'Chapter 2: Number',
+        titleKey: 'chapters.number',
         path: '/unit-2/number',
       },
       {
         id: 'symbols',
         unitId: 'unit-2',
-        title: 'Chapter 3: Symbols',
+        titleKey: 'chapters.symbols',
         path: '/unit-2/symbols',
       },
       {
         id: 'functional-keys',
         unitId: 'unit-2',
-        title: 'Chapter 4: Functional Keys',
+        titleKey: 'chapters.functional-keys',
         path: '/unit-2/functional-keys',
       },
       {
         id: 'function-keys',
         unitId: 'unit-2',
-        title: 'Chapter 5: Function Keys',
+        titleKey: 'chapters.function-keys',
         path: '/unit-2/function-keys',
       },
       {
         id: 'mouse-features',
         unitId: 'unit-2',
-        title: 'Chapter 6: Mouse Features',
+        titleKey: 'chapters.mouse-features',
         path: '/unit-2/mouse-features',
       },
       {
         id: 'unit-2-summary',
         unitId: 'unit-2',
-        title: 'Summary',
+        titleKey: 'chapters.unit-2-summary',
         path: '/unit-2/summary',
         kind: 'summary',
       },
@@ -116,41 +113,40 @@ export const UNITS: Unit[] = [
   },
   {
     id: 'unit-3',
-    title: 'Unit 3: CharaChorder Special Keys',
-    introduction:
-      "Beyond the standard key set, CharaChorder 3D input devices add a few features unique to chorded input. This unit covers two of them: DUP, which repeats your last input — handy for double letters — and Ambidextrous Throwover, a one-handed entry mode that mirrors the opposite hand's characters onto the hand using it.",
-    summary:
-      "You've now seen DUP and Ambidextrous Throwover — two features with no equivalent on a regular keyboard. DUP saves a repeat press by echoing your last input, while Ambidextrous Throwover lets a single hand reach the full character set when the other is occupied. Together with the standard key set from Unit 2, that covers the core building blocks the CharaChorder's chorded shortcuts and word output build on next.",
+    titleKey: 'units.unit-3.title',
+    shortTitleKey: 'units.unit-3.shortTitle',
+    introductionKey: 'units.unit-3.introduction',
+    summaryKey: 'units.unit-3.summary',
     resources: [
       {
-        label: 'CharaChorder Docs — Glossary',
-        url: 'https://docs.charachorder.com/Glossary.html',
+        labelKey: 'units.unit-3.resources.resource1.label',
+        urlKey: 'units.unit-3.resources.resource1.url',
       },
     ],
     chapters: [
       {
         id: 'unit-3-introduction',
         unitId: 'unit-3',
-        title: 'Introduction',
+        titleKey: 'chapters.unit-3-introduction',
         path: '/unit-3/introduction',
         kind: 'intro',
       },
       {
         id: 'dup',
         unitId: 'unit-3',
-        title: 'Chapter 1: DUP',
+        titleKey: 'chapters.dup',
         path: '/unit-3/dup',
       },
       {
         id: 'ambidextrous-throwover',
         unitId: 'unit-3',
-        title: 'Chapter 2: Ambidextrous Throwover',
+        titleKey: 'chapters.ambidextrous-throwover',
         path: '/unit-3/ambidextrous-throwover',
       },
       {
         id: 'unit-3-summary',
         unitId: 'unit-3',
-        title: 'Summary',
+        titleKey: 'chapters.unit-3-summary',
         path: '/unit-3/summary',
         kind: 'summary',
       },
@@ -158,46 +154,44 @@ export const UNITS: Unit[] = [
   },
   {
     id: 'unit-4',
-    title: 'Unit 4: Basic Chording',
-    introduction:
-      "Every unit so far has been character entry — one switch at a time. This unit introduces the CharaChorder's other mode: chording, where pressing several switches together produces something other than those characters in sequence, like a whole word. You'll see the basic mechanic and an on-the-fly variant called an impulse chord.",
-    summary:
-      "You've now seen the core chording mechanic: pressing multiple switches together for one output, and impulse chords for training something on the spot. Together with the standard key set and special keys from Units 2 and 3, that's the complete toolkit this tutorial covers for getting text and commands out through a CharaChorder's switches.",
+    titleKey: 'units.unit-4.title',
+    shortTitleKey: 'units.unit-4.shortTitle',
+    introductionKey: 'units.unit-4.introduction',
+    summaryKey: 'units.unit-4.summary',
     resources: [
       {
-        label: 'CharaChorder Docs — Chords',
-        url: 'https://docs.charachorder.com/Chords.html',
+        labelKey: 'units.unit-4.resources.resource1.label',
+        urlKey: 'units.unit-4.resources.resource1.url',
       },
       {
-        label:
-          "Tangent's suggestion for learning English chorded entry on CharaChorder devices",
-        url: 'https://andy23512.github.io/blog/tangent-s-suggestion-for-learning-english-chorded-entry-on-charachorder-devices/',
+        labelKey: 'units.unit-4.resources.resource2.label',
+        urlKey: 'units.unit-4.resources.resource2.url',
       },
     ],
     chapters: [
       {
         id: 'unit-4-introduction',
         unitId: 'unit-4',
-        title: 'Introduction',
+        titleKey: 'chapters.unit-4-introduction',
         path: '/unit-4/introduction',
         kind: 'intro',
       },
       {
         id: 'simple-chord',
         unitId: 'unit-4',
-        title: 'Chapter 1: Simple Chord',
+        titleKey: 'chapters.simple-chord',
         path: '/unit-4/simple-chord',
       },
       {
         id: 'impulse-chord',
         unitId: 'unit-4',
-        title: 'Chapter 2: Impulse Chord',
+        titleKey: 'chapters.impulse-chord',
         path: '/unit-4/impulse-chord',
       },
       {
         id: 'unit-4-summary',
         unitId: 'unit-4',
-        title: 'Summary',
+        titleKey: 'chapters.unit-4-summary',
         path: '/unit-4/summary',
         kind: 'summary',
       },

@@ -2,15 +2,37 @@
   @if (adjacent().previous; as previous) {
     <a mat-stroked-button [routerLink]="previous.path">
       <mat-icon>arrow_back</mat-icon>
-      {{ getChapterNavLabel(previous) }}
+      <ng-container
+        [ngTemplateOutlet]="label"
+        [ngTemplateOutletContext]="{ $implicit: previous }"
+      />
     </a>
   } @else {
     <span></span>
   }
   @if (adjacent().next; as next) {
     <a mat-flat-button color="primary" [routerLink]="next.path">
-      {{ getChapterNavLabel(next) }}
+      <ng-container
+        [ngTemplateOutlet]="label"
+        [ngTemplateOutletContext]="{ $implicit: next }"
+      />
       <mat-icon>arrow_forward</mat-icon>
     </a>
   }
 </div>
+
+<ng-template #label let-chapter>
+  @let navLabel = getChapterNavLabel(chapter);
+  @if (navLabel.unitKey) {
+    {{
+      'chapterNav.withUnit'
+        | translate
+          : {
+              unit: navLabel.unitKey | translate,
+              title: navLabel.titleKey | translate,
+            }
+    }}
+  } @else {
+    {{ navLabel.titleKey | translate }}
+  }
+</ng-template>

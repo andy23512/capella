@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ChapterNavComponent } from '../../../components/chapter-nav/chapter-nav.component';
 import { ExerciseCardComponent } from '../../../components/exercise-card/exercise-card.component';
 import { LayoutComponent } from '../../../components/layout/layout.component';
@@ -9,7 +10,12 @@ import { resolveChordIllustration } from '../../../utils/key-position.utils';
   selector: 'app-simple-chord-page',
   templateUrl: './simple-chord-page.component.html',
   standalone: true,
-  imports: [LayoutComponent, ChapterNavComponent, ExerciseCardComponent],
+  imports: [
+    TranslatePipe,
+    LayoutComponent,
+    ChapterNavComponent,
+    ExerciseCardComponent,
+  ],
 })
 export class SimpleChordPageComponent {
   protected readonly exampleChord = resolveChordIllustration(['b', 'c']);

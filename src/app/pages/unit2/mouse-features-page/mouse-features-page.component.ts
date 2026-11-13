@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
 import { ChapterNavComponent } from '../../../components/chapter-nav/chapter-nav.component';
 import { ExerciseCardComponent } from '../../../components/exercise-card/exercise-card.component';
@@ -9,7 +10,12 @@ import { DeviceLayoutService } from '../../../services/device-layout.service';
   selector: 'app-mouse-features-page',
   templateUrl: './mouse-features-page.component.html',
   standalone: true,
-  imports: [ExerciseCardComponent, ChapterNavComponent, RouterLink],
+  imports: [
+    TranslatePipe,
+    ExerciseCardComponent,
+    ChapterNavComponent,
+    RouterLink,
+  ],
 })
 export class MouseFeaturesPageComponent {
   protected readonly deviceLayoutService = inject(DeviceLayoutService);

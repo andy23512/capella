@@ -1,21 +1,25 @@
 <p class="text-sm uppercase tracking-wide text-capella-400">
-  {{ unit().title }}
+  {{ unit().titleKey | translate }}
 </p>
-<h1 class="m-0 mt-1 text-3xl font-medium">Summary</h1>
+<h1 class="m-0 mt-1 text-3xl font-medium">
+  {{ "unitSummary.title" | translate }}
+</h1>
 
-<p class="mt-6 text-gray-50">{{ unit().summary }}</p>
+<p class="mt-6 text-gray-50">{{ unit().summaryKey! | translate }}</p>
 
 @if (unit().resources?.length) {
-  <h2 class="mt-10 text-xl font-medium">Other resources</h2>
+  <h2 class="mt-10 text-xl font-medium">
+    {{ "unitSummary.otherResources" | translate }}
+  </h2>
   <ul class="mt-4 flex flex-col gap-2 pl-5 text-gray-50">
-    @for (resource of unit().resources; track resource.url) {
+    @for (resource of unit().resources; track resource.urlKey) {
       <li>
         <a
-          [href]="resource.url"
+          [href]="resource.urlKey | translate"
           target="_blank"
           rel="noopener"
           class="text-capella-400"
-          >{{ resource.label }}</a
+          >{{ resource.labelKey | translate }}</a
         >
       </li>
     }

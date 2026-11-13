@@ -12,5 +12,109 @@
       "m4g": "M4G default layout",
       "m4gNote": "Master Forge has no 3rd thumb switch — the layout diagram hides it when this is selected."
     }
+  },
+  "nav": {
+    "learningMap": "Learning Map",
+    "settings": "Settings",
+    "openMenu": "Open side menu"
+  },
+  "chapterNav": {
+    "withUnit": "{{unit}}: {{title}}"
+  },
+  "unitIntro": {
+    "title": "Introduction",
+    "inThisUnit": "In this unit"
+  },
+  "unitSummary": {
+    "title": "Summary",
+    "otherResources": "Other resources"
+  },
+  "learningMap": {
+    "title": "Learning Map",
+    "description": "Every chapter you've opened and every exercise you've finished, in one view.",
+    "chaptersRead": "/ {{total}} chapters read",
+    "exercisesCompleted": "/ {{total}} exercises completed",
+    "exercisesDisabledOnM4g": "Exercises disabled on the M4G layout",
+    "exerciseProgress": "{{completed}} / {{total}} exercises completed"
+  },
+  "units": {
+    "unit-1": {
+      "title": "Unit 1: Introduction",
+      "shortTitle": "Unit 1",
+      "introduction": "This unit lays the groundwork before you touch a device: what a CharaChorder 3D input device actually is, and the 5-way switch mechanic that every device in the lineup is built around. You'll meet the four current devices, then get hands-on with an interactive switch diagram that shows how tilt direction — and its orientation — changes what a single switch can do.",
+      "summary": "You've now seen the four CharaChorder 3D input devices — CC1, CC2, CCU, and Master Forge — and how their shared 5-way switch mechanic turns one physical switch into up to five inputs. You also saw that switch orientation is not universal: CC1/CC2/CCU align with natural finger movement, while Master Forge aligns with the digitizer edge instead. With that foundation in place, Unit 2 moves on to actually practicing the standard key set.",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder Docs",
+          "url": "https://docs.charachorder.com/"
+        },
+        "resource2": {
+          "label": "Tangent's review of Master Forge",
+          "url": "https://andy23512.github.io/blog/tangent-s-review-to-master-forge/"
+        }
+      }
+    },
+    "unit-2": {
+      "title": "Unit 2: Standard Keys",
+      "shortTitle": "Unit 2",
+      "introduction": "With the switch mechanic down, it's time to put it to work. This unit drills the standard key set you already know from a regular keyboard — letters, numbers, symbols, functional keys like Enter and Backspace, and the F1–F12 function keys — but on the CharaChorder's 5-way switches. It closes with the device's built-in mouse features, all without leaving the device. Each chapter pairs a few short exercises with a live layout diagram that lights up exactly which switch to press.",
+      "summary": "You've now practiced the full standard key set on the CharaChorder 3D input device's switches — letters, numbers, symbols, functional keys, the F1–F12, and the built-in mouse features — using the same layout diagram and highlight mechanic throughout. That coverage is the foundation for everything else the device can do, including the chorded entries that make CharaChorder input devices distinct from a regular keyboard.",
+      "resources": {
+        "resource1": {
+          "label": "Tangent's suggestions for learning English character entry on CharaChorder 3D input devices",
+          "url": "https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/"
+        }
+      }
+    },
+    "unit-3": {
+      "title": "Unit 3: CharaChorder Special Keys",
+      "shortTitle": "Unit 3",
+      "introduction": "Beyond the standard key set, CharaChorder 3D input devices add a few unique features. This unit covers two of them: DUP, which repeats your last input — handy for double letters — and Ambidextrous Throwover, a one-handed entry mode that mirrors the opposite hand's characters onto the hand using it.",
+      "summary": "You've now seen DUP and Ambidextrous Throwover — two features with no equivalent on a regular keyboard. DUP saves a repeat press by echoing your last input, while Ambidextrous Throwover lets a single hand reach the full character set when the other is occupied. Together with the standard key set from Unit 2, that covers the core building blocks the CharaChorder's chorded entries on next.",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder Docs — Glossary",
+          "url": "https://docs.charachorder.com/Glossary.html"
+        }
+      }
+    },
+    "unit-4": {
+      "title": "Unit 4: Basic Chording",
+      "shortTitle": "Unit 4",
+      "introduction": "Every unit so far has been character entry — one switch at a time. This unit introduces the CharaChorder's other mode: chording, where pressing several switches together produces something other than those characters in sequence, like a whole word. You'll see the basic mechanic and an on-the-fly chord creation functionality, called Impulse Chord.",
+      "summary": "You've now seen the core chording mechanic: pressing multiple switches together for one output, and impulse chords for creating new chords on the spot. Together with the standard key set and special keys from Units 2 and 3, that's the basic toolkit this tutorial covers for getting text and commands out through a CharaChorder's switches.",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder Docs — Chords",
+          "url": "https://docs.charachorder.com/Chords.html"
+        },
+        "resource2": {
+          "label": "Tangent's suggestion for learning English chorded entry on CharaChorder devices",
+          "url": "https://andy23512.github.io/blog/tangent-s-suggestion-for-learning-english-chorded-entry-on-charachorder-devices/"
+        }
+      }
+    }
+  },
+  "chapters": {
+    "unit-1-introduction": "Introduction",
+    "device-introduction": "Chapter 1: Device introduction",
+    "3d-switch-introduction": "Chapter 2: 3D switch introduction",
+    "unit-1-summary": "Summary",
+    "unit-2-introduction": "Introduction",
+    "letters": "Chapter 1: Letters",
+    "number": "Chapter 2: Number",
+    "symbols": "Chapter 3: Symbols",
+    "functional-keys": "Chapter 4: Functional Keys",
+    "function-keys": "Chapter 5: Function Keys",
+    "mouse-features": "Chapter 6: Mouse Features",
+    "unit-2-summary": "Summary",
+    "unit-3-introduction": "Introduction",
+    "dup": "Chapter 1: DUP",
+    "ambidextrous-throwover": "Chapter 2: Ambidextrous Throwover",
+    "unit-3-summary": "Summary",
+    "unit-4-introduction": "Introduction",
+    "simple-chord": "Chapter 1: Simple Chord",
+    "impulse-chord": "Chapter 2: Impulse Chord",
+    "unit-4-summary": "Summary"
   }
 }

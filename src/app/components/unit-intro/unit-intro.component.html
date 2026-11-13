@@ -1,16 +1,20 @@
 <p class="text-sm uppercase tracking-wide text-capella-400">
-  {{ unit().title }}
+  {{ unit().titleKey | translate }}
 </p>
-<h1 class="m-0 mt-1 text-3xl font-medium">Introduction</h1>
+<h1 class="m-0 mt-1 text-3xl font-medium">
+  {{ "unitIntro.title" | translate }}
+</h1>
 
-<p class="mt-6 text-gray-50">{{ unit().introduction }}</p>
+<p class="mt-6 text-gray-50">{{ unit().introductionKey! | translate }}</p>
 
-<h2 class="mt-10 text-xl font-medium">In this unit</h2>
+<h2 class="mt-10 text-xl font-medium">
+  {{ "unitIntro.inThisUnit" | translate }}
+</h2>
 <ol class="mt-4 flex flex-col gap-2 pl-5 text-gray-50">
   @for (chapter of chapters(); track chapter.id) {
     <li>
       <a [routerLink]="chapter.path" class="text-capella-400">{{
-        chapter.title
+        chapter.titleKey | translate
       }}</a>
     </li>
   }

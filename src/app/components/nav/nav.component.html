@@ -28,7 +28,7 @@
         (click)="onNavLinkClick()"
       >
         <mat-icon class="mr-1 align-middle !text-[20px]">map</mat-icon>
-        Learning Map
+        {{ "nav.learningMap" | translate }}
       </a>
       <a
         mat-list-item
@@ -37,17 +37,17 @@
         (click)="onNavLinkClick()"
       >
         <mat-icon class="mr-1 align-middle !text-[20px]">settings</mat-icon>
-        Settings
+        {{ "nav.settings" | translate }}
       </a>
       @for (unit of units; track unit.id) {
-        <h4 class="font-bold" matSubheader>{{ unit.title }}</h4>
+        <h4 class="font-bold" matSubheader>{{ unit.titleKey | translate }}</h4>
         @for (chapter of unit.chapters; track chapter.id) {
           <a
             mat-list-item
             [routerLink]="chapter.path"
             routerLinkActive="list-item-active"
             (click)="onNavLinkClick()"
-            >{{ chapter.title }}</a
+            >{{ chapter.titleKey | translate }}</a
           >
         }
       }
@@ -58,7 +58,7 @@
       <button
         type="button"
         class="!fixed left-1 top-1/2 !z-10 -translate-y-1/2 cursor-pointer opacity-80 hover:text-capella-500"
-        aria-label="Open side menu"
+        [attr.aria-label]="'nav.openMenu' | translate"
         mat-icon-button
         (click)="drawer.toggle()"
       >

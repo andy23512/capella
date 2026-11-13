@@ -1,6 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   exercisesForChapter,
   isExerciseAvailable,
@@ -21,7 +22,7 @@ interface ChapterNode {
 
 interface UnitGroup {
   id: string;
-  title: string;
+  titleKey: string;
   nodes: ChapterNode[];
 }
 
@@ -29,7 +30,7 @@ interface UnitGroup {
   selector: 'app-learning-map-page',
   templateUrl: './learning-map-page.component.html',
   standalone: true,
-  imports: [RouterLink, MatIcon],
+  imports: [RouterLink, MatIcon, TranslatePipe],
 })
 export class LearningMapPageComponent {
   private readonly progressService = inject(ProgressService);
@@ -38,7 +39,7 @@ export class LearningMapPageComponent {
   protected readonly unitGroups = computed<UnitGroup[]>(() =>
     UNITS.map((unit) => ({
       id: unit.id,
-      title: unit.title,
+      titleKey: unit.titleKey,
       nodes: unit.chapters.map((chapter) => {
         const allExercises = exercisesForChapter(chapter.id);
         const layoutId = this.deviceLayoutService.deviceLayoutId();

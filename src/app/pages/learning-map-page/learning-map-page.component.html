@@ -1,8 +1,7 @@
 <div class="mx-auto max-w-4xl p-8">
-  <h1 class="m-0 text-4xl font-medium">Learning Map</h1>
+  <h1 class="m-0 text-4xl font-medium">{{ 'learningMap.title' | translate }}</h1>
   <p class="mt-2 text-gray-100">
-    Every chapter you've opened and every exercise you've finished, in one
-    view.
+    {{ 'learningMap.description' | translate }}
   </p>
 
   <div class="mt-6 flex flex-wrap gap-8">
@@ -10,21 +9,23 @@
       <span class="text-2xl font-medium text-capella-500">{{
         totals().chaptersRead
       }}</span>
-      <span class="text-gray-100"> / {{ totals().chaptersTotal }} chapters read</span>
+      <span class="text-gray-100">
+        {{ 'learningMap.chaptersRead' | translate: { total: totals().chaptersTotal } }}</span
+      >
     </div>
     <div>
       <span class="text-2xl font-medium text-capella-500">{{
         totals().exercisesCompleted
       }}</span>
       <span class="text-gray-100">
-        / {{ totals().exercisesTotal }} exercises completed</span
+        {{ 'learningMap.exercisesCompleted' | translate: { total: totals().exercisesTotal } }}</span
       >
     </div>
   </div>
 
   @for (group of unitGroups(); track group.id) {
     <section class="mt-10">
-      <h2 class="m-0 text-xl font-medium text-gray-50">{{ group.title }}</h2>
+      <h2 class="m-0 text-xl font-medium text-gray-50">{{ group.titleKey | translate }}</h2>
       <ol class="mt-4 ml-1.5 border-l-2 border-gray-400 pl-6">
         @for (node of group.nodes; track node.chapter.id) {
           <li class="relative pb-6 last:pb-0">
@@ -42,7 +43,7 @@
                 [class.text-capella-500]="node.read"
                 [class.text-gray-50]="!node.read"
               >
-                {{ node.chapter.title }}
+                {{ node.chapter.titleKey | translate }}
               </span>
               @if (node.read) {
                 <mat-icon class="!h-4 !w-4 !text-[16px] text-capella-500"
@@ -52,7 +53,7 @@
             </a>
             @if (node.exercisesDisabled) {
               <p class="mt-1 text-sm text-gray-300">
-                Exercises disabled on the M4G layout
+                {{ 'learningMap.exercisesDisabledOnM4g' | translate }}
               </p>
             } @else if (node.exerciseTotal > 0) {
               <p
@@ -64,8 +65,14 @@
                   node.exerciseCompleted !== node.exerciseTotal
                 "
               >
-                {{ node.exerciseCompleted }} / {{ node.exerciseTotal }}
-                exercises completed
+                {{
+                  'learningMap.exerciseProgress'
+                    | translate
+                      : {
+                          completed: node.exerciseCompleted,
+                          total: node.exerciseTotal,
+                        }
+                }}
               </p>
             }
           </li>

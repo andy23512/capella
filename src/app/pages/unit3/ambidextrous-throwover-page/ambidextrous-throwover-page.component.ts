@@ -1,4 +1,5 @@
 import { Component, computed, signal } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   MatButtonToggle,
   MatButtonToggleChange,
@@ -18,7 +19,7 @@ import {
   selector: 'app-ambidextrous-throwover-page',
   templateUrl: './ambidextrous-throwover-page.component.html',
   standalone: true,
-  imports: [
+  imports: [TranslatePipe, 
     LayoutComponent,
     ChapterNavComponent,
     MatButtonToggleGroup,

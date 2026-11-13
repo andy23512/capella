@@ -12,5 +12,109 @@
       "m4g": "M4G 預設佈局",
       "m4gNote": "Master Forge 沒有拇指第三搖桿，選擇此項時，佈局上會隱藏該搖桿。"
     }
+  },
+  "nav": {
+    "learningMap": "學習地圖",
+    "settings": "設定",
+    "openMenu": "開啟側邊欄"
+  },
+  "chapterNav": {
+    "withUnit": "{{unit}}：{{title}}"
+  },
+  "unitIntro": {
+    "title": "簡介",
+    "inThisUnit": "本單元內容"
+  },
+  "unitSummary": {
+    "title": "總結",
+    "otherResources": "其他資源"
+  },
+  "learningMap": {
+    "title": "學習地圖",
+    "description": "你讀過的每個章節與完成的每個練習，都整理在這裡。",
+    "chaptersRead": "/ 已閱讀 {{total}} 個章節",
+    "exercisesCompleted": "/ 已完成 {{total}} 個練習",
+    "exercisesDisabledOnM4g": "M4G 佈局下停用練習",
+    "exerciseProgress": "已完成 {{completed}} / {{total}} 個練習"
+  },
+  "units": {
+    "unit-1": {
+      "title": "單元 1：簡介",
+      "shortTitle": "單元 1",
+      "introduction": "這個單元會先打好基礎，讓你在實際使用裝置之前，先了解 CharaChorder 3D 輸入裝置，以及所有裝置都圍繞著的五向搖桿機制。你會認識目前的四款裝置，接著透過搖桿示意圖來理解它們的傾斜方向和朝向，以及如何轉變原本平面鍵盤上的按鍵的限制。",
+      "summary": "你現在已經認識了四款 CharaChorder 3D 輸入裝置：CC1、CC2、CCU 與 Master Forge，也了解它們共通的五向搖桿機制，如何把一個實體按鍵變成最多五種輸入。你也看到搖桿的朝向並不通用：CC1/CC2/CCU 是配合手指自然的移動方向，而 Master Forge 則是對齊 digitizer 的邊緣。有這個基礎之後，單元 2 會開始實際練習標準按鍵。",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder 官方文件",
+          "url": "https://docs.charachorder.com/"
+        },
+        "resource2": {
+          "label": "Tangent 對 Master Forge 的評價",
+          "url": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D-master-forge-%E7%9A%84%E8%A9%95%E5%83%B9/"
+        }
+      }
+    },
+    "unit-2": {
+      "title": "單元 2：標準按鍵",
+      "shortTitle": "單元 2",
+      "introduction": "你已經了解了 3D 搖桿的機制已經清楚了，接下來就要實際演練。這個單元會練習你在一般鍵盤上就熟悉的標準按鍵：字母、數字、符號、Enter 與 Backspace 這類功能鍵，以及 F1–F12，只是改在 CharaChorder 的五向搖桿上操作。最後會介紹裝置內建的滑鼠功能，全程都不必離開裝置。每個章節都會搭配少數簡短的練習，以及會即時亮起該按哪個搖桿的佈局示意圖。",
+      "summary": "你現在已經在 CharaChorder 3D 輸入裝置的搖桿上，按照佈局示意圖與亮起提示的指引，練習過完整的標準按鍵：字母、數字、符號、功能鍵、F1–F12，以及內建的滑鼠功能。這些是裝置其他所有功能的基礎，包括和弦輸入，也就是讓 CharaChorder 輸入裝置與一般鍵盤不同的地方。",
+      "resources": {
+        "resource1": {
+          "label": "Tangent 對在 CharaChorder 3D 輸入裝置上學習英文逐字輸入的建議",
+          "url": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%89%93%EF%BC%88%E9%80%90%E5%AD%97%E8%BC%B8%E5%85%A5%EF%BC%89%E7%9A%84%E5%BB%BA%E8%AD%B0/"
+        }
+      }
+    },
+    "unit-3": {
+      "title": "單元 3：CharaChorder 特殊按鍵",
+      "shortTitle": "單元 3",
+      "introduction": "除了標準按鍵之外，CharaChorder 3D 輸入裝置還有幾項特有的功能。這個單元會介紹其中兩項：DUP，它會重複你上一次的輸入，輸入連續相同的字母時很方便；以及 Ambidextrous Throwover，一種單手輸入模式，會把另一隻手的字元鏡射到正在使用的這隻手上。",
+      "summary": "你現在已經認識了 DUP 與 Ambidextrous Throwover，這兩項功能在一般鍵盤上都沒有對應的獨特按鍵。DUP 會重複你上一次的輸入，省下再按一次的動作；Ambidextrous Throwover 則讓另一隻手忙著時，單手也能輸入完整的字元集。搭配單元 2 的標準按鍵，這些就是接下來 CharaChorder 的和弦輸入所依賴的核心基礎。",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder 官方文件：詞彙表",
+          "url": "https://docs.charachorder.com/Glossary.html"
+        }
+      }
+    },
+    "unit-4": {
+      "title": "單元 4：基礎和弦",
+      "shortTitle": "單元 4",
+      "introduction": "到目前為止，每個單元都是逐字元輸入，一次操作一個搖桿。這個單元要介紹 CharaChorder 的另一種模式：和弦輸入。同時按下多個搖桿，輸出的不是那些字元，而是別的，例如一整個單字。接下來你會學到基本的和弦操作，以及一種可以隨時建立和弦的功能，Impulse Chord。",
+      "summary": "你現在已經認識了和弦輸入的核心機制：同時按下多個搖桿，得到一個輸出；以及可以當場建立和弦的 Impulse Chord。搭配單元 2 與單元 3 的標準按鍵和特殊按鍵，這就是本教學透過 CharaChorder 的搖桿輸出文字與指令所涵蓋的基本工具組。",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder 官方文件：和弦",
+          "url": "https://docs.charachorder.com/Chords.html"
+        },
+        "resource2": {
+          "label": "Tangent 對在 CharaChorder 裝置上學習英文和弦輸入的建議",
+          "url": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%96%87%E5%92%8C%E5%BC%A6%E8%BC%B8%E5%85%A5%E7%9A%84%E5%BB%BA%E8%AD%B0/"
+        }
+      }
+    }
+  },
+  "chapters": {
+    "unit-1-introduction": "簡介",
+    "device-introduction": "章節 1：裝置介紹",
+    "3d-switch-introduction": "章節 2：3D 搖桿介紹",
+    "unit-1-summary": "總結",
+    "unit-2-introduction": "簡介",
+    "letters": "章節 1：字母",
+    "number": "章節 2：數字",
+    "symbols": "章節 3：符號",
+    "functional-keys": "章節 4：功能鍵",
+    "function-keys": "章節 5：F1–F12 鍵",
+    "mouse-features": "章節 6：滑鼠功能",
+    "unit-2-summary": "總結",
+    "unit-3-introduction": "簡介",
+    "dup": "章節 1：DUP",
+    "ambidextrous-throwover": "章節 2：Ambidextrous Throwover",
+    "unit-3-summary": "總結",
+    "unit-4-introduction": "簡介",
+    "simple-chord": "章節 1：基礎和弦",
+    "impulse-chord": "章節 2：Impulse Chord",
+    "unit-4-summary": "總結"
   }
 }
