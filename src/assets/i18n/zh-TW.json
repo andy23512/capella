@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "title": "設定",
+    "language": {
+      "title": "介面語言",
+      "description": "選擇網站介面使用的語言。"
+    },
+    "deviceLayout": {
+      "title": "裝置佈局",
+      "description": "選擇佈局顯示與練習要對應哪一款裝置的預設佈局。",
+      "cc1Cc2Ccu": "CC1 / CC2 / CCU 預設佈局",
+      "m4g": "M4G 預設佈局",
+      "m4gNote": "Master Forge 沒有拇指第三搖桿，選擇此項時，佈局上會隱藏該搖桿。"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "title": "Settings",
+    "language": {
+      "title": "Language",
+      "description": "Choose the language used by the site."
+    },
+    "deviceLayout": {
+      "title": "Device layout",
+      "description": "Choose which device's default layout the layout diagrams and exercises should match.",
+      "cc1Cc2Ccu": "CC1 / CC2 / CCU default layout",
+      "m4g": "M4G default layout",
+      "m4gNote": "Master Forge has no 3rd thumb switch — the layout diagram hides it when this is selected."
+    }
+  }
+}

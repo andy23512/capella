@@ -1,9 +1,27 @@
 <div class="mx-auto max-w-4xl p-8">
-  <h1 class="m-0 text-3xl font-medium">Settings</h1>
+  <h1 class="m-0 text-3xl font-medium">{{ "settings.title" | translate }}</h1>
 
-  <p class="mt-6 text-gray-50">
-    Choose which device's default layout the layout diagrams and exercises
-    should match.
+  <h2 class="mt-8 text-xl font-medium">
+    {{ "settings.language.title" | translate }}
+  </h2>
+  <p class="mt-2 text-gray-50">
+    {{ "settings.language.description" | translate }}
+  </p>
+
+  <mat-radio-group
+    class="mt-4 flex flex-col gap-3"
+    [value]="languageService.language()"
+    (change)="onLanguageChange($event.value)"
+  >
+    <mat-radio-button value="en">English</mat-radio-button>
+    <mat-radio-button value="zh-TW">繁體中文</mat-radio-button>
+  </mat-radio-group>
+
+  <h2 class="mt-8 text-xl font-medium">
+    {{ "settings.deviceLayout.title" | translate }}
+  </h2>
+  <p class="mt-2 text-gray-50">
+    {{ "settings.deviceLayout.description" | translate }}
   </p>
 
   <mat-radio-group
@@ -12,13 +30,12 @@
     (change)="onDeviceLayoutChange($event.value)"
   >
     <mat-radio-button value="cc1-cc2-ccu">
-      CC1 / CC2 / CCU default layout
+      {{ "settings.deviceLayout.cc1Cc2Ccu" | translate }}
     </mat-radio-button>
     <mat-radio-button value="m4g">
-      M4G default layout
+      {{ "settings.deviceLayout.m4g" | translate }}
       <span class="block text-sm text-gray-300">
-        Master Forge has no 3rd thumb switch — the layout diagram hides it
-        when this is selected.
+        {{ "settings.deviceLayout.m4gNote" | translate }}
       </span>
     </mat-radio-button>
   </mat-radio-group>
