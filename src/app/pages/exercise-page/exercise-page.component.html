@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-4xl p-8">
     <a mat-stroked-button [routerLink]="backPath">
       <mat-icon>arrow_back</mat-icon>
-      Back to chapter
+      {{ 'exercisePage.back' | translate }}
     </a>
 
     <h1 class="m-0 mt-4 text-3xl font-medium">{{ exercise.titleKey | translate }}</h1>
@@ -19,7 +19,7 @@
             [class.text-gray-300]="i < currentIndex()"
             [class.opacity-40]="i > currentIndex()"
           >
-            {{ step.label }}
+            {{ step.labelKey ? (step.labelKey | translate) : step.label }}
           </span>
         }
       </div>
@@ -27,9 +27,14 @@
       @if (currentStep(); as step) {
         <p class="mt-4 text-center text-lg text-gray-50">
           @if (step.kind === 'mouse') {
-            <strong class="text-capella-400">{{ step.label }}</strong>
+            <strong class="text-capella-400">{{
+              step.labelKey ? (step.labelKey | translate) : step.label
+            }}</strong>
           } @else {
-            Press <strong class="text-capella-400">{{ step.label }}</strong>
+            {{ 'exercisePage.press' | translate }}
+            <strong class="text-capella-400">{{
+              step.labelKey ? (step.labelKey | translate) : step.label
+            }}</strong>
           }
         </p>
         @if (step.kind === 'chord') {
@@ -42,8 +47,7 @@
         }
         @if (!step.highlight) {
           <p class="m-0 text-center text-sm text-gray-300">
-            Not available in the default layout diagram below — press it on
-            your keyboard to continue.
+            {{ 'exercisePage.notInDiagram' | translate }}
           </p>
         }
 
@@ -56,20 +60,30 @@
       }
 
       <p class="mt-2 text-center text-xs text-gray-300">
-        Mistakes: {{ mistakes() }}
+        {{ 'exercisePage.mistakes' | translate: { count: mistakes() } }}
       </p>
     } @else {
       <div class="py-8 text-center">
         <p class="m-0 text-2xl font-medium text-capella-400">
-          {{ resolvedSteps.length }}/{{ resolvedSteps.length }} correct
+          {{
+            'exercisePage.allCorrect'
+              | translate: { count: resolvedSteps.length }
+          }}
         </p>
         <p class="mt-2 text-gray-100">
-          {{ mistakes() }} mistake{{ mistakes() === 1 ? '' : 's' }}
+          {{
+            (mistakes() === 1
+              ? 'exercisePage.mistakeCountOne'
+              : 'exercisePage.mistakeCountOther'
+            ) | translate: { count: mistakes() }
+          }}
         </p>
         <div class="mt-6 flex justify-center gap-3">
-          <button mat-stroked-button (click)="restart()">Redo</button>
+          <button mat-stroked-button (click)="restart()">
+            {{ 'exercisePage.redo' | translate }}
+          </button>
           <a mat-flat-button color="primary" [routerLink]="backPath">
-            Back to chapter
+            {{ 'exercisePage.back' | translate }}
           </a>
         </div>
       </div>

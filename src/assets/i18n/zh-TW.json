@@ -312,5 +312,37 @@
     "resetBox": "重設這個輸入框",
     "skip": "不想動到裝置上的和弦庫嗎？按此跳過並標示為完成",
     "sentenceEnd": "。"
+  },
+  "exercisePage": {
+    "back": "回到章節",
+    "press": "按下",
+    "notInDiagram": "下方的預設佈局圖中沒有這個按鍵，請直接在鍵盤上按它以繼續。",
+    "mistakes": "錯誤：{{count}}",
+    "allCorrect": "{{count}}/{{count}} 正確",
+    "mistakeCountOne": "{{count}} 個錯誤",
+    "mistakeCountOther": "{{count}} 個錯誤",
+    "redo": "重做"
+  },
+  "stepLabels": {
+    "ArrowUp": "上方向鍵",
+    "ArrowDown": "下方向鍵",
+    "ArrowLeft": "左方向鍵",
+    "ArrowRight": "右方向鍵",
+    "AltLeft": "左 Alt",
+    "AltRight": "右 Alt",
+    "ControlLeft": "左 Control",
+    "ControlRight": "右 Control",
+    "MetaLeft": "左 Meta",
+    "MetaRight": "右 Meta",
+    "MouseMoveUp": "向上移動",
+    "MouseMoveDown": "向下移動",
+    "MouseMoveLeft": "向左移動",
+    "MouseMoveRight": "向右移動",
+    "MouseLeftClick": "左鍵點擊",
+    "MouseRightClick": "右鍵點擊",
+    "MouseScrollCoastUp": "向上捲動",
+    "MouseScrollCoastDown": "向下捲動",
+    "MouseScrollCoastLeft": "向左捲動",
+    "MouseScrollCoastRight": "向右捲動"
   }
 }

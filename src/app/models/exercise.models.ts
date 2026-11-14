@@ -6,6 +6,8 @@ export type ExerciseStepKind =
 export interface ExerciseStep {
   /** What the user sees ("A", "Space", "F5", "Left click", "DUP (t)", "B + C"). */
   label: string;
+  /** Optional translation key; when set it is shown instead of `label`. */
+  labelKey?: string;
   /** Which input pipeline resolves and detects this step. */
   kind: ExerciseStepKind;
   /**

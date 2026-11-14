@@ -14,11 +14,29 @@ function characterStep(label: string, char: string): ExerciseStep {
   return { label, kind: 'character', key: char };
 }
 
+/**
+ * Named keys whose label is descriptive text and so is translated. The
+ * others (Enter, Tab, F5, ...) are keycap names and stay as they are.
+ */
+const TRANSLATED_NAMED_KEYS = new Set([
+  'ArrowUp',
+  'ArrowDown',
+  'ArrowLeft',
+  'ArrowRight',
+  'AltLeft',
+  'AltRight',
+  'ControlLeft',
+  'ControlRight',
+  'MetaLeft',
+  'MetaRight',
+]);
+
 function namedSteps(
   labelsAndKeys: [label: string, key: string][],
 ): ExerciseStep[] {
   return labelsAndKeys.map(([label, key]) => ({
     label,
+    labelKey: TRANSLATED_NAMED_KEYS.has(key) ? `stepLabels.${key}` : undefined,
     kind: 'named-key',
     key,
   }));
@@ -29,6 +47,7 @@ function mouseSteps(
 ): ExerciseStep[] {
   return labelsAndActions.map(([label, key]) => ({
     label,
+    labelKey: `stepLabels.${key}`,
     kind: 'mouse',
     key,
   }));

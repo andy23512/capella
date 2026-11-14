@@ -312,5 +312,37 @@
     "resetBox": "reset this box",
     "skip": "Don't want this touching your device's chord library? Click here to skip and mark complete",
     "sentenceEnd": "."
+  },
+  "exercisePage": {
+    "back": "Back to chapter",
+    "press": "Press",
+    "notInDiagram": "Not available in the default layout diagram below — press it on your keyboard to continue.",
+    "mistakes": "Mistakes: {{count}}",
+    "allCorrect": "{{count}}/{{count}} correct",
+    "mistakeCountOne": "{{count}} mistake",
+    "mistakeCountOther": "{{count}} mistakes",
+    "redo": "Redo"
+  },
+  "stepLabels": {
+    "ArrowUp": "Arrow Up",
+    "ArrowDown": "Arrow Down",
+    "ArrowLeft": "Arrow Left",
+    "ArrowRight": "Arrow Right",
+    "AltLeft": "Left Alt",
+    "AltRight": "Right Alt",
+    "ControlLeft": "Left Control",
+    "ControlRight": "Right Control",
+    "MetaLeft": "Left Meta",
+    "MetaRight": "Right Meta",
+    "MouseMoveUp": "Move up",
+    "MouseMoveDown": "Move down",
+    "MouseMoveLeft": "Move left",
+    "MouseMoveRight": "Move right",
+    "MouseLeftClick": "Left click",
+    "MouseRightClick": "Right click",
+    "MouseScrollCoastUp": "Scroll up",
+    "MouseScrollCoastDown": "Scroll down",
+    "MouseScrollCoastLeft": "Scroll left",
+    "MouseScrollCoastRight": "Scroll right"
   }
 }
