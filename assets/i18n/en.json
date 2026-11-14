@@ -1,0 +1,363 @@
+{
+  "settings": {
+    "title": "Settings",
+    "language": {
+      "title": "Language",
+      "description": "Choose the language used by the site."
+    },
+    "deviceLayout": {
+      "title": "Device layout",
+      "description": "Choose which device's default layout the layout diagrams and exercises should match.",
+      "cc1Cc2Ccu": "CC1 / CC2 / CCU default layout",
+      "m4g": "M4G default layout",
+      "m4gNote": "Master Forge has no 3rd thumb switch — the layout diagram hides it when this is selected."
+    }
+  },
+  "home": {
+    "tagline": "An unofficial tutorial site for CharaChorder 3D input devices. Not affiliated, associated, authorized, endorsed by, or in any way officially connected with CharaChorder.",
+    "description": "CharaChorder 3D input devices swap a traditional keyboard's flat grid of keys for switches that move in five directions, letting one finger produce many different characters — and letting whole words come out from a single chord of switches pressed together. Capella walks through how the hardware works and how to actually use it, one short chapter at a time.",
+    "assumptions": {
+      "title": "This tutorial assumes:",
+      "keyboardLayout": "Your operating system's keyboard layout is set to QWERTY - US. Key labels and positions shown throughout the site are based on QWERTY - US; if your OS uses a different layout, some labels may not match what you see on your device.",
+      "deviceDefaults": "Your CharaChorder 3D input device is using its default layout and default chord library. If you have customized either one, some exercises and chords may not behave as described."
+    },
+    "start": "Start {{unit}}"
+  },
+  "nav": {
+    "learningMap": "Learning Map",
+    "settings": "Settings",
+    "openMenu": "Open side menu"
+  },
+  "chapterNav": {
+    "withUnit": "{{unit}}: {{title}}"
+  },
+  "unitIntro": {
+    "title": "Introduction",
+    "inThisUnit": "In this unit"
+  },
+  "unitSummary": {
+    "title": "Summary",
+    "otherResources": "Other resources"
+  },
+  "learningMap": {
+    "title": "Learning Map",
+    "description": "Every chapter you've opened and every exercise you've finished, in one view.",
+    "chaptersRead": "/ {{total}} chapters read",
+    "exercisesCompleted": "/ {{total}} exercises completed",
+    "exercisesDisabledOnM4g": "Exercises disabled on the M4G layout",
+    "exerciseProgress": "{{completed}} / {{total}} exercises completed"
+  },
+  "units": {
+    "unit-1": {
+      "title": "Unit 1: Introduction",
+      "shortTitle": "Unit 1",
+      "introduction": "This unit lays the groundwork before you touch a device: what a CharaChorder 3D input device actually is, and the 5-way switch mechanic that every device in the lineup is built around. You'll meet the four current devices, then get hands-on with an interactive switch diagram that shows how tilt direction — and its orientation — changes what a single switch can do.",
+      "summary": "You've now seen the four CharaChorder 3D input devices — CC1, CC2, CCU, and Master Forge — and how their shared 5-way switch mechanic turns one physical switch into up to five inputs. You also saw that switch orientation is not universal: CC1/CC2/CCU align with natural finger movement, while Master Forge aligns with the digitizer edge instead. With that foundation in place, Unit 2 moves on to actually practicing the standard key set.",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder Docs",
+          "url": "https://docs.charachorder.com/"
+        },
+        "resource2": {
+          "label": "Tangent's review of Master Forge",
+          "url": "https://andy23512.github.io/blog/tangent-s-review-to-master-forge/"
+        }
+      }
+    },
+    "unit-2": {
+      "title": "Unit 2: Standard Keys",
+      "shortTitle": "Unit 2",
+      "introduction": "With the switch mechanic down, it's time to put it to work. This unit drills the standard key set you already know from a regular keyboard — letters, numbers, symbols, functional keys like Enter and Backspace, and the F1–F12 function keys — but on the CharaChorder's 5-way switches. It closes with the device's built-in mouse features, all without leaving the device. Each chapter pairs a few short exercises with a live layout diagram that lights up exactly which switch to press.",
+      "summary": "You've now practiced the full standard key set on the CharaChorder 3D input device's switches — letters, numbers, symbols, functional keys, the F1–F12, and the built-in mouse features — using the same layout diagram and highlight mechanic throughout. That coverage is the foundation for everything else the device can do, including the chorded entries that make CharaChorder input devices distinct from a regular keyboard.",
+      "resources": {
+        "resource1": {
+          "label": "Tangent's suggestions for learning English character entry on CharaChorder 3D input devices",
+          "url": "https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/"
+        }
+      }
+    },
+    "unit-3": {
+      "title": "Unit 3: CharaChorder Special Keys",
+      "shortTitle": "Unit 3",
+      "introduction": "Beyond the standard key set, CharaChorder 3D input devices add a few unique features. This unit covers two of them: DUP, which repeats your last input — handy for double letters — and Ambidextrous Throwover, a one-handed entry mode that mirrors the opposite hand's characters onto the hand using it.",
+      "summary": "You've now seen DUP and Ambidextrous Throwover — two features with no equivalent on a regular keyboard. DUP saves a repeat press by echoing your last input, while Ambidextrous Throwover lets a single hand reach the full character set when the other is occupied. Together with the standard key set from Unit 2, that covers the core building blocks the CharaChorder's chorded entries on next.",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder Docs — Glossary",
+          "url": "https://docs.charachorder.com/Glossary.html"
+        }
+      }
+    },
+    "unit-4": {
+      "title": "Unit 4: Basic Chording",
+      "shortTitle": "Unit 4",
+      "introduction": "Every unit so far has been character entry — one switch at a time. This unit introduces the CharaChorder's other mode: chording, where pressing several switches together produces something other than those characters in sequence, like a whole word. You'll see the basic mechanic and an on-the-fly chord creation functionality, called Impulse Chord.",
+      "summary": "You've now seen the core chording mechanic: pressing multiple switches together for one output, and impulse chords for creating new chords on the spot. Together with the standard key set and special keys from Units 2 and 3, that's the basic toolkit this tutorial covers for getting text and commands out through a CharaChorder's switches.",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder Docs — Chords",
+          "url": "https://docs.charachorder.com/Chords.html"
+        },
+        "resource2": {
+          "label": "Tangent's suggestion for learning English chorded entry on CharaChorder devices",
+          "url": "https://andy23512.github.io/blog/tangent-s-suggestion-for-learning-english-chorded-entry-on-charachorder-devices/"
+        }
+      }
+    }
+  },
+  "chapters": {
+    "unit-1-introduction": "Introduction",
+    "device-introduction": "Chapter 1: Device introduction",
+    "3d-switch-introduction": "Chapter 2: 3D switch introduction",
+    "unit-1-summary": "Summary",
+    "unit-2-introduction": "Introduction",
+    "letters": "Chapter 1: Letters",
+    "number": "Chapter 2: Number",
+    "symbols": "Chapter 3: Symbols",
+    "functional-keys": "Chapter 4: Functional Keys",
+    "function-keys": "Chapter 5: Function Keys",
+    "mouse-features": "Chapter 6: Mouse Features",
+    "unit-2-summary": "Summary",
+    "unit-3-introduction": "Introduction",
+    "dup": "Chapter 1: DUP",
+    "ambidextrous-throwover": "Chapter 2: Ambidextrous Throwover",
+    "unit-3-summary": "Summary",
+    "unit-4-introduction": "Introduction",
+    "simple-chord": "Chapter 1: Simple Chord",
+    "impulse-chord": "Chapter 2: Impulse Chord",
+    "unit-4-summary": "Summary"
+  },
+  "deviceIntro": {
+    "description": "CharaChorder makes a family of \"3D input devices.\" Instead of keys that only go down, every switch on these devices can also tilt north, east, south, or west — so a single switch can produce up to five different inputs depending on which way you move it, and typing whole chords becomes a matter of moving several fingers at once rather than pressing keys in sequence. Four devices currently share this idea, each with a different form factor and switch count."
+  },
+  "deviceCard": {
+    "switchesPerHand": "{{count}} switches / hand",
+    "thumbSwitchesPerHand": "{{count}} thumb switches / hand",
+    "officialProductPage": "Official product page"
+  },
+  "devices": {
+    "cc1": {
+      "tagline": "The original — fully assembled",
+      "description": "The device that started it all. Two halves are joined by a removable machined-aluminum center bar and talk to each other over a 3.5mm TRS cable, with a single USB-C-to-USB-A cable for power and data. Plug-and-play, with three configurable layers stored on the device itself.",
+      "notes": "The pinky switch is flatter and wider than the rest for easier reach."
+    },
+    "cc2": {
+      "tagline": "Lighter, quieter, more durable",
+      "description": "A refined second generation on the same split, cabled form factor as CC1. Switches are nearly twice as light to actuate, over four times quieter, and rated to last five times longer — with keycaps you can actually replace."
+    },
+    "ccu": {
+      "tagline": "Build your own, powered by CC2 electronics",
+      "description": "A 3D-printable kit built around the same PCB as CC2. Pick a preconfigured shell or tailor your own with an online CAD tool, print the case yourself, and assemble it — the most customizable and affordable way to get CC2-level switch technology in your own hands."
+    },
+    "master-forge": {
+      "tagline": "A digitizer-based design for hybrid chorded entry",
+      "description": "Master Forge is built from two independent 'digitizers' joined by a mechanical and electrical bridge connector (can be switched to a cable). Each digitizer has 8 switches instead of 9 — only 2 per hand are dedicated to the thumb, down from 3 on CC1/CC2/CCU. As you'll see in the following chapter, its switches are also oriented differently from earlier devices.",
+      "notes": "Pressing straight down isn't sensed as its own state the way it is on CC1/CC2/CCU — it's read as all four cardinal directions firing at once."
+    }
+  },
+  "switchIntro": {
+    "intro": "Every switch on a CharaChorder 3D input device is a 3D switch: it senses which of four directions it's tilted in — north, east, south, or west. On CC1, CC2, and CCU, each switch also senses a straight-down press as a separate fifth state, making it a true <strong>5-way switch</strong> that can stand in for up to five different inputs. Master Forge's switches are 4-way instead — see below for how their center press differs.",
+    "orientationTitle": "Orientation differs by device",
+    "orientationBody": "The five directions above are the same on every device — but which way is physically \"north\" is not. On CC1, CC2, and CCU, the non-thumb switches are oriented to match natural finger movement, so tilting a switch feels like moving your finger in that direction. Master Forge changes this: its non-thumb switches are oriented to match the edge of the digitizer half instead, roughly a 45° twist away from where your finger naturally wants to go.",
+    "ccOrientation": "The red lines in the photo below mark which way each switch is oriented. On CC1/CC2/CCU, that orientation lines up directly with your finger's natural movement — tilting north on the switch matches moving your finger north.",
+    "forgeOrientation": "The red lines in the photo below mark which way each switch is oriented — and on Master Forge, that's rotated about 45° from where your finger naturally wants to go, since the switches follow the digitizer's edge instead. Your finger ends up moving diagonally, northeast or southeast, to hit what the layout labels as north or east. Muscle memory built on CC1/CC2/CCU can misfire here, landing on the neighboring switch instead.",
+    "ccAlt": "Photo of a CC1/CC2/CCU digitizer half with red crosses marking each non-thumb switch's orientation, lining up straight with natural finger direction",
+    "forgeAlt": "Photo of a Master Forge digitizer half with red crosses marking each non-thumb switch's orientation, sitting at roughly a 45° angle from natural finger direction",
+    "reviewUrl": "https://andy23512.github.io/blog/tangent-s-review-to-master-forge/#Switch-orientation",
+    "photoCaption": "Photos from Tangent's <a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">review of Master Forge</a>. The red lines mark each switch's orientation.",
+    "naturalVaries": "Exactly where \"natural\" points can vary a bit from person to person and hand to hand, so treat the photos above as a starting point rather than gospel — try tilting each switch yourself and confirm the direction that feels right for your own fingers.",
+    "quote": "\"the orientation of the non-thumb switches aligns with the digitizer (half device)\" — from Tangent's <a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">review of Master Forge</a>, which covers the practical impact (and a layout-viewer workaround) in more depth.",
+    "centerPress": "One more Master Forge difference worth knowing: each of its switches is built from four unidirectional microswitches underneath, with no separate center sensor. So pressing straight down isn't sensed as its own state the way it is on CC1/CC2/CCU — it's read as all four cardinal directions firing at once."
+  },
+  "chapterIntro": {
+    "letters": "Letters are the CharaChorder's home base: the base lowercase alphabet sits on the Primary layer, one switch tilt each, no layer-shift needed. Pick an exercise below — the exercise page will prompt each letter in turn and light up exactly where to press on the device diagram.",
+    "number": "Digits live on a layer different than letters, so they ask for a numerical layer shift key held while triggering the digit key itself.",
+    "symbols": "Symbols are split across two exercises: the shifted punctuation above the number row on the standard keyboard, and the rest of the standard punctuation set. Many of these need Shift, a layer-shift, or both held down together with the symbol's own key — the exercise page will spell out the exact combination for each one.",
+    "functional-keys": "Beyond letters, digits, and symbols, there are keys you use to edit and move around text: Space, Enter, Backspace, Tab, Delete, Escape, the arrow/navigation keys, and the Alt/Control/Meta modifier keys used for OS-level shortcuts.",
+    "function-keys": "F1 through F12, Like digits, they sit on a layer different than letters and numbers: you hold a layer-shift key while triggering the key itself, and the exercise page shows exactly which keys to press. F11 is skipped in the exercise, because many systems reserve it for a system-level shortcut (e.g. Show Desktop on macOS) that the browser can't detect.",
+    "mouse-features": "Beyond keys, the CharaChorder can drive the mouse cursor directly: nudging it around the screen, clicking, and scrolling. Pick an exercise below — the exercise page will prompt each action in turn and light up exactly where to press on the device diagram. Trigger it however you'd like: a real device chorded into these actions, or your regular mouse and scroll wheel both count."
+  },
+  "exercises": {
+    "az": {
+      "title": "A–Z",
+      "description": "Every letter of the alphabet, once each, in order."
+    },
+    "quick-brown-fox": {
+      "title": "Quick Brown Fox",
+      "description": "A classic pangram — every letter appears at least once, plus a capital and spaces."
+    },
+    "0-9": {
+      "title": "1–0",
+      "description": "Every digit, once each, in order."
+    },
+    "shifted-row": {
+      "title": "Number-row symbols",
+      "description": "The shifted symbols above the number row: ! @ # $ % ^ & * ( )"
+    },
+    "punctuation": {
+      "title": "Punctuation & other symbols",
+      "description": "The rest of the standard symbol set, including quotes and brackets."
+    },
+    "editing": {
+      "title": "Editing keys",
+      "description": "Space, Enter, Backspace, Tab, Delete, and Escape."
+    },
+    "navigation": {
+      "title": "Navigation keys",
+      "description": "The arrow keys."
+    },
+    "modifier-keys": {
+      "title": "Modifier keys",
+      "description": "Alt, Control, and Meta (Cmd on Mac, Win on Windows) — held alongside other keys to trigger OS-level shortcuts. This just locates each switch; it does not fire an actual shortcut."
+    },
+    "f1-f12": {
+      "title": "F1–F12",
+      "description": "The full row of function keys, in order. F11 is skipped since it is bound to a system-level shortcut (e.g. Show Desktop on macOS) and cannot be captured by the browser."
+    },
+    "mouse-movement": {
+      "title": "Cursor movement",
+      "description": "Nudge the mouse cursor up, down, left, and right."
+    },
+    "mouse-clicks": {
+      "title": "Left & right click",
+      "description": "A left click, then a right click."
+    },
+    "mouse-scroll": {
+      "title": "Scrolling",
+      "description": "Scroll up, down, left, and right."
+    },
+    "because-chord": {
+      "title": "\"because\" starter chord",
+      "description": "Press and release B and C together — within the device's Press/Release Tolerance — to fire the built-in \"because\" chord. Three reps."
+    },
+    "double-letters": {
+      "title": "Double letters",
+      "description": "Type a letter, then press DUP to repeat it — the same trick works for any double letter, like the \"tt\" in \"letter\"."
+    }
+  },
+  "exerciseCard": {
+    "disabledOnM4g": "Disabled — the Master Forge default layout lacks some mouse functions",
+    "completed": "Completed",
+    "steps": "{{count}} steps"
+  },
+  "mouseFeatures": {
+    "m4gNotice": {
+      "label": "Master Forge (M4G):",
+      "before": " the default layout is missing some mouse functions — it has no cursor movement and no right click — so all of the exercises below are disabled while the M4G layout is selected in ",
+      "settings": "Settings",
+      "after": "."
+    }
+  },
+  "dupPage": {
+    "intro1": "DUP (short for \"duplicate\") repeats your last input. In plain character entry, that means pressing DUP right after a letter types that same letter again — a quick way to produce a double letter, like the \"tt\" in \"letter\", without pressing the same switch twice. In chorded entry, DUP can be folded into a chord to help produce words that repeat a letter.",
+    "intro2": "Pick an exercise below — the exercise page will prompt each letter, then prompt DUP, and light up exactly where to press on the device diagram."
+  },
+  "atPage": {
+    "intro1": "Ambidextrous Throwover — also called Mirror Mode — is an entry mode built for one-handed typing. While it's held, characters that would normally come from your other hand get mirrored onto the hand activating it, so that single hand can reach the full character set on its own.",
+    "intro2": "There's a key for it on each hand, so it works no matter which hand you have free. Unlike DUP, activating it doesn't produce its own keystroke to detect, so there's no exercise here — just the two key positions to know.",
+    "try": "Try it below: switch between the default layout and holding each AT switch, and see how the alphabet moves onto the hand holding it — same finger, same north/south keys, but east and west swap, since it's a literal left-right mirror of the other hand's letters.",
+    "mirrorNote": "This mirroring isn't limited to letters — every key on the other hand, including punctuation, numbers, and other actions, gets mirrored over the same way. The diagram below only shows letters to keep things simple.",
+    "modeDefault": "Default",
+    "modeLeft": "Hold left AT",
+    "modeRight": "Hold right AT",
+    "captionDefault": "Default layout — no Ambidextrous Throwover key held.",
+    "captionLeft": "Holding left AT — the right hand's letters mirror onto the left hand.",
+    "captionRight": "Holding right AT — the left hand's letters mirror onto the right hand."
+  },
+  "simpleChordPage": {
+    "intro1": "Everything in Units 1–3 was <strong>character entry</strong>: one key at a time, in sequence, the same way a regular keyboard works. A CharaChorder's other mode is <strong>chording</strong> — pressing and releasing several keys at the same time to output something else entirely, like a whole word, instead of those characters one by one. A simple chord is the most basic form of this: a fixed set of keys, mapped to one output.",
+    "intro2": "A CharaChorder input device ships with a set of \"Starter Chords\" already loaded, covering some of the most common words in English — but you can also add your own via Device Manager, import a shared chord library, or create one on the fly with impulse chording. The diagram below shows one of those built-in starter chords: pressing B and C together outputs the word \"because\".",
+    "diagramCaption": "B + C = \"because\" — one of CharaChorder's built-in Starter Chords",
+    "fluidNote": "Because character entry and chording share the same switches, you don't have to choose one or the other — CharaChorder 3D input devices default to \"fluid\" entry: press one key at a time and it types normally, or press several keys down together and release them together — within the device's Press Tolerance and Release Tolerance windows — and it emits the chord out instead.",
+    "tryIt": "Try it",
+    "tryItIntro": "Pick the exercise below — the exercise page will prompt B + C three times and light up where to press on the device diagram, so you can feel the \"because\" chord fire for yourself."
+  },
+  "impulsePage": {
+    "intro1": "Adding a chord normally means opening your device's software (Device Manager) and assigning keys to an output ahead of time. An <strong>impulse chord</strong> skips that: it's a chord you create on the spot, right where you're typing — no separate app required.",
+    "intro2": "It's called up by <strong>i+DUP</strong>, a hard-coded chord baked into the firmware that always triggers Impulse Chord and can't be changed. In Device Manager you can also assign Impulse Chord to another key or chord of your own if you'd like a different trigger. Either way, triggering Impulse Chord walks you through a short prompt right in your text: perform the chord input you want to assign, call up impulse, type the output it should produce, confirm the output, then confirm the captured input — pressing Escape at any point starts you over instead of leaving you to delete what you've typed.",
+    "intro3": "What it's for: capturing a one-off chord the moment you notice you're about to retype the same phrase again, without breaking your flow to go adding it via Device Manager first.",
+    "flowTitle": "The flow",
+    "step1Title": "Chord the input (optional)",
+    "step1Body": "Perform the combo you want to assign, anywhere you can type. Jumbled letters mean the combo is free; if it prints an existing output, continuing will overwrite that chord. You can skip this and perform the combo at step 4 instead.",
+    "step2Title": "Call Impulse Chord: <strong>i+DUP</strong>",
+    "step2Body": "The prompt <code>&gt;I&lt;mpulse output:</code> appears. Anything you chorded before it may sit in front of the prompt — that is fine.",
+    "step3Title": "Type the output, then press <strong>Enter</strong>",
+    "step3Body": "Everything you type is recorded as the output, so use Escape to leave the Impulse Chord interface rather than Backspace if you slip.",
+    "step4Title": "Check the input, then press <strong>Enter</strong>",
+    "step4Body": "The prompt <code>&gt;I&lt;mpulse input:</code> shows the captured combo. If it is not what you want, or is empty, perform the combo you want and it updates. Enter saves the chord to your device.",
+    "escapeNote": "<strong>Escape</strong> at any step starts you over, so you never have to delete what you typed.",
+    "tryItIntro": "This one runs on your real device — there's no simulation to fall back on. Trigger Impulse Chord on your CharaChorder, then follow the live prompts in the practice box to create a chord that actually stays on your device afterward.",
+    "practiceTitle": "Impulse Chord practice",
+    "practiceDescription": "Create a real chord on your device, guided step by step.",
+    "completed": "Completed",
+    "interactive": "Interactive — requires your device"
+  },
+  "impulsePractice": {
+    "back": "Back to chapter",
+    "title": "Impulse Chord practice",
+    "description": "This practice reacts to your real CharaChorder 3D input device — there's no simulation here. Click into the box below to focus it, then trigger Impulse Chord on your device and keep going there; this page just reflects back what your device prints.",
+    "done": "Done",
+    "skipped": "Marked complete without touching your device's chord library.",
+    "closed": "The Impulse Chord prompt closed. If you confirmed with Enter, the chord should be saved — try firing it to check.",
+    "redo": "Redo",
+    "placeholder": "Click here, then trigger Impulse Chord on your device",
+    "idle": "Nothing printed into the box yet — trigger Impulse Chord on your device (e.g. <strong>i+DUP</strong>) while the box above is focused. You can also fire any chord first if you like — it's optional, and whatever it prints before the prompt is fine.",
+    "outputStep": "Step 1 of 2: type the output text you want this chord to produce, then press <strong class=\"text-capella-400\">Enter</strong> on your device to confirm it.",
+    "nothingTyped": "(nothing typed yet)",
+    "inputStep": "Step 2 of 2: press and release the keys you want as this chord's input, all together. Not what you meant? Just try again — the combo below updates every time.",
+    "nothingPressed": "(nothing pressed yet)",
+    "chaining": "Waiting for a second combo to chain into a compound chord — perform it, then press Enter to confirm.",
+    "confirm": "Happy with it? Press Enter to confirm and save it to your device.",
+    "mistakeBefore": "Made a mistake? Press <strong>Escape</strong> on your device to start over, or",
+    "resetBox": "reset this box",
+    "skip": "Don't want this touching your device's chord library? Click here to skip and mark complete",
+    "sentenceEnd": "."
+  },
+  "exercisePage": {
+    "back": "Back to chapter",
+    "press": "Press",
+    "notInDiagram": "Not available in the default layout diagram below — press it on your keyboard to continue.",
+    "mistakes": "Mistakes: {{count}}",
+    "allCorrect": "{{count}}/{{count}} correct",
+    "mistakeCountOne": "{{count}} mistake",
+    "mistakeCountOther": "{{count}} mistakes",
+    "redo": "Redo"
+  },
+  "stepLabels": {
+    "ArrowUp": "Arrow Up",
+    "ArrowDown": "Arrow Down",
+    "ArrowLeft": "Arrow Left",
+    "ArrowRight": "Arrow Right",
+    "AltLeft": "Left Alt",
+    "AltRight": "Right Alt",
+    "ControlLeft": "Left Control",
+    "ControlRight": "Right Control",
+    "MetaLeft": "Left Meta",
+    "MetaRight": "Right Meta",
+    "MouseMoveUp": "Move up",
+    "MouseMoveDown": "Move down",
+    "MouseMoveLeft": "Move left",
+    "MouseMoveRight": "Move right",
+    "MouseLeftClick": "Left click",
+    "MouseRightClick": "Right click",
+    "MouseScrollCoastUp": "Scroll up",
+    "MouseScrollCoastDown": "Scroll down",
+    "MouseScrollCoastLeft": "Scroll left",
+    "MouseScrollCoastRight": "Scroll right"
+  },
+  "meta": {
+    "description": "Capella is an unofficial tutorial site for CharaChorder 3D input devices (CharaChorder One, CharaChorder Two, CCU, and Master Forge).",
+    "ogDescription": "An unofficial tutorial site for CharaChorder 3D input devices (CharaChorder One, CharaChorder Two, CCU, and Master Forge)."
+  },
+  "unit2Intro": {
+    "m4gBefore": "The layout diagrams in this unit are showing the Master Forge (M4G) default layout. If you're using a CC1 / CC2 / CCU, visit",
+    "settings": "Settings",
+    "m4gAfter": "to switch back to the CC1 / CC2 / CCU layout.",
+    "ccBefore": "The layout diagrams in this unit assume the CC1 / CC2 / CCU default layout. If you're using a Master Forge (M4G), visit",
+    "ccAfter": "to switch to the M4G layout before starting."
+  },
+  "switch": {
+    "naturalUp": "finger's natural \"up\"",
+    "press": "PRESS"
+  }
+}

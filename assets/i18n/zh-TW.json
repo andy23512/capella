@@ -1,0 +1,363 @@
+{
+  "settings": {
+    "title": "設定",
+    "language": {
+      "title": "介面語言",
+      "description": "選擇網站介面使用的語言。"
+    },
+    "deviceLayout": {
+      "title": "裝置佈局",
+      "description": "選擇佈局顯示與練習要對應哪一款裝置的預設佈局。",
+      "cc1Cc2Ccu": "CC1 / CC2 / CCU 預設佈局",
+      "m4g": "M4G 預設佈局",
+      "m4gNote": "Master Forge 沒有拇指第三搖桿，選擇此項時，佈局上會隱藏該搖桿。"
+    }
+  },
+  "home": {
+    "tagline": "這是一個非官方的 CharaChorder 3D 輸入裝置教學網站，與 CharaChorder 沒有任何隸屬、關聯、授權、背書或任何正式關聯的關係。",
+    "description": "CharaChorder 3D 輸入裝置把傳統鍵盤平面排列的按鍵，換成可以往五個方向移動的搖桿，讓一根手指就能輸入許多不同的字元，也能同時按下多個搖桿，一次輸出整個單字。Capella 會用一個個簡短的章節，帶你了解其硬體如何運作，以及實際上怎麼使用。",
+    "assumptions": {
+      "title": "本教學假設：",
+      "keyboardLayout": "你的作業系統鍵盤佈局設為 QWERTY - US。網站中顯示的按鍵標示與位置都以 QWERTY - US 為準；如果你的作業系統使用其他佈局，部分標示可能會與你在裝置上看到的不同。",
+      "deviceDefaults": "你的 CharaChorder 3D 輸入裝置使用的是預設佈局與預設和弦庫。如果你有做任何修改，部分練習與和弦的行為可能不會跟教學中講的一致。"
+    },
+    "start": "開始{{unit}}"
+  },
+  "nav": {
+    "learningMap": "學習地圖",
+    "settings": "設定",
+    "openMenu": "開啟側邊欄"
+  },
+  "chapterNav": {
+    "withUnit": "{{unit}}：{{title}}"
+  },
+  "unitIntro": {
+    "title": "簡介",
+    "inThisUnit": "本單元內容"
+  },
+  "unitSummary": {
+    "title": "總結",
+    "otherResources": "其他資源"
+  },
+  "learningMap": {
+    "title": "學習地圖",
+    "description": "你讀過的每個章節與完成的每個練習，都整理在這裡。",
+    "chaptersRead": "/ 已閱讀 {{total}} 個章節",
+    "exercisesCompleted": "/ 已完成 {{total}} 個練習",
+    "exercisesDisabledOnM4g": "M4G 佈局下停用練習",
+    "exerciseProgress": "已完成 {{completed}} / {{total}} 個練習"
+  },
+  "units": {
+    "unit-1": {
+      "title": "單元 1：簡介",
+      "shortTitle": "單元 1",
+      "introduction": "這個單元會先打好基礎，讓你在實際使用裝置之前，先了解 CharaChorder 3D 輸入裝置，以及所有裝置都圍繞著的五向搖桿機制。你會認識目前的四款裝置，接著透過搖桿示意圖來理解它們的傾斜方向和朝向，以及如何轉變原本平面鍵盤上的按鍵的限制。",
+      "summary": "你現在已經認識了四款 CharaChorder 3D 輸入裝置：CC1、CC2、CCU 與 Master Forge，也了解它們共通的五向搖桿機制，如何把一個實體按鍵變成最多五種輸入。你也看到搖桿的朝向並不通用：CC1/CC2/CCU 是配合手指自然的移動方向，而 Master Forge 則是對齊 digitizer 的邊緣。有這個基礎之後，單元 2 會開始實際練習標準按鍵。",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder 官方文件",
+          "url": "https://docs.charachorder.com/"
+        },
+        "resource2": {
+          "label": "Tangent 對 Master Forge 的評價",
+          "url": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D-master-forge-%E7%9A%84%E8%A9%95%E5%83%B9/"
+        }
+      }
+    },
+    "unit-2": {
+      "title": "單元 2：標準按鍵",
+      "shortTitle": "單元 2",
+      "introduction": "你已經了解了 3D 搖桿的機制已經清楚了，接下來就要實際演練。這個單元會練習你在一般鍵盤上就熟悉的標準按鍵：字母、數字、符號、Enter 與 Backspace 這類功能鍵，以及 F1–F12，只是改在 CharaChorder 的五向搖桿上操作。最後會介紹裝置內建的滑鼠功能，全程都不必離開裝置。每個章節都會搭配少數簡短的練習，以及會即時亮起該按哪個搖桿的佈局示意圖。",
+      "summary": "你現在已經在 CharaChorder 3D 輸入裝置的搖桿上，按照佈局示意圖與亮起提示的指引，練習過完整的標準按鍵：字母、數字、符號、功能鍵、F1–F12，以及內建的滑鼠功能。這些是裝置其他所有功能的基礎，包括和弦輸入，也就是讓 CharaChorder 輸入裝置與一般鍵盤不同的地方。",
+      "resources": {
+        "resource1": {
+          "label": "Tangent 對在 CharaChorder 3D 輸入裝置上學習英文逐字輸入的建議",
+          "url": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%89%93%EF%BC%88%E9%80%90%E5%AD%97%E8%BC%B8%E5%85%A5%EF%BC%89%E7%9A%84%E5%BB%BA%E8%AD%B0/"
+        }
+      }
+    },
+    "unit-3": {
+      "title": "單元 3：CharaChorder 特殊按鍵",
+      "shortTitle": "單元 3",
+      "introduction": "除了標準按鍵之外，CharaChorder 3D 輸入裝置還有幾項特有的功能。這個單元會介紹其中兩項：DUP，它會重複你上一次的輸入，輸入連續相同的字母時很方便；以及 Ambidextrous Throwover，一種單手輸入模式，會把另一隻手的字元鏡射到正在使用的這隻手上。",
+      "summary": "你現在已經認識了 DUP 與 Ambidextrous Throwover，這兩項功能在一般鍵盤上都沒有對應的獨特按鍵。DUP 會重複你上一次的輸入，省下再按一次的動作；Ambidextrous Throwover 則讓另一隻手忙著時，單手也能輸入完整的字元集。搭配單元 2 的標準按鍵，這些就是接下來 CharaChorder 的和弦輸入所依賴的核心基礎。",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder 官方文件：詞彙表",
+          "url": "https://docs.charachorder.com/Glossary.html"
+        }
+      }
+    },
+    "unit-4": {
+      "title": "單元 4：基礎和弦",
+      "shortTitle": "單元 4",
+      "introduction": "到目前為止，每個單元都是逐字元輸入，一次操作一個搖桿。這個單元要介紹 CharaChorder 的另一種模式：和弦輸入。同時按下多個搖桿，輸出的不是那些字元，而是別的，例如一整個單字。接下來你會學到基本的和弦操作，以及一種可以隨時建立和弦的功能，Impulse Chord。",
+      "summary": "你現在已經認識了和弦輸入的核心機制：同時按下多個搖桿，得到一個輸出；以及可以當場建立和弦的 Impulse Chord。搭配單元 2 與單元 3 的標準按鍵和特殊按鍵，這就是本教學透過 CharaChorder 的搖桿輸出文字與指令所涵蓋的基本工具組。",
+      "resources": {
+        "resource1": {
+          "label": "CharaChorder 官方文件：和弦",
+          "url": "https://docs.charachorder.com/Chords.html"
+        },
+        "resource2": {
+          "label": "Tangent 對在 CharaChorder 裝置上學習英文和弦輸入的建議",
+          "url": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%96%87%E5%92%8C%E5%BC%A6%E8%BC%B8%E5%85%A5%E7%9A%84%E5%BB%BA%E8%AD%B0/"
+        }
+      }
+    }
+  },
+  "chapters": {
+    "unit-1-introduction": "簡介",
+    "device-introduction": "章節 1：裝置介紹",
+    "3d-switch-introduction": "章節 2：3D 搖桿介紹",
+    "unit-1-summary": "總結",
+    "unit-2-introduction": "簡介",
+    "letters": "章節 1：字母",
+    "number": "章節 2：數字",
+    "symbols": "章節 3：符號",
+    "functional-keys": "章節 4：功能鍵",
+    "function-keys": "章節 5：F1–F12 鍵",
+    "mouse-features": "章節 6：滑鼠功能",
+    "unit-2-summary": "總結",
+    "unit-3-introduction": "簡介",
+    "dup": "章節 1：DUP",
+    "ambidextrous-throwover": "章節 2：Ambidextrous Throwover",
+    "unit-3-summary": "總結",
+    "unit-4-introduction": "簡介",
+    "simple-chord": "章節 1：基礎和弦",
+    "impulse-chord": "章節 2：Impulse Chord",
+    "unit-4-summary": "總結"
+  },
+  "deviceIntro": {
+    "description": "CharaChorder 推出了一系列「3D 輸入裝置」。這些裝置上的每個搖桿不只能向下按，還能往東、南、西、北四個方向傾斜，因此單一搖桿就能依移動方向產生最多五種不同的輸入，輸入和弦則變成同時移動多根手指，而不是依序按下按鍵。目前有四款裝置採用這個概念，各自有不同的外型與搖桿數量。"
+  },
+  "deviceCard": {
+    "switchesPerHand": "每手 {{count}} 個搖桿",
+    "thumbSwitchesPerHand": "每手 {{count}} 個拇指搖桿",
+    "officialProductPage": "官方產品頁面"
+  },
+  "devices": {
+    "cc1": {
+      "tagline": "元祖機型：出貨即完整組裝",
+      "description": "一切的起點。兩個半邊由可拆的機械加工鋁製中央連接桿接合，並透過 3.5mm TRS 線互相通訊，另有一條 USB-C 轉 USB-A 線負責供電與傳輸資料。即插即用，裝置本身儲存三層可設定的佈局。",
+      "notes": "小指搖桿比其他搖桿更扁更寬，比較容易按到。"
+    },
+    "cc2": {
+      "tagline": "更輕、更安靜、更耐用",
+      "description": "改良後的第二代，外型與 CC1 相同，同樣是分離式有線設計。搖桿的觸發力道幾乎減半、聲音小四倍以上、壽命則提升到五倍，而且鍵帽可以更換。"
+    },
+    "ccu": {
+      "tagline": "自己動手組裝，採用 CC2 的電子元件",
+      "description": "一套可 3D 列印的套件，並使用與 CC2 相同的電路板。你可以選擇預先設定好的外殼，或用線上 CAD 工具自訂。自己列印外殼再組裝，是能擁有 CC2 等級的搖桿體驗中，最能客製化、也最划算的方式。"
+    },
+    "master-forge": {
+      "tagline": "以 Digitizer 為基礎，為混合式和弦輸入設計",
+      "description": "由兩個獨立的 Digitizer（半邊裝置）組成，以機械與電氣橋接連接器相連，可改為用線連接。每個 Digitizer 有 8 個搖桿，而不是 9 個：每隻手專用於拇指的只有 2 個，CC1/CC2/CCU 則是 3 個。你會在後續看到它的搖桿朝向也與先前的裝置不同。",
+      "notes": "向下直按不會像 CC1/CC2/CCU 那樣被當成獨立的狀態，而是被視為四個基本方向同時觸發。"
+    }
+  },
+  "switchIntro": {
+    "intro": "CharaChorder 3D 輸入裝置上的每個搖桿都是 3D 搖桿：它能感測搖桿往哪個方向傾斜，分為東、南、西、北四個方向。在 CC1、CC2 與 CCU 上，每個搖桿還能把向下直按感測為獨立的第五種狀態，成為真正的<strong>五向搖桿</strong>，可以代表最多五種不同的輸入。Master Forge 的搖桿則是四向，中心按壓有何不同，請見下方說明。",
+    "orientationTitle": "各裝置的搖桿朝向差異",
+    "orientationBody": "上面提到的五個方向在每款裝置上都一樣，但實體上哪個方向算是「北」就不一定。在 CC1、CC2 與 CCU 上，拇指以外的搖桿朝向與手指自然的移動方向一致，所以傾斜搖桿的感覺就像往那個方向移動手指。Master Forge 改變了這一點：它拇指以外的搖桿朝向，是與 Digitizer（半邊裝置）的邊緣對齊，與手指自然想移動的方向大約差了 45° 的扭轉。",
+    "ccOrientation": "下方照片中的紅線標示每個搖桿的朝向。在 CC1/CC2/CCU 上，這個朝向與手指自然的移動方向直接對齊：搖桿往北傾斜，就等於手指往北移動。",
+    "forgeOrientation": "下方照片中的紅線標示每個搖桿的朝向。在 Master Forge 上，由於搖桿是跟著 Digitizer 的邊緣，朝向與手指自然想移動的方向旋轉了大約 45°。你的手指必須斜向移動，往東北或東南，才能按到佈局上標示為北或東的方向。在 CC1/CC2/CCU 上養成的肌肉記憶，在這裡可能會失靈，按到旁邊的搖桿。",
+    "ccAlt": "CC1/CC2/CCU 的 Digitizer 半邊的照片，用紅色十字標示拇指以外各個搖桿的朝向，與手指自然的方向呈一直線",
+    "forgeAlt": "Master Forge 的 Digitizer 半邊的照片，用紅色十字標示拇指以外各個搖桿的朝向，與手指自然的方向大約呈 45° 角",
+    "reviewUrl": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D-master-forge-%E7%9A%84%E8%A9%95%E5%83%B9/#%E6%90%96%E6%A1%BF%E7%9A%84%E6%96%B9%E5%90%91",
+    "photoCaption": "照片來自 Tangent 的<a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">對 Master Forge 的評價</a>。紅線標示每個搖桿的朝向。",
+    "naturalVaries": "所謂「自然」的方向，會因人與手而略有不同，所以請把上面的照片當作參考，而不是標準答案。請自己操作每個搖桿，確認哪個方向對你的手指來說最順手。",
+    "quote": "「拇指以外的搖桿的方向是與 Digitizer（半個 M4G）對齊的」，出自 Tangent 的<a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">對 Master Forge 的評價</a>，文中更深入地探討了實際的影響（以及佈局檢視器的替代做法）。",
+    "centerPress": "還有一項值得一提的 Master Forge 的差異：它的每個搖桿底下是由四個單向的微動開關組成，沒有獨立的中心感測器。所以向下直按不會像 CC1/CC2/CCU 那樣被感測為獨立的狀態，而是被視為四個基本方向同時觸發。"
+  },
+  "chapterIntro": {
+    "letters": "一切從字母開始：基本的小寫字母位在主要層，每個字母只要傾斜一次搖桿，不需要切換到其他層。請從下方挑選一個練習，練習頁會依序提示每個字母，並在裝置示意圖上亮起該按的確切位置。",
+    "number": "數字位在字母以外的另一層，所以打數字需要在按對應的數字鍵時，要同時按住切換數字層的按鍵。",
+    "symbols": "符號分成兩個練習：一般鍵盤數字列上方需要 Shift 的標點符號，以及剩下的標準標點符號。其中有許多需要同時按住 Shift、切換層鍵，或兩者並用，再加上符號本身的按鍵。練習頁會逐一說明每個符號的確切組合。",
+    "functional-keys": "除了字母、數字與符號之外，還有用來編輯和移動的按鍵：Space、Enter、Backspace、Tab、Delete、Escape、方向鍵，以及用於作業系統層級快捷鍵的 Alt/Control/Meta 修飾鍵。",
+    "function-keys": "F1 到 F12 鍵，和數字一樣，它們位於字母、數字以外的另一層：按住切換層鍵的同時，再觸發該鍵本身，練習頁會顯示要按的確切按鍵。練習刻意略過 F11，因為許多系統把它綁定為系統層級的快捷鍵（例如 macOS 的顯示桌面），瀏覽器偵測不到。",
+    "mouse-features": "除了鍵盤按鍵之外，CharaChorder 也能直接操控滑鼠游標：在螢幕上移動游標、點擊與捲動。請從下方挑選一個練習，練習頁會依序提示每個動作，並在裝置示意圖上亮起該按的確切位置。你想怎麼觸發都可以：用真正的裝置做出這些動作，或用一般的滑鼠與滾輪。"
+  },
+  "exercises": {
+    "az": {
+      "title": "A–Z",
+      "description": "字母表中的每個字母，各一次，依序輸入。"
+    },
+    "quick-brown-fox": {
+      "title": "Quick Brown Fox",
+      "description": "經典的全字母句：每個字母至少出現一次，還包含一個大寫字母與空白。"
+    },
+    "0-9": {
+      "title": "1–0",
+      "description": "每個數字，各一次，依序輸入。"
+    },
+    "shifted-row": {
+      "title": "數字列符號",
+      "description": "數字列上方需要 Shift 的符號：! @ # $ % ^ & * ( )"
+    },
+    "punctuation": {
+      "title": "標點符號與其他符號",
+      "description": "其他標點符號，包含引號與括號。"
+    },
+    "editing": {
+      "title": "編輯鍵",
+      "description": "Space、Enter、Backspace、Tab、Delete 與 Escape。"
+    },
+    "navigation": {
+      "title": "方向鍵",
+      "description": "上、下、左、右四個方向鍵。"
+    },
+    "modifier-keys": {
+      "title": "修飾鍵",
+      "description": "Alt、Control 與 Meta（Mac 上是 Cmd，Windows 上是 Win），與其他按鍵一起按時會觸發作業系統層級的快捷鍵。這裡只是找出每個搖桿的位置，不會真的觸發快捷鍵。"
+    },
+    "f1-f12": {
+      "title": "F1–F12",
+      "description": "整排功能鍵，依序輸入。F11 會被略過，因為它被綁定在系統層級的快捷鍵（例如 macOS 的顯示桌面），瀏覽器無法偵測。"
+    },
+    "mouse-movement": {
+      "title": "鼠標移動",
+      "description": "將滑鼠游標往上、下、左、右移動。"
+    },
+    "mouse-clicks": {
+      "title": "左鍵與右鍵點擊",
+      "description": "先左鍵點擊，再右鍵點擊。"
+    },
+    "mouse-scroll": {
+      "title": "捲動",
+      "description": "往上、下、左、右捲動。"
+    },
+    "because-chord": {
+      "title": "「because」入門和弦",
+      "description": "在裝置的按壓／釋放容許時間內，同時按下後同時放開 B 與 C，觸發內建的「because」和弦。重複三次。"
+    },
+    "double-letters": {
+      "title": "雙字母",
+      "description": "輸入一個字母，再按 DUP 重複它。同樣的技巧適用於任何雙字母，例如 letter 裡的 tt。"
+    }
+  },
+  "exerciseCard": {
+    "disabledOnM4g": "停用：Master Forge 的預設佈局缺少部分滑鼠功能",
+    "completed": "已完成",
+    "steps": "{{count}} 步"
+  },
+  "mouseFeatures": {
+    "m4gNotice": {
+      "label": "Master Forge (M4G)：",
+      "before": "預設佈局缺少部分滑鼠功能（沒有游標移動，也沒有右鍵點擊），所以在",
+      "settings": "設定",
+      "after": "中選擇 M4G 佈局時，下方的練習都會停用。"
+    }
+  },
+  "dupPage": {
+    "intro1": "DUP（「duplicate」的縮寫）會重複你上一次的輸入。在一般的逐字輸入中，打完一個字母後馬上按 DUP，就會再輸入同一個字母，不必連按兩次同一個鍵，就能快速打出雙字母，例如 letter 裡的 tt。在和弦輸入中，DUP 可以併入和弦，幫助輸出有重複字母的單字。",
+    "intro2": "請從下方挑選一個練習，練習頁會先提示每個字母，再提示 DUP，並在圖上亮起該按的位置。"
+  },
+  "atPage": {
+    "intro1": "Ambidextrous Throwover，簡稱 AT，也叫做 Mirror Mode（鏡像模式），是為單手輸入設計的輸入模式。按住它的期間，原本屬於另一隻手的按鍵，會被鏡像到啟動它的這隻手上，讓單手就能輸入完整的字元集。",
+    "intro2": "兩隻手上各有一個對應的按鍵，所以不管哪隻手有空都能使用。與 DUP 不同，啟動它並不會產生可供偵測的按鍵輸入，所以這裡沒有練習，只需要知道這兩個按鍵的位置。",
+    "try": "請在下方試試看：在預設佈局與按住左右 AT 按鍵之間切換，看看字母表如何移到按住它的那隻手上。手指與南北方向的按鍵都不變，但東與西會對調，因為這是另一隻手字母的左右鏡像。",
+    "mirrorNote": "這個鏡像不只限於字母：另一隻手上的每個按鍵，包括標點符號、數字與其他動作，都會以同樣的方式鏡像過來。為了簡單起見，示意圖中只顯示字母。",
+    "modeDefault": "預設",
+    "modeLeft": "按住左 AT",
+    "modeRight": "按住右 AT",
+    "captionDefault": "預設佈局：沒有按住 Ambidextrous Throwover 按鍵。",
+    "captionLeft": "按住左 AT：右手的字母會鏡像到左手上。",
+    "captionRight": "按住右 AT：左手的字母會鏡像到右手上。"
+  },
+  "simpleChordPage": {
+    "intro1": "單元 1–3 的內容都是<strong>逐字輸入</strong>：一次按一個鍵，依序輸入，就和一般鍵盤的運作方式一樣。CharaChorder 的另一種模式是<strong>和弦輸入</strong>：同時按下再放開多個鍵，輸出的不是那些字元，而是完全不同的東西，例如一整個單字。簡單和弦是最基本的形式：一組固定的鍵，對應到一個輸出。",
+    "intro2": "CharaChorder 3D 輸入裝置出廠時已經內建一組「入門和弦（Starter Chords）」，涵蓋一些最常用的英文單字。不過你也可以添加自己的和弦，可透過 Device Manager 加入更多和弦、匯入別人分享的和弦庫，或是用 Impulse Chord 即時建立。下圖是其中一個內建的入門和弦：同時按下 B 和 C，會輸出單字「because」。",
+    "diagramCaption": "B + C =「because」，CharaChorder 內建的入門和弦之一",
+    "fluidNote": "由於逐字輸入和和弦輸入使用同一批鍵，你不需要二選一。CharaChorder 3D 輸入裝置預設為「流暢」輸入：一次只按一個鍵，就會正常打字；若同時按下多個鍵，並在裝置的按下容許時間（Press Tolerance）內一起按下，與放開容許時間（Release Tolerance）內一起放開，裝置就會輸出設定好的和弦輸出。",
+    "tryIt": "動手試試",
+    "tryItIntro": "選擇下方的練習。練習頁會提示你按三次 B + C，並在裝置圖上亮起該按的位置，讓你親身感受「because」和弦。"
+  },
+  "impulsePage": {
+    "intro1": "一般新增和弦，需要先開啟裝置的軟體（Device Manager），事先把鍵的組合指定到某個輸出。<strong>Impulse Chord</strong> 省去了這個步驟：你可以就在打字的當下即時建立和弦，不需要另外開啟任何應用程式。",
+    "intro2": "它由 <strong>i+DUP</strong> 叫出。這是內建在韌體中的固定和弦，一定會觸發 Impulse Chord，而且無法更改。如果想用不同的觸發方式，也可以在 Device Manager 中把 Impulse Chord 指定給你自己的其他按鍵或和弦。不論用哪一種方式，觸發 Impulse Chord 後，文字中會直接出現一段簡短的提示，引導你完成：打出想指定的和弦輸入、叫出 impulse、輸入它該產生的輸出、確認輸出，最後確認擷取到的輸入。過程中隨時按 Escape 鍵都可以重新開始，不必自己刪除已經打的內容。",
+    "intro3": "用途：當你發現自己又要重打同一段文字時，立刻擷取成一個一次性的和弦，不必中斷手上的工作去 Device Manager 新增和弦。",
+    "flowTitle": "流程",
+    "step1Title": "打出和弦輸入（選擇性）",
+    "step1Body": "在任何可以打字的地方，打出你想指定的組合。如果出現的是雜亂的字母，代表這個組合還沒被使用；如果打出了既有的輸出，繼續下去會覆蓋那個和弦。你也可以跳過這步，改在步驟 4 再打出這個組合。",
+    "step2Title": "叫出 Impulse Chord：<strong>i+DUP</strong>",
+    "step2Body": "提示 <code>&gt;I&lt;mpulse output:</code> 會出現。在它之前打出的和弦內容可能留在提示前面，這是正常的。",
+    "step3Title": "輸入和弦輸出內容，然後按 <strong>Enter</strong>",
+    "step3Body": "你輸入的所有內容都會被記錄為輸出，所以打錯時請按 Escape 離開 Impulse Chord 介面從頭開始，不要按 Backspace。",
+    "step4Title": "確認和弦輸入，然後按 <strong>Enter</strong>",
+    "step4Body": "提示 <code>&gt;I&lt;mpulse input:</code> 會顯示擷取到的組合。如果不是你要的，或是空的，只要再輸入一次想要的組合（同時按下後同時放開你想要的按鍵組合），內容就會更新。按 Enter 即可把和弦儲存到你的裝置。",
+    "escapeNote": "在任何步驟按 <strong>Escape</strong> 都會重新開始，所以你不必刪除已經打的內容。",
+    "tryItIntro": "這個練習會在你的實體裝置上進行，沒有模擬可以替代。請在你的 CharaChorder 上觸發 Impulse Chord，再依照練習框中的即時提示，建立一個之後會真正留在裝置上的和弦。",
+    "practiceTitle": "Impulse Chord 練習",
+    "practiceDescription": "一步一步引導你，在裝置上建立真正的和弦。",
+    "completed": "已完成",
+    "interactive": "互動練習：需要你的裝置"
+  },
+  "impulsePractice": {
+    "back": "回到章節",
+    "title": "Impulse Chord 練習",
+    "description": "這個練習會對你的實體 CharaChorder 3D 輸入裝置新增或修改和弦，這裡沒有任何模擬。請先點一下下方的輸入框讓它取得焦點，然後在裝置上觸發 Impulse Chord 並繼續操作；這個頁面只會把裝置打出的內容顯示出來。",
+    "done": "完成",
+    "skipped": "已標示為完成，沒有動到你裝置上的和弦庫。",
+    "closed": "Impulse Chord 提示已關閉。如果你有按 Enter 確認，和弦應已經儲存在你的裝置上，可以試著觸發它來確認。",
+    "redo": "重做",
+    "placeholder": "點這裡，然後在你的裝置上觸發 Impulse Chord",
+    "idle": "輸入框裡還沒有任何內容。請在上方輸入框中點擊，於裝置上觸發 Impulse Chord（<strong>i+DUP</strong>）。你也可以先觸發任何一個和弦，這是選擇性的，提示前面出現什麼都沒關係。",
+    "outputStep": "第 1 步（共 2 步）：輸入你希望這個和弦產生的輸出文字，然後在裝置上按 <strong class=\"text-capella-400\">Enter</strong> 確認。",
+    "nothingTyped": "（還沒有輸入任何內容）",
+    "inputStep": "第 2 步（共 2 步）：同時按下再同時放開你想作為這個和弦輸入的那些按鍵。不是你要的嗎？再試一次就好，下方的組合每次都會更新。",
+    "nothingPressed": "（還沒有按任何軸）",
+    "chaining": "正在等待第二組組合，用來串成複合和弦。請打出它，然後按 Enter 確認。",
+    "confirm": "滿意了嗎？按 Enter 確認，並儲存到你的裝置。",
+    "mistakeBefore": "弄錯了嗎？在裝置上按 <strong>Escape</strong> 重新開始，或",
+    "resetBox": "重設這個輸入框",
+    "skip": "不想動到裝置上的和弦庫嗎？按此跳過並標示為完成",
+    "sentenceEnd": "。"
+  },
+  "exercisePage": {
+    "back": "回到章節",
+    "press": "按下",
+    "notInDiagram": "下方的預設佈局圖中沒有這個按鍵，請直接在鍵盤上按它以繼續。",
+    "mistakes": "錯誤：{{count}}",
+    "allCorrect": "{{count}}/{{count}} 正確",
+    "mistakeCountOne": "{{count}} 個錯誤",
+    "mistakeCountOther": "{{count}} 個錯誤",
+    "redo": "重做"
+  },
+  "stepLabels": {
+    "ArrowUp": "上方向鍵",
+    "ArrowDown": "下方向鍵",
+    "ArrowLeft": "左方向鍵",
+    "ArrowRight": "右方向鍵",
+    "AltLeft": "左 Alt",
+    "AltRight": "右 Alt",
+    "ControlLeft": "左 Control",
+    "ControlRight": "右 Control",
+    "MetaLeft": "左 Meta",
+    "MetaRight": "右 Meta",
+    "MouseMoveUp": "向上移動",
+    "MouseMoveDown": "向下移動",
+    "MouseMoveLeft": "向左移動",
+    "MouseMoveRight": "向右移動",
+    "MouseLeftClick": "左鍵點擊",
+    "MouseRightClick": "右鍵點擊",
+    "MouseScrollCoastUp": "向上捲動",
+    "MouseScrollCoastDown": "向下捲動",
+    "MouseScrollCoastLeft": "向左捲動",
+    "MouseScrollCoastRight": "向右捲動"
+  },
+  "meta": {
+    "description": "Capella（五車二）是 CharaChorder 3D 輸入裝置（CharaChorder One、CharaChorder Two、CCU 與 Master Forge）的非官方教學網站。",
+    "ogDescription": "CharaChorder 3D 輸入裝置（CharaChorder One、CharaChorder Two、CCU 與 Master Forge）的非官方教學網站。"
+  },
+  "unit2Intro": {
+    "m4gBefore": "本單元的佈局圖顯示的是 Master Forge (M4G) 的預設佈局。如果你使用的是 CC1 / CC2 / CCU，請前往",
+    "settings": "設定",
+    "m4gAfter": "切換回 CC1 / CC2 / CCU 佈局。",
+    "ccBefore": "本單元的佈局圖以 CC1 / CC2 / CCU 的預設佈局為準。如果你使用的是 Master Forge (M4G)，開始前請先前往",
+    "ccAfter": "切換成 M4G 佈局。"
+  },
+  "switch": {
+    "naturalUp": "手指自然的「上」",
+    "press": "按下"
+  }
+}
