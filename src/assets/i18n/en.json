@@ -172,7 +172,10 @@
   "chapterIntro": {
     "letters": "Letters are the CharaChorder's home base: the base lowercase alphabet sits on the Primary layer, one switch tilt each, no layer-shift needed. Pick an exercise below — the exercise page will prompt each letter in turn and light up exactly where to press on the device diagram.",
     "number": "Digits live one layer up from letters, so they ask for a numerical layer shift key held while triggering the digit key itself.",
-    "symbols": "Symbols are split across two exercises: the shifted punctuation above the number row on the standard keyboard, and the rest of the standard punctuation set. Many of these need Shift, a layer-shift, or both held down together with the symbol's own key — the exercise page will spell out the exact combination for each one."
+    "symbols": "Symbols are split across two exercises: the shifted punctuation above the number row on the standard keyboard, and the rest of the standard punctuation set. Many of these need Shift, a layer-shift, or both held down together with the symbol's own key — the exercise page will spell out the exact combination for each one.",
+    "functional-keys": "Beyond letters, digits, and symbols, there are keys you use to edit and move around text: Space, Enter, Backspace, Tab, Delete, Escape, the arrow/navigation keys, and the Alt/Control/Meta modifier keys used for OS-level shortcuts.",
+    "function-keys": "F1 through F12 round out the standard key set.",
+    "mouse-features": "Beyond keys, the CharaChorder can drive the mouse cursor directly: nudging it around the screen, clicking, and scrolling. Pick an exercise below — the exercise page will prompt each action in turn and light up exactly where to press on the device diagram. Trigger it however you'd like: a real device chorded into these actions, or your regular mouse and scroll wheel both count."
   },
   "exercises": {
     "az": {
@@ -236,5 +239,13 @@
     "disabledOnM4g": "Disabled — the Master Forge default layout lacks some mouse functions",
     "completed": "Completed",
     "steps": "{{count}} steps"
+  },
+  "mouseFeatures": {
+    "m4gNotice": {
+      "label": "Master Forge (M4G):",
+      "before": " the default layout is missing some mouse functions — it has no cursor movement and no right click — so all of the exercises below are disabled while the M4G layout is selected in ",
+      "settings": "Settings",
+      "after": "."
+    }
   }
 }
