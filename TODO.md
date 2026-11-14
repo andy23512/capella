@@ -45,7 +45,7 @@
   - 實作：`exercises.ts` 的 `FUNCTIONAL_KEYS_EXERCISES` 新增 `modifier-keys` 練習（沿用既有 `namedSteps()` helper，無新增 step kind），`functional-keys-page.component.html` 的章節簡介文字一併補上修飾鍵的說明
   - 過程中發現並修正一個既有 bug：`exercise-page.component.ts` 的 `onKeydown` 原本用 `event.key` 比對 named-key step，但 `event.key` 對 Alt／Control／Meta 一律回傳 `'Alt'`／`'Control'`／`'Meta'`，左右鍵無法分辨（`event.code` 才會回傳 `'AltLeft'`／`'AltRight'` 這種左右有別的值）；改為統一用 `event.code` 比對，並確認過去所有既有 named-key 練習（Enter／Backspace／Tab／Delete／Escape／方向鍵／F1-F12）的 `event.code` 與 `event.key` 皆相同、不受影響。已在 `exercise-page.component.spec.ts` 補上對應回歸測試（`pressCode('AltRight')` 不應推進到 `AltLeft` 那步、`pressCode('AltLeft')` 才會推進）
   - 已實機測試確認可用
-- [ ] 改寫 Unit 2 Chapter 5（Function Keys）的章節描述 — 目前只有一句「F1 through F12 round out the standard key set.」，內容太單薄
+- [x] 改寫 Unit 2 Chapter 5（Function Keys）的章節描述 — 目前只有一句「F1 through F12 round out the standard key set.」，內容太單薄
   - 位置：`src/assets/i18n/en.json`／`zh-TW.json` 的 `chapterIntro.function-keys`（頁面在 `src/app/pages/unit2/function-keys-page/`）；改寫時英文與繁中兩份要一起改
   - 可參考同單元其他章節（Letters／Functional Keys／Mouse Features）的寫法：說明這些按鍵在裝置上的位置邏輯、如何操作，以及練習頁會提示什麼
   - 補充說明時需注意：練習刻意略過 F11（被系統層級快捷鍵佔用，瀏覽器抓不到），描述內容要與 `exercises.ts` 的 `f1-f12` 練習說明一致
