@@ -344,5 +344,9 @@
     "MouseScrollCoastDown": "Scroll down",
     "MouseScrollCoastLeft": "Scroll left",
     "MouseScrollCoastRight": "Scroll right"
+  },
+  "meta": {
+    "description": "Capella is an unofficial tutorial site for CharaChorder 3D input devices (CharaChorder One, CharaChorder Two, CCU, and Master Forge).",
+    "ogDescription": "An unofficial tutorial site for CharaChorder 3D input devices (CharaChorder One, CharaChorder Two, CCU, and Master Forge)."
   }
 }

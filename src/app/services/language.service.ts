@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Injectable, effect, inject, signal } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 
 export type UiLanguage = 'en' | 'zh-TW';
@@ -56,6 +57,7 @@ function saveLanguage(language: UiLanguage): void {
 export class LanguageService {
   private readonly translateService = inject(TranslateService);
   private readonly document = inject(DOCUMENT);
+  private readonly meta = inject(Meta);
 
   private readonly languageSignal = signal<UiLanguage>(
     loadStoredLanguage() ??
@@ -67,8 +69,25 @@ export class LanguageService {
   constructor() {
     effect(() => {
       const language = this.languageSignal();
-      this.translateService.use(language);
+      this.translateService.use(language).subscribe(() => {
+        this.updateMetaDescriptions();
+      });
       this.document.documentElement.lang = language;
+    });
+  }
+
+  /**
+   * The description tags in index.html are English; swap them for the active
+   * language. (Crawlers that don't run JavaScript still see the English ones.)
+   */
+  private updateMetaDescriptions(): void {
+    this.meta.updateTag({
+      name: 'description',
+      content: this.translateService.instant('meta.description'),
+    });
+    this.meta.updateTag({
+      property: 'og:description',
+      content: this.translateService.instant('meta.ogDescription'),
     });
   }
 
