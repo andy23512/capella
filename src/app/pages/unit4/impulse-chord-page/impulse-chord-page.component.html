@@ -4,84 +4,68 @@
   </p>
   <h1 class="m-0 mt-1 text-3xl font-medium">{{ 'chapters.impulse-chord' | translate }}</h1>
 
-  <p class="mt-6 text-gray-50">
-    Training a chord normally means opening your device's software (Device
-    Manager) and assigning switches to an output ahead of time. An
-    <strong>impulse chord</strong> skips that: it's a chord you create on
-    the spot, right where you're typing — no separate app required.
-  </p>
-  <p class="text-gray-50">
-    It's called up by <strong>i+DUP</strong>, a hard-coded chord baked into
-    the firmware that always triggers Impulse Chord and can't be changed.
-    In Device Manager you can also assign Impulse Chord to another key or
-    chord of your own if you'd like a different trigger. Either way,
-    triggering Impulse Chord walks you through a short prompt right in your
-    text: perform the chord
-    input you want to assign, call up impulse, type the output it should
-    produce, confirm the output, then confirm the captured input — pressing
-    Escape at any point starts you over instead of leaving you to delete
-    what you've typed.
-  </p>
-  <p class="text-gray-50">
-    What it's for: capturing a one-off chord the moment you notice you're
-    about to retype the same phrase again, without breaking your flow to
-    go train it properly first.
-  </p>
+  <p
+    class="mt-6 text-gray-50"
+    [innerHTML]="'impulsePage.intro1' | translate"
+  ></p>
+  <p
+    class="text-gray-50"
+    [innerHTML]="'impulsePage.intro2' | translate"
+  ></p>
+  <p class="text-gray-50">{{ 'impulsePage.intro3' | translate }}</p>
 
-  <h2 class="mt-10 text-xl font-medium">The flow</h2>
+  <h2 class="mt-10 text-xl font-medium">
+    {{ 'impulsePage.flowTitle' | translate }}
+  </h2>
   <ol class="mt-4 flex list-none flex-col gap-1 p-0 text-gray-50 sm:max-w-xl">
     <li class="flex gap-3 rounded-lg bg-gray-700 p-4 border border-dashed border-gray-300">
       <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-capella-400 text-sm font-medium text-gray-900">1</span>
       <div>
-        <p class="m-0 font-medium">Chord the input (optional)</p>
-        <p class="mt-1 text-sm text-gray-100">Perform the combo you want to assign, anywhere you can type. Jumbled letters mean the combo is free; if it prints an existing output, continuing will overwrite that chord. You can skip this and perform the combo at step 4 instead.</p>
+        <p class="m-0 font-medium">{{ 'impulsePage.step1Title' | translate }}</p>
+        <p class="mt-1 text-sm text-gray-100">{{ 'impulsePage.step1Body' | translate }}</p>
       </div>
     </li>
     <li aria-hidden="true" class="flex justify-center text-gray-300"><mat-icon>arrow_downward</mat-icon></li>
     <li class="flex gap-3 rounded-lg bg-gray-700 p-4">
       <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-capella-400 text-sm font-medium text-gray-900">2</span>
       <div>
-        <p class="m-0 font-medium">Call impulse: <strong>i+DUP</strong></p>
-        <p class="mt-1 text-sm text-gray-100">The prompt <code class="font-mono">&gt;I&lt;mpulse output:</code> appears. Anything you chorded before it may sit in front of the prompt — that is fine.</p>
+        <p class="m-0 font-medium" [innerHTML]="'impulsePage.step2Title' | translate"></p>
+        <p class="mt-1 text-sm text-gray-100 [&_code]:font-mono" [innerHTML]="'impulsePage.step2Body' | translate"></p>
       </div>
     </li>
     <li aria-hidden="true" class="flex justify-center text-gray-300"><mat-icon>arrow_downward</mat-icon></li>
     <li class="flex gap-3 rounded-lg bg-gray-700 p-4">
       <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-capella-400 text-sm font-medium text-gray-900">3</span>
       <div>
-        <p class="m-0 font-medium">Type the output, then press <strong>Enter</strong></p>
-        <p class="mt-1 text-sm text-gray-100">Everything you type is recorded as the output, so use Escape rather than Backspace if you slip.</p>
+        <p class="m-0 font-medium" [innerHTML]="'impulsePage.step3Title' | translate"></p>
+        <p class="mt-1 text-sm text-gray-100">{{ 'impulsePage.step3Body' | translate }}</p>
       </div>
     </li>
     <li aria-hidden="true" class="flex justify-center text-gray-300"><mat-icon>arrow_downward</mat-icon></li>
     <li class="flex gap-3 rounded-lg bg-gray-700 p-4">
       <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-capella-400 text-sm font-medium text-gray-900">4</span>
       <div>
-        <p class="m-0 font-medium">Check the input, then press <strong>Enter</strong></p>
-        <p class="mt-1 text-sm text-gray-100">The prompt <code class="font-mono">&gt;I&lt;mpulse input:</code> shows the captured combo. If it is not what you want, or is empty, perform the combo you want and it updates. Enter saves the chord to your device.</p>
+        <p class="m-0 font-medium" [innerHTML]="'impulsePage.step4Title' | translate"></p>
+        <p class="mt-1 text-sm text-gray-100 [&_code]:font-mono" [innerHTML]="'impulsePage.step4Body' | translate"></p>
       </div>
     </li>
   </ol>
   <ul class="mt-4 list-disc pl-6 text-sm text-gray-100 sm:max-w-xl">
-    <li>
-      <strong>Escape</strong> at any step starts you over, so you never have
-      to delete what you typed.
-    </li>
+    <li [innerHTML]="'impulsePage.escapeNote' | translate"></li>
   </ul>
 
-  <h2 class="mt-10 text-xl font-medium">Try it</h2>
+  <h2 class="mt-10 text-xl font-medium">
+    {{ 'simpleChordPage.tryIt' | translate }}
+  </h2>
   <p class="mt-2 text-gray-50">
-    This one runs on your real device — there's no simulation to fall back
-    on. Trigger Impulse Chord on your CharaChorder, then follow the live
-    prompts in the practice box to create a chord that actually stays on
-    your device afterward.
+    {{ 'impulsePage.tryItIntro' | translate }}
   </p>
   <a
     routerLink="/unit-4/impulse-chord/practice"
     class="mt-4 flex w-full flex-col rounded-lg bg-gray-700 p-5 text-left transition-colors hover:bg-gray-600 sm:max-w-sm"
   >
     <h3 class="m-0 flex items-center gap-1.5 text-lg font-medium">
-      Impulse Chord practice
+      {{ 'impulsePage.practiceTitle' | translate }}
       @if (practiceCompleted()) {
         <mat-icon class="!h-4 !w-4 !text-[16px] text-capella-500"
           >check_circle</mat-icon
@@ -89,14 +73,17 @@
       }
     </h3>
     <p class="mt-1 text-sm text-gray-100">
-      Create a real chord on your device, guided step by step.
+      {{ 'impulsePage.practiceDescription' | translate }}
     </p>
     <span
       class="mt-3 text-xs"
       [class.text-capella-400]="!practiceCompleted()"
       [class.text-capella-500]="practiceCompleted()"
       >{{
-        practiceCompleted() ? 'Completed' : 'Interactive — requires your device'
+        (practiceCompleted()
+          ? 'impulsePage.completed'
+          : 'impulsePage.interactive'
+        ) | translate
       }}</span
     >
   </a>

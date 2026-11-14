@@ -1,31 +1,31 @@
 <div class="mx-auto max-w-4xl p-8">
   <a mat-stroked-button routerLink="/unit-4/impulse-chord">
     <mat-icon>arrow_back</mat-icon>
-    Back to chapter
+    {{ 'impulsePractice.back' | translate }}
   </a>
 
-  <h1 class="m-0 mt-4 text-3xl font-medium">Impulse Chord practice</h1>
+  <h1 class="m-0 mt-4 text-3xl font-medium">
+    {{ 'impulsePractice.title' | translate }}
+  </h1>
   <p class="mt-2 text-gray-200">
-    This practice reacts to your real CharaChorder 3D input device — there's no
-    simulation here. Click into the box below to focus it, then trigger
-    Impulse Chord on your device and keep going there; this page just
-    reflects back what your device prints.
+    {{ 'impulsePractice.description' | translate }}
   </p>
 
   @if (justCompleted()) {
     <div class="mt-6 rounded-lg bg-gray-700 p-4 text-center">
-      <p class="m-0 text-lg font-medium text-capella-400">Done</p>
+      <p class="m-0 text-lg font-medium text-capella-400">
+        {{ 'impulsePractice.done' | translate }}
+      </p>
       <p class="mt-2 text-sm text-gray-100">
         @if (skippedThisSession()) {
-          Marked complete without touching your device's chord library.
+          {{ 'impulsePractice.skipped' | translate }}
         } @else {
-          The Impulse Chord prompt closed. If you confirmed with Enter, the
-          chord should be saved — try firing it to check.
+          {{ 'impulsePractice.closed' | translate }}
         }
       </p>
       <div class="mt-4 flex justify-center">
         <button mat-stroked-button type="button" (click)="reset()">
-          Redo
+          {{ 'impulsePractice.redo' | translate }}
         </button>
       </div>
     </div>
@@ -33,7 +33,7 @@
     <input
       type="text"
       class="mt-6 w-full rounded-lg bg-gray-700 p-4 font-mono text-lg text-gray-50 outline-none ring-capella-400 focus:ring-2"
-      placeholder="Click here, then trigger Impulse Chord on your device"
+      [placeholder]="'impulsePractice.placeholder' | translate"
       autocomplete="off"
       spellcheck="false"
       [value]="value()"
@@ -44,42 +44,34 @@
     <div class="mt-6 rounded-lg bg-gray-700 p-4">
       @switch (phase().kind) {
         @case ('idle') {
-          <p class="m-0 text-gray-100">
-            Nothing printed into the box yet — trigger Impulse Chord on your
-            device (e.g. <strong>i+DUP</strong>) while the box above is
-            focused. You can also fire any chord first if you like — it's
-            optional, and whatever it prints before the prompt is fine.
-          </p>
+          <p
+            class="m-0 text-gray-100"
+            [innerHTML]="'impulsePractice.idle' | translate"
+          ></p>
         }
         @case ('output') {
-          <p class="m-0 text-gray-100">
-            Step 1 of 2: type the output text you want this chord to
-            produce, then press
-            <strong class="text-capella-400">Enter</strong> on your device
-            to confirm it.
-          </p>
+          <p
+            class="m-0 text-gray-100"
+            [innerHTML]="'impulsePractice.outputStep' | translate"
+          ></p>
           <p class="mt-2 font-mono text-lg text-capella-400">
-            {{ phase().text || '(nothing typed yet)' }}
+            {{ phase().text || ('impulsePractice.nothingTyped' | translate) }}
           </p>
         }
         @case ('input') {
           <p class="m-0 text-gray-100">
-            Step 2 of 2: press and release the switches you want as this
-            chord's input, all together. Not what you meant? Just try
-            again — the combo below updates every time.
+            {{ 'impulsePractice.inputStep' | translate }}
           </p>
           <p class="mt-2 font-mono text-lg text-capella-400">
-            {{ phase().combo || '(nothing pressed yet)' }}
+            {{ phase().combo || ('impulsePractice.nothingPressed' | translate) }}
           </p>
           @if (phase().chaining) {
             <p class="mt-1 text-sm text-gray-300">
-              Waiting for a second combo to chain into a compound chord —
-              perform it, then press Enter to confirm.
+              {{ 'impulsePractice.chaining' | translate }}
             </p>
           } @else {
             <p class="mt-1 text-sm text-gray-300">
-              Happy with it? Press Enter to confirm and save it to your
-              device.
+              {{ 'impulsePractice.confirm' | translate }}
             </p>
           }
         }
@@ -88,19 +80,17 @@
 
     <div class="mt-4 flex flex-col items-center gap-3">
       <p class="m-0 text-center text-xs text-gray-300">
-        Made a mistake? Press <strong>Escape</strong> on your device to
-        start over, or
+        <span [innerHTML]="'impulsePractice.mistakeBefore' | translate"></span>
         <button
           type="button"
           class="text-capella-400 underline"
           (click)="reset()"
         >
-          reset this box
-        </button>.
+          {{ 'impulsePractice.resetBox' | translate }}
+        </button>{{ 'impulsePractice.sentenceEnd' | translate }}
       </p>
       <button mat-stroked-button type="button" (click)="skip()">
-        Don't want this touching your device's chord library? Skip —
-        mark complete
+        {{ 'impulsePractice.skip' | translate }}
       </button>
     </div>
   }

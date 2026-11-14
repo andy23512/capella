@@ -8,6 +8,7 @@ import {
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ProgressService } from '../../../services/progress.service';
 
 /** Also referenced from impulse-chord-page to check/mark completion. */
@@ -41,7 +42,7 @@ interface ImpulsePracticePhase {
   selector: 'app-impulse-chord-practice-page',
   templateUrl: './impulse-chord-practice-page.component.html',
   standalone: true,
-  imports: [MatButton, MatIcon, RouterLink],
+  imports: [MatButton, MatIcon, RouterLink, TranslatePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImpulseChordPracticePageComponent {
