@@ -52,14 +52,15 @@ export class AmbidextrousThrowoverPageComponent {
     return labels;
   });
 
+  /** A translation key; the template renders it with the translate pipe. */
   protected readonly caption = computed(() => {
     switch (this.activeHand()) {
       case 'left':
-        return 'Holding left AT — the right hand\'s letters mirror onto the left hand.';
+        return 'atPage.captionLeft';
       case 'right':
-        return 'Holding right AT — the left hand\'s letters mirror onto the right hand.';
+        return 'atPage.captionRight';
       default:
-        return 'Default layout — no Ambidextrous Throwover switch held.';
+        return 'atPage.captionDefault';
     }
   });
 

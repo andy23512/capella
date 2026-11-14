@@ -247,5 +247,21 @@
       "settings": "Settings",
       "after": "."
     }
+  },
+  "dupPage": {
+    "intro1": "DUP (short for \"duplicate\") repeats your last input. In plain character entry, that means pressing DUP right after a letter types that same letter again — a quick way to produce a double letter, like the \"tt\" in \"letter\", without pressing the same switch twice. In chorded entry, DUP can be folded into a chord to help produce words that repeat a letter.",
+    "intro2": "Pick an exercise below — the exercise page will prompt each letter, then prompt DUP, and light up exactly where to press on the device diagram."
+  },
+  "atPage": {
+    "intro1": "Ambidextrous Throwover — also called Mirror Mode — is an entry mode built for one-handed typing. While it's held, characters that would normally come from your other hand get mirrored onto the hand activating it, so that single hand can reach the full character set on its own.",
+    "intro2": "There's a key for it on each hand, so it works no matter which hand you have free. Unlike DUP, activating it doesn't produce its own keystroke to detect, so there's no exercise here — just the two key positions to know.",
+    "try": "Try it below: switch between the default layout and holding each AT switch, and see how the alphabet moves onto the hand holding it — same finger, same north/south tilt, but east and west swap, since it's a literal left-right mirror of the other hand's letters.",
+    "mirrorNote": "This mirroring isn't limited to letters — every key on the other hand, including punctuation, numbers, and other actions, gets mirrored over the same way. The diagram below only shows letters to keep things simple.",
+    "modeDefault": "Default",
+    "modeLeft": "Hold left AT",
+    "modeRight": "Hold right AT",
+    "captionDefault": "Default layout — no Ambidextrous Throwover key held.",
+    "captionLeft": "Holding left AT — the right hand's letters mirror onto the left hand.",
+    "captionRight": "Holding right AT — the left hand's letters mirror onto the right hand."
   }
 }
