@@ -348,5 +348,16 @@
   "meta": {
     "description": "Capella is an unofficial tutorial site for CharaChorder 3D input devices (CharaChorder One, CharaChorder Two, CCU, and Master Forge).",
     "ogDescription": "An unofficial tutorial site for CharaChorder 3D input devices (CharaChorder One, CharaChorder Two, CCU, and Master Forge)."
+  },
+  "unit2Intro": {
+    "m4gBefore": "The layout diagrams in this unit are showing the Master Forge (M4G) default layout. If you're using a CC1 / CC2 / CCU, visit",
+    "settings": "Settings",
+    "m4gAfter": "to switch back to the CC1 / CC2 / CCU layout.",
+    "ccBefore": "The layout diagrams in this unit assume the CC1 / CC2 / CCU default layout. If you're using a Master Forge (M4G), visit",
+    "ccAfter": "to switch to the M4G layout before starting."
+  },
+  "switch": {
+    "naturalUp": "finger's natural \"up\"",
+    "press": "PRESS"
   }
 }

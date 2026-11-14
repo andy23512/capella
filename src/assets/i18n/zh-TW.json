@@ -348,5 +348,16 @@
   "meta": {
     "description": "Capella（五車二）是 CharaChorder 3D 輸入裝置（CharaChorder One、CharaChorder Two、CCU 與 Master Forge）的非官方教學網站。",
     "ogDescription": "CharaChorder 3D 輸入裝置（CharaChorder One、CharaChorder Two、CCU 與 Master Forge）的非官方教學網站。"
+  },
+  "unit2Intro": {
+    "m4gBefore": "本單元的佈局圖顯示的是 Master Forge (M4G) 的預設佈局。如果你使用的是 CC1 / CC2 / CCU，請前往",
+    "settings": "設定",
+    "m4gAfter": "切換回 CC1 / CC2 / CCU 佈局。",
+    "ccBefore": "本單元的佈局圖以 CC1 / CC2 / CCU 的預設佈局為準。如果你使用的是 Master Forge (M4G)，開始前請先前往",
+    "ccAfter": "切換成 M4G 佈局。"
+  },
+  "switch": {
+    "naturalUp": "手指自然的「上」",
+    "press": "按下"
   }
 }

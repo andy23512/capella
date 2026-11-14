@@ -5,19 +5,17 @@
     class="mt-6 rounded-lg border border-capella-600 bg-gray-700 p-4 text-sm text-gray-50"
   >
     @if (deviceLayoutService.deviceLayoutId() === 'm4g') {
-      The layout diagrams in this unit are showing the Master Forge (M4G)
-      default layout. If you're using a CC1 / CC2 / CCU, visit
-      <a routerLink="/settings" class="text-capella-400 underline"
-        >Settings</a
-      >
-      to switch back to the CC1 / CC2 / CCU layout.
+      {{ 'unit2Intro.m4gBefore' | translate }}
+      <a routerLink="/settings" class="text-capella-400 underline">{{
+        'unit2Intro.settings' | translate
+      }}</a>
+      {{ 'unit2Intro.m4gAfter' | translate }}
     } @else {
-      The layout diagrams in this unit assume the CC1 / CC2 / CCU default
-      layout. If you're using a Master Forge (M4G), visit
-      <a routerLink="/settings" class="text-capella-400 underline"
-        >Settings</a
-      >
-      to switch to the M4G layout before starting.
+      {{ 'unit2Intro.ccBefore' | translate }}
+      <a routerLink="/settings" class="text-capella-400 underline">{{
+        'unit2Intro.settings' | translate
+      }}</a>
+      {{ 'unit2Intro.ccAfter' | translate }}
     }
   </p>
 

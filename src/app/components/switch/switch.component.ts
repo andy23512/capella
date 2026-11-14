@@ -1,4 +1,5 @@
 import { Component, computed, input, output } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   SwitchSectorComponent,
   TiltDirection,
@@ -20,7 +21,7 @@ const REFERENCE_ANGLES = [270, 0, 90, 180];
   selector: 'app-switch',
   templateUrl: './switch.component.html',
   standalone: true,
-  imports: [SwitchSectorComponent],
+  imports: [SwitchSectorComponent, TranslatePipe],
 })
 export class SwitchComponent {
   /** Degrees to rotate the four tilt sectors by, relative to natural finger directions. */

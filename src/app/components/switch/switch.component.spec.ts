@@ -1,7 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { provideTranslateService } from '@ngx-translate/core';
 import { SwitchComponent } from './switch.component';
 
 describe('SwitchComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({ providers: [provideTranslateService()] });
+  });
+
   function createComponent() {
     const fixture = TestBed.createComponent(SwitchComponent);
     fixture.detectChanges();

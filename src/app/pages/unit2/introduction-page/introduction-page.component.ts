@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ChapterNavComponent } from '../../../components/chapter-nav/chapter-nav.component';
 import { UnitIntroComponent } from '../../../components/unit-intro/unit-intro.component';
 import { UNITS } from '../../../data/units';
@@ -9,7 +10,7 @@ import { DeviceLayoutService } from '../../../services/device-layout.service';
   selector: 'app-unit2-introduction-page',
   templateUrl: './introduction-page.component.html',
   standalone: true,
-  imports: [UnitIntroComponent, ChapterNavComponent, RouterLink],
+  imports: [UnitIntroComponent, ChapterNavComponent, RouterLink, TranslatePipe],
 })
 export class Unit2IntroductionPageComponent {
   protected readonly deviceLayoutService = inject(DeviceLayoutService);
