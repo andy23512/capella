@@ -9,6 +9,7 @@ import {
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { HighlightKeyCombination } from 'tangent-cc-lib';
 import { LayoutComponent } from '../../components/layout/layout.component';
 import { ALL_EXERCISES, isExerciseAvailable } from '../../data/exercises';
@@ -70,7 +71,7 @@ function findChapterPath(chapterId: string): string {
   selector: 'app-exercise-page',
   standalone: true,
   templateUrl: './exercise-page.component.html',
-  imports: [MatButton, MatIcon, RouterLink, LayoutComponent],
+  imports: [MatButton, MatIcon, RouterLink, TranslatePipe, LayoutComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExercisePageComponent {

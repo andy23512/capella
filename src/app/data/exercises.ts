@@ -55,16 +55,15 @@ export const LETTERS_EXERCISES: Exercise[] = [
   {
     id: 'az',
     chapterId: 'letters',
-    title: 'A–Z',
-    description: 'Every letter of the alphabet, once each, in order.',
+    titleKey: 'exercises.az.title',
+    descriptionKey: 'exercises.az.description',
     steps: charSteps('abcdefghijklmnopqrstuvwxyz'),
   },
   {
     id: 'quick-brown-fox',
     chapterId: 'letters',
-    title: 'Quick Brown Fox',
-    description:
-      'A classic pangram — every letter appears at least once, plus a capital and spaces.',
+    titleKey: 'exercises.quick-brown-fox.title',
+    descriptionKey: 'exercises.quick-brown-fox.description',
     steps: charSteps('The quick brown fox jumps over the lazy dog'),
   },
 ];
@@ -73,8 +72,8 @@ export const NUMBER_EXERCISES: Exercise[] = [
   {
     id: '0-9',
     chapterId: 'number',
-    title: '1–0',
-    description: 'Every digit, once each, in order.',
+    titleKey: 'exercises.0-9.title',
+    descriptionKey: 'exercises.0-9.description',
     steps: charSteps('1234567890'),
   },
 ];
@@ -83,17 +82,15 @@ export const SYMBOLS_EXERCISES: Exercise[] = [
   {
     id: 'shifted-row',
     chapterId: 'symbols',
-    title: 'Number-row symbols',
-    description:
-      'The shifted symbols above the number row: ! @ # $ % ^ & * ( )',
+    titleKey: 'exercises.shifted-row.title',
+    descriptionKey: 'exercises.shifted-row.description',
     steps: charSteps('!@#$%^&*()'),
   },
   {
     id: 'punctuation',
     chapterId: 'symbols',
-    title: 'Punctuation & other symbols',
-    description:
-      'The rest of the standard symbol set, including quotes and brackets.',
+    titleKey: 'exercises.punctuation.title',
+    descriptionKey: 'exercises.punctuation.description',
     steps: charSteps(`-_=+[]{}\\|;:'",.<>/?~`),
   },
 ];
@@ -102,8 +99,8 @@ export const FUNCTIONAL_KEYS_EXERCISES: Exercise[] = [
   {
     id: 'editing',
     chapterId: 'functional-keys',
-    title: 'Editing keys',
-    description: 'Space, Enter, Backspace, Tab, Delete, and Escape.',
+    titleKey: 'exercises.editing.title',
+    descriptionKey: 'exercises.editing.description',
     steps: [
       characterStep('Space', ' '),
       ...namedSteps([
@@ -118,8 +115,8 @@ export const FUNCTIONAL_KEYS_EXERCISES: Exercise[] = [
   {
     id: 'navigation',
     chapterId: 'functional-keys',
-    title: 'Navigation keys',
-    description: 'The arrow keys.',
+    titleKey: 'exercises.navigation.title',
+    descriptionKey: 'exercises.navigation.description',
     steps: namedSteps([
       ['Arrow Up', 'ArrowUp'],
       ['Arrow Down', 'ArrowDown'],
@@ -130,9 +127,8 @@ export const FUNCTIONAL_KEYS_EXERCISES: Exercise[] = [
   {
     id: 'modifier-keys',
     chapterId: 'functional-keys',
-    title: 'Modifier keys',
-    description:
-      'Alt, Control, and Meta (Cmd on Mac, Win on Windows) — held alongside other keys to trigger OS-level shortcuts. This just locates each switch; it does not fire an actual shortcut.',
+    titleKey: 'exercises.modifier-keys.title',
+    descriptionKey: 'exercises.modifier-keys.description',
     steps: namedSteps([
       ['Left Alt', 'AltLeft'],
       ['Right Alt', 'AltRight'],
@@ -148,9 +144,8 @@ export const FUNCTION_KEYS_EXERCISES: Exercise[] = [
   {
     id: 'f1-f12',
     chapterId: 'function-keys',
-    title: 'F1–F12',
-    description:
-      'The full row of function keys, in order. F11 is skipped since it is bound to a system-level shortcut (e.g. Show Desktop on macOS) and cannot be captured by the browser.',
+    titleKey: 'exercises.f1-f12.title',
+    descriptionKey: 'exercises.f1-f12.description',
     steps: namedSteps(
       Array.from({ length: 12 }, (_, i) => `F${i + 1}`)
         .filter((label) => label !== 'F11')
@@ -163,8 +158,8 @@ export const MOUSE_FEATURES_EXERCISES: Exercise[] = [
   {
     id: 'mouse-movement',
     chapterId: 'mouse-features',
-    title: 'Cursor movement',
-    description: 'Nudge the mouse cursor up, down, left, and right.',
+    titleKey: 'exercises.mouse-movement.title',
+    descriptionKey: 'exercises.mouse-movement.description',
     unavailableOnDeviceLayouts: ['m4g'],
     steps: mouseSteps([
       ['Move up', 'MouseMoveUp'],
@@ -176,8 +171,8 @@ export const MOUSE_FEATURES_EXERCISES: Exercise[] = [
   {
     id: 'mouse-clicks',
     chapterId: 'mouse-features',
-    title: 'Left & right click',
-    description: 'A left click, then a right click.',
+    titleKey: 'exercises.mouse-clicks.title',
+    descriptionKey: 'exercises.mouse-clicks.description',
     unavailableOnDeviceLayouts: ['m4g'],
     steps: mouseSteps([
       ['Left click', 'MouseLeftClick'],
@@ -187,8 +182,8 @@ export const MOUSE_FEATURES_EXERCISES: Exercise[] = [
   {
     id: 'mouse-scroll',
     chapterId: 'mouse-features',
-    title: 'Scrolling',
-    description: 'Scroll up, down, left, and right.',
+    titleKey: 'exercises.mouse-scroll.title',
+    descriptionKey: 'exercises.mouse-scroll.description',
     unavailableOnDeviceLayouts: ['m4g'],
     steps: mouseSteps([
       ['Scroll up', 'MouseScrollCoastUp'],
@@ -203,9 +198,8 @@ export const SIMPLE_CHORD_EXERCISES: Exercise[] = [
   {
     id: 'because-chord',
     chapterId: 'simple-chord',
-    title: '"because" starter chord',
-    description:
-      'Press B and C together — within the device\'s Press/Release Tolerance — to fire the built-in "because" chord. Three reps.',
+    titleKey: 'exercises.because-chord.title',
+    descriptionKey: 'exercises.because-chord.description',
     steps: [
       chordStep(['b', 'c'], 'because'),
       chordStep(['b', 'c'], 'because'),
@@ -218,9 +212,8 @@ export const DUP_EXERCISES: Exercise[] = [
   {
     id: 'double-letters',
     chapterId: 'dup',
-    title: 'Double letters',
-    description:
-      'Type a letter, then press DUP to repeat it — the same trick works for any double letter, like the "tt" in "letter".',
+    titleKey: 'exercises.double-letters.title',
+    descriptionKey: 'exercises.double-letters.description',
     steps: dupPairSteps(['t', 's', 'e']),
   },
 ];

@@ -168,5 +168,73 @@
     "naturalVaries": "Exactly where \"natural\" points can vary a bit from person to person and hand to hand, so treat the photos above as a starting point rather than gospel — try tilting each switch yourself and confirm the direction that feels right for your own fingers.",
     "quote": "\"the orientation of the non-thumb switches aligns with the digitizer (half device)\" — from Tangent's <a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">review of Master Forge</a>, which covers the practical impact (and a layout-viewer workaround) in more depth.",
     "centerPress": "One more Master Forge difference worth knowing: each of its switches is built from four unidirectional microswitches underneath, with no separate center sensor. So pressing straight down isn't sensed as its own state the way it is on CC1/CC2/CCU — it's read as all four cardinal directions firing at once."
+  },
+  "chapterIntro": {
+    "letters": "Letters are the CharaChorder's home base: the base lowercase alphabet sits on the Primary layer, one switch tilt each, no layer-shift needed. Pick an exercise below — the exercise page will prompt each letter in turn and light up exactly where to press on the device diagram.",
+    "number": "Digits live one layer up from letters, so they ask for a numerical layer shift key held while triggering the digit key itself.",
+    "symbols": "Symbols are split across two exercises: the shifted punctuation above the number row on the standard keyboard, and the rest of the standard punctuation set. Many of these need Shift, a layer-shift, or both held down together with the symbol's own key — the exercise page will spell out the exact combination for each one."
+  },
+  "exercises": {
+    "az": {
+      "title": "A–Z",
+      "description": "Every letter of the alphabet, once each, in order."
+    },
+    "quick-brown-fox": {
+      "title": "Quick Brown Fox",
+      "description": "A classic pangram — every letter appears at least once, plus a capital and spaces."
+    },
+    "0-9": {
+      "title": "1–0",
+      "description": "Every digit, once each, in order."
+    },
+    "shifted-row": {
+      "title": "Number-row symbols",
+      "description": "The shifted symbols above the number row: ! @ # $ % ^ & * ( )"
+    },
+    "punctuation": {
+      "title": "Punctuation & other symbols",
+      "description": "The rest of the standard symbol set, including quotes and brackets."
+    },
+    "editing": {
+      "title": "Editing keys",
+      "description": "Space, Enter, Backspace, Tab, Delete, and Escape."
+    },
+    "navigation": {
+      "title": "Navigation keys",
+      "description": "The arrow keys."
+    },
+    "modifier-keys": {
+      "title": "Modifier keys",
+      "description": "Alt, Control, and Meta (Cmd on Mac, Win on Windows) — held alongside other keys to trigger OS-level shortcuts. This just locates each switch; it does not fire an actual shortcut."
+    },
+    "f1-f12": {
+      "title": "F1–F12",
+      "description": "The full row of function keys, in order. F11 is skipped since it is bound to a system-level shortcut (e.g. Show Desktop on macOS) and cannot be captured by the browser."
+    },
+    "mouse-movement": {
+      "title": "Cursor movement",
+      "description": "Nudge the mouse cursor up, down, left, and right."
+    },
+    "mouse-clicks": {
+      "title": "Left & right click",
+      "description": "A left click, then a right click."
+    },
+    "mouse-scroll": {
+      "title": "Scrolling",
+      "description": "Scroll up, down, left, and right."
+    },
+    "because-chord": {
+      "title": "\"because\" starter chord",
+      "description": "Press and release B and C together — within the device's Press/Release Tolerance — to fire the built-in \"because\" chord. Three reps."
+    },
+    "double-letters": {
+      "title": "Double letters",
+      "description": "Type a letter, then press DUP to repeat it — the same trick works for any double letter, like the \"tt\" in \"letter\"."
+    }
+  },
+  "exerciseCard": {
+    "disabledOnM4g": "Disabled — the Master Forge default layout lacks some mouse functions",
+    "completed": "Completed",
+    "steps": "{{count}} steps"
   }
 }

@@ -1,5 +1,6 @@
 import { ActivatedRoute, provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideTranslateService } from '@ngx-translate/core';
 import { ExercisePageComponent } from './exercise-page.component';
 
 /** because-chord's steps are all chordStep(['b', 'c'], 'because') — see src/app/data/exercises.ts. */
@@ -37,6 +38,7 @@ describe('ExercisePageComponent chord step handling', () => {
       imports: [ExercisePageComponent],
       providers: [
         provideRouter([]),
+        provideTranslateService(),
         {
           provide: ActivatedRoute,
           useValue: {
@@ -96,6 +98,7 @@ describe('ExercisePageComponent named-key step handling', () => {
       imports: [ExercisePageComponent],
       providers: [
         provideRouter([]),
+        provideTranslateService(),
         {
           provide: ActivatedRoute,
           useValue: {

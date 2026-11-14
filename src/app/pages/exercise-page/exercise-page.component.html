@@ -5,8 +5,8 @@
       Back to chapter
     </a>
 
-    <h1 class="m-0 mt-4 text-3xl font-medium">{{ exercise.title }}</h1>
-    <p class="mt-2 text-gray-200">{{ exercise.description }}</p>
+    <h1 class="m-0 mt-4 text-3xl font-medium">{{ exercise.titleKey | translate }}</h1>
+    <p class="mt-2 text-gray-200">{{ exercise.descriptionKey | translate }}</p>
 
     @if (!completed()) {
       <div class="mt-6 flex flex-wrap items-center justify-center gap-1.5">

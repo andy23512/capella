@@ -168,5 +168,73 @@
     "naturalVaries": "所謂「自然」的方向，會因人與手而略有不同，所以請把上面的照片當作參考，而不是標準答案。請自己操作每個搖桿，確認哪個方向對你的手指來說最順手。",
     "quote": "「拇指以外的搖桿的方向是與 Digitizer（半個 M4G）對齊的」，出自 Tangent 的<a href=\"{{url}}\" target=\"_blank\" rel=\"noopener\">對 Master Forge 的評價</a>，文中更深入地探討了實際的影響（以及佈局檢視器的替代做法）。",
     "centerPress": "還有一項值得一提的 Master Forge 的差異：它的每個搖桿底下是由四個單向的微動開關組成，沒有獨立的中心感測器。所以向下直按不會像 CC1/CC2/CCU 那樣被感測為獨立的狀態，而是被視為四個基本方向同時觸發。"
+  },
+  "chapterIntro": {
+    "letters": "一切從字母開始：基本的小寫字母位在主要層，每個字母只要傾斜一次搖桿，不需要切換到其他層。請從下方挑選一個練習，練習頁會依序提示每個字母，並在裝置示意圖上亮起該按的確切位置。",
+    "number": "數字位在字母以外的另一層，所以打數字需要在按對應的數字鍵時，要同時按住切換數字層的按鍵。",
+    "symbols": "符號分成兩個練習：一般鍵盤數字列上方需要 Shift 的標點符號，以及剩下的標準標點符號。其中有許多需要同時按住 Shift、切換層鍵，或兩者並用，再加上符號本身的按鍵。練習頁會逐一說明每個符號的確切組合。"
+  },
+  "exercises": {
+    "az": {
+      "title": "A–Z",
+      "description": "字母表中的每個字母，各一次，依序輸入。"
+    },
+    "quick-brown-fox": {
+      "title": "Quick Brown Fox",
+      "description": "經典的全字母句：每個字母至少出現一次，還包含一個大寫字母與空白。"
+    },
+    "0-9": {
+      "title": "1–0",
+      "description": "每個數字，各一次，依序輸入。"
+    },
+    "shifted-row": {
+      "title": "數字列符號",
+      "description": "數字列上方需要 Shift 的符號：! @ # $ % ^ & * ( )"
+    },
+    "punctuation": {
+      "title": "標點符號與其他符號",
+      "description": "其他標點符號，包含引號與括號。"
+    },
+    "editing": {
+      "title": "編輯鍵",
+      "description": "Space、Enter、Backspace、Tab、Delete 與 Escape。"
+    },
+    "navigation": {
+      "title": "方向鍵",
+      "description": "上、下、左、右四個方向鍵。"
+    },
+    "modifier-keys": {
+      "title": "修飾鍵",
+      "description": "Alt、Control 與 Meta（Mac 上是 Cmd，Windows 上是 Win），與其他按鍵一起按時會觸發作業系統層級的快捷鍵。這裡只是找出每個搖桿的位置，不會真的觸發快捷鍵。"
+    },
+    "f1-f12": {
+      "title": "F1–F12",
+      "description": "整排功能鍵，依序輸入。F11 會被略過，因為它被綁定在系統層級的快捷鍵（例如 macOS 的顯示桌面），瀏覽器無法偵測。"
+    },
+    "mouse-movement": {
+      "title": "鼠標移動",
+      "description": "將滑鼠游標往上、下、左、右移動。"
+    },
+    "mouse-clicks": {
+      "title": "左鍵與右鍵點擊",
+      "description": "先左鍵點擊，再右鍵點擊。"
+    },
+    "mouse-scroll": {
+      "title": "捲動",
+      "description": "往上、下、左、右捲動。"
+    },
+    "because-chord": {
+      "title": "「because」入門和弦",
+      "description": "在裝置的按壓／釋放容許時間內，同時按下後同時放開 B 與 C，觸發內建的「because」和弦。重複三次。"
+    },
+    "double-letters": {
+      "title": "雙字母",
+      "description": "輸入一個字母，再按 DUP 重複它。同樣的技巧適用於任何雙字母，例如 letter 裡的 tt。"
+    }
+  },
+  "exerciseCard": {
+    "disabledOnM4g": "停用：Master Forge 的預設佈局缺少部分滑鼠功能",
+    "completed": "已完成",
+    "steps": "{{count}} 步"
   }
 }

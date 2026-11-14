@@ -1,11 +1,7 @@
 import { DeviceLayoutId } from '../services/device-layout.service';
 
 export type ExerciseStepKind =
-  | 'character'
-  | 'named-key'
-  | 'mouse'
-  | 'dup'
-  | 'chord';
+  'character' | 'named-key' | 'mouse' | 'dup' | 'chord';
 
 export interface ExerciseStep {
   /** What the user sees ("A", "Space", "F5", "Left click", "DUP (t)", "B + C"). */
@@ -23,11 +19,12 @@ export interface ExerciseStep {
   chordChars?: string[];
 }
 
+/** Title and description are translation keys (see src/assets/i18n). */
 export interface Exercise {
   id: string;
   chapterId: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   steps: ExerciseStep[];
   /**
    * Device layouts whose default layout can't perform this exercise (e.g. the
