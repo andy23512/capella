@@ -26,7 +26,8 @@
   "nav": {
     "learningMap": "學習地圖",
     "settings": "設定",
-    "openMenu": "開啟側邊欄"
+    "openMenu": "開啟側邊欄",
+    "sourceCode": "原始碼"
   },
   "chapterNav": {
     "withUnit": "{{unit}}：{{title}}"
