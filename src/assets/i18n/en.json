@@ -26,7 +26,8 @@
   "nav": {
     "learningMap": "Learning Map",
     "settings": "Settings",
-    "openMenu": "Open side menu"
+    "openMenu": "Open side menu",
+    "sourceCode": "Source Code"
   },
   "chapterNav": {
     "withUnit": "{{unit}}: {{title}}"
