@@ -49,3 +49,14 @@
   - 位置：`src/assets/i18n/en.json`／`zh-TW.json` 的 `chapterIntro.function-keys`（頁面在 `src/app/pages/unit2/function-keys-page/`）；改寫時英文與繁中兩份要一起改
   - 可參考同單元其他章節（Letters／Functional Keys／Mouse Features）的寫法：說明這些按鍵在裝置上的位置邏輯、如何操作，以及練習頁會提示什麼
   - 補充說明時需注意：練習刻意略過 F11（被系統層級快捷鍵佔用，瀏覽器抓不到），描述內容要與 `exercises.ts` 的 `f1-f12` 練習說明一致
+- [ ] 補上拇指搖桿（thumb 1／2／3）的名稱、對應與操作方向說明
+  - 起因：目前 Capella 只有每手拇指搖桿數量（`devices.ts`）與佈局圖座標（`layout.component.ts` 的 `thumbTip`／`thumbMid`／`thumbEnd`），完全沒有說明示意圖上的搖桿對應實體哪一個、叫什麼名字，也沒有拇指搖桿的方向與操作方式（Unit 1「3D 搖桿介紹」的朝向一節刻意排除拇指）
+  - 已確認的事實（官方文件 CC1／CC2／Master Forge 一致）：命名由小指往內為 pinky、ring、middle、index、thumb 1、thumb 2、thumb 3，黑色的是 arrow 與 mouse 搖桿；Master Forge 只有 thumb 1 和 thumb 2；官方沒有寫拇指搖桿的操作方式、手位與方向
+  - 已完成：影片 `https://www.youtube.com/watch?v=GXvsBoK55B8`（LambChorder，Hand placement on the CharaChorder）已加到 Unit 1 Other resources（commit `21747ff`）；內容只是個人手感，不當標準答案
+  - [ ] 確認 `thumbTip`／`thumbMid`／`thumbEnd` 是否依序對應 thumb 1／2／3（目前只是從座標推測，需用實機或 `tangent-cc-lib` 的 layout 資料確認）
+  - [ ] Unit 1「3D 搖桿介紹」頁、朝向一節之前新增「搖桿的名稱與對應」：名稱表＋示意圖與實體照片的對應圖，沿用現有 CC／Forge 切換鈕，Master Forge 只顯示 thumb 1、2；使用者看到的文字一律用官方 thumb 1／2／3，英文與繁中兩份一起改
+  - [ ] 補上拇指搖桿的方向說明；方向官方沒寫，需由使用者憑實機確認，不可自行編造
+  - [ ] 準備對應圖需要的實體照片（自己拍，或標註現有 `src/assets/switch-orientation/` 的照片）
+  - [ ] 決定程式內部名稱要不要從 `thumbTip` 等改成 `thumb1` 等（會動到 `layout.component.ts` 等檔案）
+  - [ ] 決定 arrow 與 mouse 黑色搖桿要不要放進名稱表
+  - [ ] Unit 2 練習：讀佈局資料找出哪些按鍵由拇指搖桿負責，用亮起提示引導使用者去按；遵守不模擬原則，對著真實裝置輸出判斷
