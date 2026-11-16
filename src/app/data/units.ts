@@ -16,6 +16,10 @@ export const UNITS: Unit[] = [
         labelKey: 'units.unit-1.resources.resource2.label',
         urlKey: 'units.unit-1.resources.resource2.url',
       },
+      {
+        labelKey: 'units.unit-1.resources.resource3.label',
+        urlKey: 'units.unit-1.resources.resource3.url',
+      },
     ],
     chapters: [
       {
