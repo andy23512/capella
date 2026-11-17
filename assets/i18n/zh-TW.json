@@ -108,6 +108,10 @@
           "url": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%96%87%E5%92%8C%E5%BC%A6%E8%BC%B8%E5%85%A5%E7%9A%84%E5%BB%BA%E8%AD%B0/"
         }
       }
+    },
+    "unit-5": {
+      "title": "單元 5：接下來",
+      "shortTitle": "單元 5"
     }
   },
   "chapters": {
@@ -130,7 +134,8 @@
     "unit-4-introduction": "簡介",
     "simple-chord": "章節 1：基礎和弦",
     "impulse-chord": "章節 2：Impulse Chord",
-    "unit-4-summary": "總結"
+    "unit-4-summary": "總結",
+    "whats-next": "接下來"
   },
   "deviceIntro": {
     "description": "CharaChorder 推出了一系列「3D 輸入裝置」。這些裝置上的每個搖桿不只能向下按，還能往東、南、西、北四個方向傾斜，因此單一搖桿就能依移動方向產生最多五種不同的輸入，輸入和弦則變成同時移動多根手指，而不是依序按下按鍵。目前有四款裝置採用這個概念，各自有不同的外型與搖桿數量。"
@@ -381,5 +386,24 @@
   "switch": {
     "naturalUp": "手指自然的「上」",
     "press": "按下"
+  },
+  "whatsNext": {
+    "title": "接下來",
+    "lead": "你已經完成 Capella 教學了。現在你認識了裝置、標準按鍵、特殊按鍵，也知道和弦輸入的基本做法。不過這只是學習 CharaChorder 的第一階段，下面說明接下來可以怎麼繼續。",
+    "recapTitle": "你學到了什麼",
+    "recap": {
+      "unit1": "認識四款 CharaChorder 3D 輸入裝置，以及一個 3D 搖桿如何產生最多五種輸入。",
+      "unit2": "輸入標準按鍵：字母、數字、符號、功能鍵、F1–F12，以及滑鼠功能。",
+      "unit3": "使用 DUP 與 Ambidextrous Throwover，這兩個在一般鍵盤上沒有對應的按鍵。",
+      "unit4": "同時按下多個搖桿輸入和弦，並用 Impulse Chord 當場建立和弦。"
+    },
+    "nextTitle": "從這裡繼續",
+    "nextDescription": "知道每個按鍵的功能，不代表不用看就能找到它。下一階段是不斷練習，直到佈局記在手指上。下面這篇文章，能提供你下一階段所需要的資源。",
+    "article": {
+      "title": "Tangent 對學習英打（逐字輸入）的建議",
+      "description": "完成這個教學後的下一步，是練習按鍵佈局，直到不再需要視覺提示。這篇文章以英打為例，說明該怎麼練習。",
+      "cta": "閱讀「練習按鍵佈局」",
+      "url": "https://andy23512.github.io/blog-zh-tw/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%89%93%EF%BC%88%E9%80%90%E5%AD%97%E8%BC%B8%E5%85%A5%EF%BC%89%E7%9A%84%E5%BB%BA%E8%AD%B0/#%E7%B7%B4%E7%BF%92%E6%8C%89%E9%8D%B5%E4%BD%88%E5%B1%80"
+    }
   }
 }
