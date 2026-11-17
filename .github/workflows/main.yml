@@ -22,9 +22,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Prepare and deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          yarn
+          yarn install --immutable
           yarn nx deploy --no-silent
