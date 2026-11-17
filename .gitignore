@@ -47,3 +47,6 @@ Thumbs.db
 
 # Claude Code (local tool runtime state)
 .claude/.headroom_wrap_marker.json
+
+# Yarn local install state
+.yarn/install-state.gz
