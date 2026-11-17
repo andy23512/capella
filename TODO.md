@@ -49,7 +49,7 @@
   - 位置：`src/assets/i18n/en.json`／`zh-TW.json` 的 `chapterIntro.function-keys`（頁面在 `src/app/pages/unit2/function-keys-page/`）；改寫時英文與繁中兩份要一起改
   - 可參考同單元其他章節（Letters／Functional Keys／Mouse Features）的寫法：說明這些按鍵在裝置上的位置邏輯、如何操作，以及練習頁會提示什麼
   - 補充說明時需注意：練習刻意略過 F11（被系統層級快捷鍵佔用，瀏覽器抓不到），描述內容要與 `exercises.ts` 的 `f1-f12` 練習說明一致
-- [ ] 補上拇指搖桿（thumb 1／2／3）的名稱、對應與操作方向說明
+- [x] 補上拇指搖桿（thumb 1／2／3）的名稱、對應與操作方向說明（已併入 `main`，commit `969df7b`）
   - 起因：目前 Capella 只有每手拇指搖桿數量（`devices.ts`）與佈局圖座標（`layout.component.ts` 的 `thumbTip`／`thumbMid`／`thumbEnd`），完全沒有說明示意圖上的搖桿對應實體哪一個、叫什麼名字，也沒有拇指搖桿的方向與操作方式（Unit 1「3D 搖桿介紹」的朝向一節刻意排除拇指）
   - 已確認的事實（官方文件 CC1／CC2／Master Forge 一致）：命名由小指往內為 pinky、ring、middle、index、thumb 1、thumb 2、thumb 3，主列下方的兩個搖桿，CC1／CC2 文件稱為 arrow 與 mouse 搖桿（CC1 文件提到它們是黑色，只有 CC1 分黑白，其他裝置沒有），Master Forge 文件稱為 aux 1 與 aux 2（CCU 沒有找到對應文件頁，頁面文字未涵蓋）；Master Forge 只有 thumb 1 和 thumb 2；官方沒有寫拇指搖桿的操作方式、手位與方向
   - 已完成：影片 `https://www.youtube.com/watch?v=GXvsBoK55B8`（LambChorder，Hand placement on the CharaChorder）已加到 Unit 1 Other resources（commit `21747ff`）；內容只是個人手感，不當標準答案
@@ -63,4 +63,4 @@
     - 授權問題已解決：改用自己拍的照片，圖說不再需要官方出處；已刪除官方 CC2 圖版本與 `thumbPhotoUrl`
   - [x] 程式內部名稱：不改（使用者決定維持 `thumbTip`／`thumbMid`／`thumbEnd`）
   - [x] 主列下方兩個搖桿：不放進名稱清單，頁面文字不提顏色（只有 CC1 分黑白），只在清單後加一句說明，CC1／CC2 稱 arrow／mouse，Master Forge 稱 aux 1／aux 2
-  - [ ] Unit 2 練習：讀佈局資料找出哪些按鍵由拇指搖桿負責，用亮起提示引導使用者去按；遵守不模擬原則，對著真實裝置輸出判斷
+  - [x] ~~Unit 2 練習：讀佈局資料找出哪些按鍵由拇指搖桿負責~~ → 不需要做（使用者判斷：既有練習已涵蓋拇指搖桿負責的按鍵；我沒有逐一核對各練習用到哪些搖桿）
