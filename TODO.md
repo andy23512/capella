@@ -51,12 +51,16 @@
   - 補充說明時需注意：練習刻意略過 F11（被系統層級快捷鍵佔用，瀏覽器抓不到），描述內容要與 `exercises.ts` 的 `f1-f12` 練習說明一致
 - [ ] 補上拇指搖桿（thumb 1／2／3）的名稱、對應與操作方向說明
   - 起因：目前 Capella 只有每手拇指搖桿數量（`devices.ts`）與佈局圖座標（`layout.component.ts` 的 `thumbTip`／`thumbMid`／`thumbEnd`），完全沒有說明示意圖上的搖桿對應實體哪一個、叫什麼名字，也沒有拇指搖桿的方向與操作方式（Unit 1「3D 搖桿介紹」的朝向一節刻意排除拇指）
-  - 已確認的事實（官方文件 CC1／CC2／Master Forge 一致）：命名由小指往內為 pinky、ring、middle、index、thumb 1、thumb 2、thumb 3，黑色的是 arrow 與 mouse 搖桿；Master Forge 只有 thumb 1 和 thumb 2；官方沒有寫拇指搖桿的操作方式、手位與方向
+  - 已確認的事實（官方文件 CC1／CC2／Master Forge 一致）：命名由小指往內為 pinky、ring、middle、index、thumb 1、thumb 2、thumb 3，主列下方的兩個搖桿，CC1／CC2 文件稱為 arrow 與 mouse 搖桿（CC1 文件提到它們是黑色，只有 CC1 分黑白，其他裝置沒有），Master Forge 文件稱為 aux 1 與 aux 2（CCU 沒有找到對應文件頁，頁面文字未涵蓋）；Master Forge 只有 thumb 1 和 thumb 2；官方沒有寫拇指搖桿的操作方式、手位與方向
   - 已完成：影片 `https://www.youtube.com/watch?v=GXvsBoK55B8`（LambChorder，Hand placement on the CharaChorder）已加到 Unit 1 Other resources（commit `21747ff`）；內容只是個人手感，不當標準答案
-  - [ ] 確認 `thumbTip`／`thumbMid`／`thumbEnd` 是否依序對應 thumb 1／2／3（目前只是從座標推測，需用實機或 `tangent-cc-lib` 的 layout 資料確認）
-  - [ ] Unit 1「3D 搖桿介紹」頁、朝向一節之前新增「搖桿的名稱與對應」：名稱表＋示意圖與實體照片的對應圖，沿用現有 CC／Forge 切換鈕，Master Forge 只顯示 thumb 1、2；使用者看到的文字一律用官方 thumb 1／2／3，英文與繁中兩份一起改
-  - [ ] 補上拇指搖桿的方向說明；方向官方沒寫，需由使用者憑實機確認，不可自行編造
-  - [ ] 準備對應圖需要的實體照片（自己拍，或標註現有 `src/assets/switch-orientation/` 的照片）
-  - [ ] 決定程式內部名稱要不要從 `thumbTip` 等改成 `thumb1` 等（會動到 `layout.component.ts` 等檔案）
-  - [ ] 決定 arrow 與 mouse 黑色搖桿要不要放進名稱表
+  - [x] 確認 thumb 1／2／3 的實體位置（使用者確認）：沿著拇指搖桿排列方向，thumb 1／2／3 依序對應拇指的上、中、下端（使用者照片上由上到下）；其他裝置相同。`thumbTip`／`thumbMid`／`thumbEnd` 與之依序對應仍是推定，實作時對照佈局圖座標核對
+  - [x] Unit 1「3D 搖桿介紹」頁、朝向一節之前新增「搖桿名稱」與「拇指搖桿」兩節（`switch-introduction-page`，英文與繁中兩份）：官方名稱清單、拇指搖桿位置（佈局圖由上到下、裝置上對應拇指上／中／下端）、Master Forge 只有 thumb 1、2、CC2 標註照片與出處圖說。實作時沒有做「示意圖對照片」的連動圖，因為佈局圖元件是依方向鍵位標籤畫的，不適合掛搖桿名稱，改用文字說明
+  - [x] 補上拇指搖桿的方向說明文字（中英文），已併入上述「拇指搖桿」一節
+    - 已確認（使用者憑實機，官方沒寫）：把拇指沿著拇指搖桿排列方向放上去時，拇指的自然朝向就是北；使用者照片上北是朝上；其他裝置的方向相同
+  - [x] 準備對應圖需要的照片：`src/assets/switch-orientation/thumb-switch-orientation.png`（1234×921），使用者自己拍攝的裝置照片（避開官方圖授權問題），整體調暗到 55% 後，在三顆拇指搖桿上畫紅十字，並在北（朝上）的那一端加箭頭；十字軸依三個搖桿中心連線的實際角度畫（沒有準心線可參考）
+    - 使用者確認：北朝上，照片由上到下是 thumb 1／2／3；頁面描述與圖說已同步（英文與繁中）
+    - 決定：不需要 CC1／CCU／Master Forge 的鍵帽照片；拇指搖桿的方向在所有裝置上都是「拇指自然朝向為北」，只有非拇指搖桿的朝向有裝置差異，所以朝向一節才特別比較
+    - 授權問題已解決：改用自己拍的照片，圖說不再需要官方出處；已刪除官方 CC2 圖版本與 `thumbPhotoUrl`
+  - [x] 程式內部名稱：不改（使用者決定維持 `thumbTip`／`thumbMid`／`thumbEnd`）
+  - [x] 主列下方兩個搖桿：不放進名稱清單，頁面文字不提顏色（只有 CC1 分黑白），只在清單後加一句說明，CC1／CC2 稱 arrow／mouse，Master Forge 稱 aux 1／aux 2
   - [ ] Unit 2 練習：讀佈局資料找出哪些按鍵由拇指搖桿負責，用亮起提示引導使用者去按；遵守不模擬原則，對著真實裝置輸出判斷

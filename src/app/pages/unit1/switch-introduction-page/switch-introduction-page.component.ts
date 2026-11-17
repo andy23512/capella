@@ -13,4 +13,13 @@ type OrientationMode = 'cc' | 'forge';
 })
 export class SwitchIntroductionPageComponent {
   protected readonly mode = signal<OrientationMode>('cc');
+  protected readonly switchNames = [
+    'pinky',
+    'ring',
+    'middle',
+    'index',
+    'thumb1',
+    'thumb2',
+    'thumb3',
+  ];
 }

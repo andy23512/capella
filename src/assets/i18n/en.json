@@ -162,6 +162,23 @@
   },
   "switchIntro": {
     "intro": "Every switch on a CharaChorder 3D input device is a 3D switch: it senses which of four directions it's tilted in — north, east, south, or west. On CC1, CC2, and CCU, each switch also senses a straight-down press as a separate fifth state, making it a true <strong>5-way switch</strong> that can stand in for up to five different inputs. Master Forge's switches are 4-way instead — see below for how their center press differs.",
+    "namesTitle": "Switch names",
+    "namesBody": "Each half has nine switches (eight on Master Forge). This tutorial uses the same names as the official CharaChorder docs. Counting from the outside in, they are:",
+    "names": {
+      "pinky": "pinky",
+      "ring": "ring",
+      "middle": "middle",
+      "index": "index",
+      "thumb1": "thumb 1",
+      "thumb2": "thumb 2",
+      "thumb3": "thumb 3"
+    },
+    "namesBlack": "The two switches below the row your fingers rest on are named differently by device: the official docs call them the arrow and mouse switches on CC1 and CC2, and aux 1 and aux 2 on Master Forge.",
+    "thumbTitle": "Thumb switches",
+    "thumbBody": "The three switches on the inner side of each half are the thumb switches. In the layout diagram they are stacked from top to bottom as thumb 1, thumb 2, and thumb 3. On the device they run along the length of your thumb, from its upper end to its middle to its lower end. Master Forge has only thumb 1 and thumb 2.",
+    "thumbDirection": "To find north on these switches, lay your thumb along the row of thumb switches: the direction your thumb naturally points is north. In the photo below, the arrows point north, toward the top, and thumb 1, 2, and 3 run from top to bottom. The same rule applies on every device.",
+    "thumbAlt": "Photo of one half of the device with red crosses marking the orientation of the three thumb switches. Each cross has an arrowhead pointing north, toward the top, and thumb 1, 2, and 3 run from top to bottom",
+    "thumbPhotoCaption": "The red crosses mark each thumb switch's directions, and the arrows point north.",
     "orientationTitle": "Orientation differs by device",
     "orientationBody": "The five directions above are the same on every device — but which way is physically \"north\" is not. On CC1, CC2, and CCU, the non-thumb switches are oriented to match natural finger movement, so tilting a switch feels like moving your finger in that direction. Master Forge changes this: its non-thumb switches are oriented to match the edge of the digitizer half instead, roughly a 45° twist away from where your finger naturally wants to go.",
     "ccOrientation": "The red lines in the photo below mark which way each switch is oriented. On CC1/CC2/CCU, that orientation lines up directly with your finger's natural movement — tilting north on the switch matches moving your finger north.",

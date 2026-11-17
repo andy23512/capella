@@ -12,6 +12,34 @@
   ></p>
 
   <h2 class="mt-10 text-xl font-medium">
+    {{ 'switchIntro.namesTitle' | translate }}
+  </h2>
+  <p class="mt-4 text-gray-50">{{ 'switchIntro.namesBody' | translate }}</p>
+  <ol class="mt-2 list-decimal pl-8 text-gray-50">
+    @for (name of switchNames; track name) {
+      <li>{{ 'switchIntro.names.' + name | translate }}</li>
+    }
+  </ol>
+  <p class="mt-4 text-gray-50">{{ 'switchIntro.namesBlack' | translate }}</p>
+
+  <h3 class="m-0 mt-8 text-lg font-medium">
+    {{ 'switchIntro.thumbTitle' | translate }}
+  </h3>
+  <p class="mt-4 text-gray-50">{{ 'switchIntro.thumbBody' | translate }}</p>
+  <p class="mt-4 text-gray-50">{{ 'switchIntro.thumbDirection' | translate }}</p>
+
+  <figure class="mt-4 m-0">
+    <img
+      src="assets/switch-orientation/thumb-switch-orientation.png"
+      [alt]="'switchIntro.thumbAlt' | translate"
+      class="w-full rounded-lg"
+    />
+    <figcaption class="mt-2 text-center text-sm text-gray-200">
+      {{ 'switchIntro.thumbPhotoCaption' | translate }}
+    </figcaption>
+  </figure>
+
+  <h2 class="mt-10 text-xl font-medium">
     {{ 'switchIntro.orientationTitle' | translate }}
   </h2>
   <p class="text-gray-50">{{ 'switchIntro.orientationBody' | translate }}</p>
