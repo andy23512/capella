@@ -108,6 +108,10 @@
           "url": "https://andy23512.github.io/blog/tangent-s-suggestion-for-learning-english-chorded-entry-on-charachorder-devices/"
         }
       }
+    },
+    "unit-5": {
+      "title": "Unit 5: What's next?",
+      "shortTitle": "Unit 5"
     }
   },
   "chapters": {
@@ -130,7 +134,8 @@
     "unit-4-introduction": "Introduction",
     "simple-chord": "Chapter 1: Simple Chord",
     "impulse-chord": "Chapter 2: Impulse Chord",
-    "unit-4-summary": "Summary"
+    "unit-4-summary": "Summary",
+    "whats-next": "What's next?"
   },
   "deviceIntro": {
     "description": "CharaChorder makes a family of \"3D input devices.\" Instead of keys that only go down, every switch on these devices can also tilt north, east, south, or west — so a single switch can produce up to five different inputs depending on which way you move it, and typing whole chords becomes a matter of moving several fingers at once rather than pressing keys in sequence. Four devices currently share this idea, each with a different form factor and switch count."
@@ -381,5 +386,24 @@
   "switch": {
     "naturalUp": "finger's natural \"up\"",
     "press": "PRESS"
+  },
+  "whatsNext": {
+    "title": "What's next?",
+    "lead": "You've finished the Capella tutorial. You now know the devices, the standard keys, the special keys, and the basics of chording. This is only the first stage of learning a CharaChorder, so here is how to continue.",
+    "recapTitle": "What you learned",
+    "recap": {
+      "unit1": "Met the four CharaChorder 3D input devices, and how one 3D switch gives up to five inputs.",
+      "unit2": "Typed the standard keys: letters, numbers, symbols, functional keys, F1–F12, and mouse features.",
+      "unit3": "Used DUP and Ambidextrous Throwover, two keys with no counterpart on a standard keyboard.",
+      "unit4": "Pressed several switches together for a chord, and created one on the spot with Impulse Chord."
+    },
+    "nextTitle": "Continue from here",
+    "nextDescription": "Knowing what each key does is not the same as finding it without looking. The next stage is to practice until the layout is in your fingers. This article offers the resources you need for that next stage.",
+    "article": {
+      "title": "Tangent's suggestions for learning English character entry",
+      "description": "The step right after this tutorial is practicing the device layout until you no longer need the visual guides. This article explains how to do it, using English character entry as the example.",
+      "cta": "Read \"Practice device layout\"",
+      "url": "https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/#Practice-device-layout"
+    }
   }
 }

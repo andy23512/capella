@@ -164,6 +164,13 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
+    path: 'unit-5/whats-next',
+    loadComponent: () =>
+      import('./pages/unit5/whats-next-page/whats-next-page.component').then(
+        (m) => m.WhatsNextPageComponent,
+      ),
+  },
+  {
     path: 'exercise/:exerciseId',
     loadComponent: () =>
       import('./pages/exercise-page/exercise-page.component').then(

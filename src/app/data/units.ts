@@ -201,4 +201,17 @@ export const UNITS: Unit[] = [
       },
     ],
   },
+  {
+    id: 'unit-5',
+    titleKey: 'units.unit-5.title',
+    shortTitleKey: 'units.unit-5.shortTitle',
+    chapters: [
+      {
+        id: 'whats-next',
+        unitId: 'unit-5',
+        titleKey: 'chapters.whats-next',
+        path: '/unit-5/whats-next',
+      },
+    ],
+  },
 ];
