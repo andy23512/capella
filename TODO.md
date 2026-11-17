@@ -64,3 +64,9 @@
   - [x] 程式內部名稱：不改（使用者決定維持 `thumbTip`／`thumbMid`／`thumbEnd`）
   - [x] 主列下方兩個搖桿：不放進名稱清單，頁面文字不提顏色（只有 CC1 分黑白），只在清單後加一句說明，CC1／CC2 稱 arrow／mouse，Master Forge 稱 aux 1／aux 2
   - [x] ~~Unit 2 練習：讀佈局資料找出哪些按鍵由拇指搖桿負責~~ → 不需要做（使用者判斷：既有練習已涵蓋拇指搖桿負責的按鍵；我沒有逐一核對各練習用到哪些搖桿）
+- [x] 新增整個課程的結尾頁 Unit 5「What's next?」（`src/app/pages/unit5/whats-next-page/`，路由 `/unit-5/whats-next`，commit `f5619eb`）
+  - 定位：不是單元總結，而是「接續」——學完 Capella 之後可以怎麼繼續，所以文案不用「推薦閱讀」的說法；做成獨立的 Unit 5（只有一章），側邊欄與 Unit 4 總結頁的「下一章」導覽不用特別處理
+  - 內容：開場說明這只是第一階段、Unit 1–4 各一行回顧（連到各單元第一章）、「從這裡繼續」一張卡片，連到 Tangent 的「Tangent's suggestions for learning English character entry」文章的「練習按鍵佈局」一節（英文 `#Practice-device-layout`、繁中 `#練習按鍵佈局`，兩個錨點已確認存在）；因為不複用 `UnitSummaryComponent`（版型只有一段文字加連結清單），頁面自己寫
+  - 決定：不放 Atlas 卡片（使用者判斷只留文章這張卡）
+  - 已驗證：連結回應 200、`nx build` 與 `nx test`（19/19）通過、英文版頁面與 Unit 4 總結頁導覽已在瀏覽器目視確認；繁中版頁面與卡片連結的實際點擊沒有在瀏覽器驗證
+  - `app.routes.ts` 不要整份跑 prettier：它會重排整份檔案既有的 `import(...)` 格式，新增路由時只手動加那一段
