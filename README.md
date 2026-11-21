@@ -1,5 +1,7 @@
 # Capella
 
+[![CI](https://github.com/andy23512/capella/actions/workflows/ci.yml/badge.svg)](https://github.com/andy23512/capella/actions/workflows/ci.yml)
+
 An unofficial tutorial site for CharaChorder 3D input devices (CharaChorder
 One, CharaChorder Two, CCU, and Master Forge).
 
